@@ -26,7 +26,7 @@ export default async function AllProduct() {
   const data: simplifiedProduct[] = await getData();
 
   return (
-    <div className="bg-white px-4">
+    <div className="bg-white">
 
 
 
@@ -80,7 +80,7 @@ export default async function AllProduct() {
         <div className=" py-2 flex flex-col justify-between items-center">
 
           <h2 className="text-2xl font-bold tracking-tight text-gray-900 text-primary">
-          Join Our Casino for Fun Excitement and Big Win!
+            Join Our Casino for Fun Excitement and Big Win!
           </h2>
 
           <p className="py-3  text-gray-500 text-justify">Step into the world of online fun and excitement like never before! Our online casino is your one-stop destination for all things thrilling and entertaining. Picture yourself spinning the reels of your favorite slots or testing your luck at classic table games, all from the comfort of your couch. With exciting bonuses, easy-to-use features, and friendly customer support, we're here to make your gaming experience a breeze. Start playing now and get ready for non-stop entertainment, big wins, and endless fun!</p>
@@ -95,28 +95,28 @@ export default async function AllProduct() {
 
                 <div className="mx-4 mt-4 justify-center items-center overflow-hidden text-white shadow-lg rounded-xl bg-blue-gray-500 bg-clip-border shadow-blue-gray-500/40">
 
-                <div className="object-cover relative h-40 w-40 rounded-full bg-indigo-500 rounded-t-xl flex justify-center items-center">
-                  
+                  <div className="object-cover relative h-40 w-40 rounded-full bg-indigo-500 rounded-t-xl flex justify-center items-center">
 
-                  <Link href={`/product/${product.slug}`}>
 
-                    <Image
-                      src={product?.imageUrl}
-                      alt="Product image"
-                      className="object-cover mx-auto object-center rounded-full"
-                      width={200}
-                      height={200}
-                    />
+                    <Link href={`/product/${product.slug}`}>
 
-                  </Link>
+                      <Image
+                        src={product?.imageUrl}
+                        alt="Product image"
+                        className="object-cover mx-auto object-center rounded-full"
+                        width={200}
+                        height={200}
+                      />
 
-                
-              </div>
+                    </Link>
+
+
+                  </div>
 
                 </div>
 
 
-               
+
 
 
 
@@ -152,27 +152,33 @@ export default async function AllProduct() {
 
 
                       </Link>
-                      
+
 
 
                     </div>
                   </div>
 
+                  <div className="pb-1">
+                    <Link
+
+                      className={buttonVariants()}
+
+                      href={product.click}
+
+                      target="_blank"
 
 
-                  <Link
 
-                    className={buttonVariants()}
+                    >
 
-                    href={product.click}
+                      Start Playing
 
-                    target="_blank"
+                    </Link>
+                  </div>
 
-                  >
 
-                    Start Playing
 
-                  </Link>
+
 
 
 

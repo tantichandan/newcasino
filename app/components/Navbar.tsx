@@ -16,7 +16,7 @@ const links = [
     { name: 'Blog', href: '/Blog' },
     { name: 'All', href: '/allproduct' },
     { name: 'Contact', href: '/email' },
-    { name: 'Card', href: '/Card' },
+    
     
 ]
 
