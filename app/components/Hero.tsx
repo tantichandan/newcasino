@@ -20,11 +20,11 @@ export default async function Hero() {
             <div className='mb-8 flex flex-wrap justify-between md:mb-16'>
                 <div className='mb-6 flex w-full flex-col justify-center sm:mb-12 lg:mb-0 lg:w-1/3 lg:pb-24 lg:pt-48'>
 
-                    <h1 className='mb-4 text-4xl font-bold text-black sm:text-5xl md:mb-8 md:text-6xl'>
-                        Top Casinos for top players
+                    <h1 className='scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl'>
+                        Top Casinos for top <span className='text-primary'>players</span>
                     </h1>
 
-                    <p className='max-w-md leading-relaxed text-gray-500 xl:text-lg'>
+                    <p className='leading-7 [&:not(:first-child)]:mt-6'>
 
                     Step into the realm of exhilarating online casino entertainment with our dedicated platform! Discover top-notch reviews, exclusive bonuses, and invaluable insider insights to elevate your gaming journey. 
                     </p>
@@ -39,8 +39,8 @@ export default async function Hero() {
                             src={urlFor(data.image1).url()}
                             alt='great photo'
                             className='h-full w-full object-cover object-center'
-                            width={300}
-                            height={300}
+                            width={150}
+                            height={150}
                             priority
 
 
@@ -97,6 +97,12 @@ export default async function Hero() {
                         <Link href="/Blog" className='flex w-3/4 items-center justify-center text-gray-500 transition duration-100 hover:bg-gray-100 active:bg-gray-200'>
 
                             Blog
+
+                        </Link>
+
+                        <Link href="/allproduct" className='flex w-3/4 items-center justify-center text-gray-500 transition duration-100 hover:bg-gray-100 active:bg-gray-200'>
+
+                            All
 
                         </Link>
 

@@ -14,6 +14,8 @@ const links = [
     { name: 'Deposit', href: '/Deposit' },
     { name: 'Free', href: '/Free' },
     { name: 'Blog', href: '/Blog' },
+    { name: 'All', href: '/allproduct' },
+    { name: 'Contact', href: '/contact' },
 ]
 
 export default function Navbar() {
@@ -41,7 +43,7 @@ export default function Navbar() {
 
                             {pathname === link.href ? (
 
-                                <Link className='text-lg font-semibold text-primary' href={link.href}>
+                                <Link onClick={()=> setNavbar(!navbar)} className='text-lg font-semibold text-primary' href={link.href}>
 
                                     {link.name}
 
@@ -50,7 +52,7 @@ export default function Navbar() {
 
                             ) : (
 
-                                <Link href={link.href} className='text-lg font-semibold  text-gray-600 transition duration-100 hover:text-primary'>
+                                <Link href={link.href} onClick={()=> setNavbar(false)} className='text-lg font-semibold  text-gray-600 transition duration-100 hover:text-primary'>
                                     {link.name}
 
                                 </Link>

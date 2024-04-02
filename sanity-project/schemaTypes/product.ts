@@ -57,6 +57,32 @@ export default {
         ]
       },
 
+      {
+        name: 'content',
+        type: 'array',
+        title: 'Content',
+        of:[
+            {
+                type: 'block',
+
+            },
+            
+        ]
+    },
+
+    {
+      name: 'reviews',
+      type: 'array',
+      title: 'Reviews',
+      of:[
+          {
+              type: 'block',
+
+          },
+          
+      ]
+  }
+
 
     ]
   }

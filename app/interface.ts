@@ -6,6 +6,7 @@ export interface simplifiedProduct {
     categoryName: string;
     name: string;
     click: string;
+  
   }
   
   export interface fullProduct {
@@ -18,6 +19,8 @@ export interface simplifiedProduct {
     description: string;
     price_id: string;
     click: string;
+    content: any;
+    reviews: any;
   }
 
   export interface post {

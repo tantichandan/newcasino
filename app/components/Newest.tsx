@@ -3,6 +3,10 @@ import { simplifiedProduct } from "../interface";
 import { client } from "../lib/sanity";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
+import { Button, buttonVariants } from "@/components/ui/button";
+import { Badge, badgeVariants } from "@/components/ui/badge";
+
+//href={`/resource/${id}`}
 
 async function getData() {
   const query = `*[_type == "product"][0...4] | order(_createdAt desc) {
@@ -43,46 +47,79 @@ export default async function Newest() {
           {data.map((product) => (
             <div key={product._id} className="group relative">
               <div className="aspect-square w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:h-80">
-                
-              <Link href={`/product/${product.slug}`}>
 
-                <Image
-                  src={product.imageUrl}
-                  alt="Product image"
-                  className="w-full h-full object-cover object-center lg:h-full lg:w-full"
-                  width={300}
-                  height={300}
-                />
+                <Link href={`/product/${product.slug}`}>
 
-              </Link>
+                  <Image
+                    src={product.imageUrl}
+                    alt="Product image"
+                    className="w-full h-full object-cover object-center lg:h-full lg:w-full"
+                    width={300}
+                    height={300}
+                  />
+
+                </Link>
               </div>
 
               <div className="mt-4 flex justify-between">
                 <div>
-                  <h3 className="text-sm text-gray-700">
-                    
+                  <h3 className="text-sm pb-1 text-gray-700 justify-center">
 
-                      <h3>{product.name}</h3>
-                    
+                    <Link href={`/${product.categoryName}`} className={buttonVariants({ variant: "outline" })}>
+
+                      <p className="text-sm text-black scroll-m-20 font-semibold tracking-tight">
+
+                        {product.categoryName} Casino
+                      </p>
+
+
+                    </Link>
+
+
+
+
                   </h3>
-                  <p className="mt-1 text-sm text-gray-500 font-bold">
-                    {product.categoryName}
-                  </p>
-                </div>
-                <p className="text-sm font-medium text-gray-900">
-                  Claim bonus ${product.price}
+
+                  <div className="flex flex-col">
 
                   <Link
 
+                    href={`/product/${product.slug}`}
+
+                  >
+                    <h3 className="scroll-m-20 text-xl text-primary font-bold tracking-tight"> {product.name}</h3>
+
+
+                  </Link>
+
+                  <h3 className="scroll-m-20 py-1 font-semibold tracking-tight">Welcome Bonus <span className="text-primary">${product.price}</span></h3>
+
+                  </div>
+                </div>
+
+
+
+                <Link
+
+                  className={buttonVariants()}
+
                   href={product.click}
 
-                  target="_blank" 
-                  
-                  >
-                    click here
-                  </Link>
-                  
-                </p>
+                  target="_blank"
+
+                >
+
+                  Start Playing
+
+                </Link>
+
+
+
+
+
+
+
+
               </div>
             </div>
           ))}
