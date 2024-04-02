@@ -9,6 +9,12 @@ export default {
         type: 'string',
         title: 'Name of category'
       },
+
+      {
+        name: 'categorydescription',
+        type: 'string',
+        title: 'Categorydescription'
+      },
       
     ]
   }

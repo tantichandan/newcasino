@@ -55,8 +55,8 @@ export default async function Hero() {
                             src={urlFor(data.image2).url()}
                             alt='great photo'
                             className='h-full w-full object-cover object-center'
-                            width={500}
-                            height={500}
+                            width={150}
+                            height={300}
                             priority
 
 

@@ -6,6 +6,7 @@ export interface simplifiedProduct {
     categoryName: string;
     name: string;
     click: string;
+    categorydescription: string;
   
   }
   

@@ -2,13 +2,13 @@ import Link from "next/link";
 import { simplifiedProduct } from "../interface";
 import { client } from "../lib/sanity";
 import Image from "next/image";
-import { badgeVariants } from "@/components/ui/badge";
-import { buttonVariants } from "@/components/ui/button";
-import category from "@/sanity-project/schemaTypes/category";
-import product from "@/sanity-project/schemaTypes/product";
 
-async function getData(cateogry: string) {
-    const query = `*[_type == "product" && category->name == "${cateogry}"] {
+import { buttonVariants } from "@/components/ui/button";
+
+
+
+async function getData(category: string) {
+    const query = `*[_type == "product" && category->name == "${category}"] {
         _id,
           "imageUrl": images[0].asset->url,
           price,

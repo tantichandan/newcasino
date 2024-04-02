@@ -56,7 +56,7 @@ export default async function ProductPage({
 
     return (
 
-        <div className='flex flex-col gap-16 flex-wrap px-6 md:px-20 py-24'>
+        <div className='flex flex-col gap-16 flex-wrap px-6 justify-center items-center md:px-20 py-24'>
             <div className='flex gap-28 xl:flex-row flex-col'>
 
                 <div className='flex-grow xl:max-w-[50%] max-w-full py-16'>
@@ -64,7 +64,7 @@ export default async function ProductPage({
                     <Image
 
                         alt="product"
-                        src={data.imageUrl}
+                        src={data?.imageUrl}
                         width={400}
                         height={350}
                         className='mx-auto rounded-[17px]'
@@ -81,7 +81,7 @@ export default async function ProductPage({
 
                             <h1 className='scroll-m-20 text-4xl font-bold tracking-tight lg:text-5xl'>
 
-                                <span className='text-primary'>{data.name}</span>
+                                <span className='text-primary'>{data?.name} Casino</span>
 
 
                             </h1>
@@ -111,7 +111,7 @@ export default async function ProductPage({
 
                                     <li><PortableText
 
-                                        value={data.content[0]}
+                                        value={data?.content[0]}
 
                                     /></li>
 
@@ -144,6 +144,10 @@ export default async function ProductPage({
 
 
 
+
+
+
+
                                 </ul>
                             </div>
 
@@ -157,7 +161,7 @@ export default async function ProductPage({
 
                                     className={buttonVariants()}
 
-                                    href={data.click}
+                                    href={data?.click}
 
                                     target="_blank"
 
@@ -172,41 +176,43 @@ export default async function ProductPage({
 
                         </div>
 
-                       
-                            <div className='flex gap-2'>
-                                <div className='flex items-center gap-2 px-3 py-2 bg-[#FBF3EA] rounded-[27px]'>
 
-                                    <StarIcon />
-                                    <StarIcon />
-                                    <StarIcon />
-                                    <StarIcon />
-                                    <StarIcon />
+                        <div className='flex gap-2'>
+                            <div className='flex items-center gap-2 px-3 py-2 bg-[#FBF3EA] rounded-[27px]'>
 
-                                </div>
+                                <StarIcon />
+                                <StarIcon />
+                                <StarIcon />
+                                <StarIcon />
+                                <StarIcon />
 
                             </div>
 
-                            <p className='text-sm text-black opacity-50'>
-                                <span className='text-primary font-semibold '>90%</span> players choice
-                            </p>
+                        </div>
 
-                            <div>
+                        <p className='text-sm text-black opacity-50'>
+                            <span className='text-primary font-semibold '>90%</span> players choice
+                        </p>
+
+                        <div>
                             <Accordion type="single" collapsible className="w-full">
-                                    <AccordionItem value="item-1">
-                                        <AccordionTrigger>Reviews</AccordionTrigger>
-                                        <AccordionContent>
-                                            <PortableText   value={data.reviews[0]} />
-                                            <PortableText   value={data.reviews[1]} />
-                                            <PortableText   value={data.reviews[2]} />
-                     
-                                        </AccordionContent>
-
+                                <AccordionItem value="item-1">
+                                    <AccordionTrigger>Reviews</AccordionTrigger>
+                                    <AccordionContent>
+                                        <PortableText value={data.reviews[0]} />
+                                        <PortableText value={data.reviews[1]} />
+                                        <PortableText value={data.reviews[2]} />
+                                        <PortableText value={data.reviews[3]} />
                                         
-                                    
 
-                                    </AccordionItem>
-                                </Accordion>
-                            </div>
+                                    </AccordionContent>
+
+
+
+
+                                </AccordionItem>
+                            </Accordion>
+                        </div>
 
 
                     </div>

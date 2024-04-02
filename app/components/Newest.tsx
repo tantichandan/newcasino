@@ -9,7 +9,7 @@ import { Badge, badgeVariants } from "@/components/ui/badge";
 //href={`/resource/${id}`}
 
 async function getData() {
-  const query = `*[_type == "product"][0...4] | order(_createdAt desc) {
+  const query = `*[_type == "product"][0...5] | order(_createdAt desc) {
         _id,
           price,
         name,
@@ -43,84 +43,90 @@ export default async function Newest() {
           </Link>
         </div>
 
-        <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+        <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-5 xl:gap-x-4">
           {data.map((product) => (
             <div key={product._id} className="group relative">
-              <div className="aspect-square w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:h-80">
+              <div className="relative m-2 p-0 justify-center items-center overflow-hidden text-white shadow-lg rounded-xl bg-blue-gray-500 bg-clip-border shadow-blue-gray-500/40">
 
-                <Link href={`/product/${product.slug}`}>
+                <div className="mx-4 mt-4 justify-center items-center overflow-hidden text-white shadow-lg rounded-xl bg-blue-gray-500 bg-clip-border shadow-blue-gray-500/40">
+                  <div className=" object-cover relative h-40 w-40 rounded-full bg-indigo-500 rounded-t-xl flex justify-center items-center">
+                    <Link href={`/product/${product.slug}`}>
 
-                  <Image
-                    src={product.imageUrl}
-                    alt="Product image"
-                    className="w-full h-full object-cover object-center lg:h-full lg:w-full"
-                    width={300}
-                    height={300}
-                  />
-
-                </Link>
-              </div>
-
-              <div className="mt-4 flex justify-between">
-                <div>
-                  <h3 className="text-sm pb-1 text-gray-700 justify-center">
-
-                    <Link href={`/${product.categoryName}`} className={buttonVariants({ variant: "outline" })}>
-
-                      <p className="text-sm text-black scroll-m-20 font-semibold tracking-tight">
-
-                        {product.categoryName} Casino
-                      </p>
-
+                      <Image
+                        src={product.imageUrl}
+                        alt="Product image"
+                        className="object-cover m-auto object-center rounded-full"
+                        width={200}
+                        height={200}
+                      />
 
                     </Link>
-
-
-
-
-                  </h3>
-
-                  <div className="flex flex-col">
-
-                  <Link
-
-                    href={`/product/${product.slug}`}
-
-                  >
-                    <h3 className="scroll-m-20 text-xl text-primary font-bold tracking-tight"> {product.name}</h3>
-
-
-                  </Link>
-
-                  <h3 className="scroll-m-20 py-1 font-semibold tracking-tight">Welcome Bonus <span className="text-primary">${product.price}</span></h3>
-
                   </div>
                 </div>
 
+                <div className="flex-col justify-center items-center gap-2 p-2">
+                  <div>
+                    <h3 className="text-sm text-gray-700 justify-center">
+
+                      <Link href={`/${product.categoryName}`}>
+
+                        <p className="text-sm text-black scroll-m-20 tracking-tight">
+
+                          {product.categoryName}
+                        </p>
 
 
-                <Link
-
-                  className={buttonVariants()}
-
-                  href={product.click}
-
-                  target="_blank"
-
-                >
-
-                  Start Playing
-
-                </Link>
-
+                      </Link>
 
 
 
 
+                    </h3>
 
+                    <div className="flex flex-col">
+
+                      <Link
+
+                        href={`/product/${product.slug}`}
+
+                      >
+                        <h3 className="scroll-m-20 text-xl text-primary font-bold tracking-tight"> {product.name} Casino </h3>
+
+
+                      </Link>
+
+                      <h3 className="block font-sans text-base antialiased font-light leading-relaxed text-black">Welcome Bonus <span className="text-primary">${product.price}</span></h3>
+
+                    </div>
+                  </div>
+
+                  <Link
+
+                    className={buttonVariants()}
+
+                    href={product.click}
+
+                    target="_blank"
+
+                  >
+
+                    Start Playing
+
+                  </Link>
+
+
+
+
+
+
+
+
+                </div>
 
 
               </div>
+
+
             </div>
           ))}
         </div>
