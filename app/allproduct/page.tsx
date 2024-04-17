@@ -6,7 +6,7 @@ import Image from "next/image";
 import { buttonVariants } from "@/components/ui/button";
 
 async function getData() {
-  const query = `*[_type == "product"][0...17]{
+  const query = `*[_type == "product"][0...27]{
     _id,
       price,
       name,
@@ -120,7 +120,7 @@ export default async function AllProduct() {
 
 
 
-                <div className="flex-col justify-center items-center gap-2 p-2 ">
+                <div className="flex-col justify-center items-center gap-2 p-1">
                   <div>
                     <h3 className="text-sm text-gray-700 justify-center">
 

@@ -1,10 +1,10 @@
 "use client"
 
 
-import Image from 'next/image'
+
 import React from 'react'
-import { client, urlFor } from '../lib/sanity'
-import Link from 'next/link'
+
+
 import { Button } from "@/components/ui/button"
 import {
     Card,
@@ -19,20 +19,16 @@ import { Label } from "@/components/ui/label"
 import {
     Tabs,
     TabsContent,
-    TabsList,
-    TabsTrigger,
+    
 } from "@/components/ui/tabs"
 
 import { Textarea } from "@/components/ui/textarea"
-import {Resend} from 'resend'
-import KoalaWelcomeEmailProps from '../components/email-template'
+
 import { sendEmail } from '@/lib/sendEmail'
 
 
 export default async function email() {
-
-
-    
+   
     return (
         <section className='mx-auto max-w-2xl px-4 sm:pb-6 lg:max-w-7xl lg:px-8'>
 
@@ -67,12 +63,12 @@ export default async function email() {
 
                             <div className="space-y-1">
                                     <Label className='text-primary' htmlFor="Email">Name</Label>
-                                    <Input  required name='name' id="name" defaultValue="@peduarte" />
+                                    <Input  required name='name' id="name" placeholder='Name' />
                                 </div>
                                
                                 <div className="space-y-1">
                                     <Label className='text-primary' htmlFor="Email">Email</Label>
-                                    <Input  required name='senderEmail' id="username" defaultValue="@peduarte" />
+                                    <Input  required name='senderEmail' id="username" placeholder='Email' />
                                 </div>
 
                                 <div className="space-y-3">

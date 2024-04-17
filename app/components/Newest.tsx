@@ -95,7 +95,7 @@ export default async function Newest() {
 
                       </Link>
 
-                      <h3 className="block font-sans text-base antialiased font-light leading-relaxed text-black">Welcome Bonus <span className="text-primary">${product.price}</span></h3>
+                      <h3 className="block font-sans text-base antialiased font-light leading-relaxed text-black">Free play/Bonus <span className="text-primary">$€£ {product.price}</span></h3>
 
                     </div>
                   </div>

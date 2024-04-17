@@ -19,7 +19,7 @@ const Footer = () => {
               <Link href="/"><li className="leading-6 text-sm [&:not(:first-child)]:6 mb-2">Home</li></Link>
               <Link href="/allproduct"><li className="leading-6 text-sm [&:not(:first-child)]:mt-6 mb-2">Casinos</li></Link>
               <Link href="/Blog"><li className="leading-6 text-sm [&:not(:first-child)]:mt-6 mb-2">Blogs</li></Link>
-              <Link href="/contact"><li className="leading-6 text-sm [&:not(:first-child)]:mt-6 mb-2">Contact</li></Link>
+              <Link href="/email"><li className="leading-6 text-sm [&:not(:first-child)]:mt-6 mb-2">Contact</li></Link>
             </ul>
           </div>
           <div>
@@ -44,7 +44,7 @@ const Footer = () => {
 
           </div>
           <div>
-            <p>All right reserved © Casino Bonus</p>
+            <p>All right reserved © BonusBloom</p>
           </div>
 
           <div>

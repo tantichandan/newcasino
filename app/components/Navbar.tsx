@@ -2,19 +2,23 @@
 
 import { Button } from '@/components/ui/button'
 import { MenuIcon, MessageSquare, X } from 'lucide-react'
+import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import React, { useState } from 'react'
+import logo1 from "@/public/logo1.svg"
+
 
 const links = [
     { name: 'Home', href: '/' },
     { name: 'Aus', href: '/Aus' },
     { name: 'UK', href: '/UK' },
     { name: 'US', href: '/US' },
-    { name: 'Deposit', href: '/Deposit' },
-    { name: 'Free', href: '/Free' },
-    { name: 'Blog', href: '/Blog' },
+    { name: 'French', href: '/French' },
+    { name: 'No-Deposit', href: '/Free' },
+    
     { name: 'All', href: '/allproduct' },
+    { name: 'Blog', href: '/Blog' },
     { name: 'Contact', href: '/email' },
     
     
@@ -33,7 +37,15 @@ export default function Navbar() {
 
                 <Link href={"/"}>
 
-                    <h1 className='text-2xl md:text-4xl font-bold'>Casino<span className='text-primary'>bonus</span></h1>
+                    <Image
+
+                    src={logo1}
+                    height={170}
+                    width={170}
+                    alt='logo'
+                    
+                    />
+
                 </Link>
 
                 

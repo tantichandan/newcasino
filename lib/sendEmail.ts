@@ -35,23 +35,20 @@ export const sendEmail = async (formData: FormData) => {
     console.log(formData)
    
 
-    await resend.emails.send({
-        from: 'onboarding@resend.dev',
-        to: 'tantichandan@gmail.com',
-        subject: 'Message from contact form',
-        reply_to: senderEmail as string,
-        text: message as string,
-     
-    })
+    try {
+        await resend.emails.send({
+            from: 'onboarding@resend.dev',
+            to: 'tantichandan@gmail.com',
+            subject: 'Message from contact form',
+            reply_to: senderEmail as string,
+            text: message as string
+        });
 
-    await resend.emails.send({
-        from: 'onboarding@resend.dev',
-        to: senderEmail as string,
-        subject: 'Thanks for subscribing',
-        
-        //text: message as string,
+        return { success: true, message: "Email sent successfully" };
+    } catch (error) {
+        console.error('Error sending email:', error);
+        return { success: false, error: "Failed to send email" };
+    }
 
-        react: KoalaWelcomeEmailProps({name: ""}),
-     
-    })
+   
 }

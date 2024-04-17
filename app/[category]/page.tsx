@@ -37,13 +37,56 @@ export default async function CategoryPage({
     return (
         <div className="bg-white">
             <div className="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
+            <div className='flex flex-col items-center justify-between gap-8 md:flex-row'>
+          <div className='flex justify-evenly h-12 w-64 divide-x overflow-hidden rounded-lg border'>
+            <Link href="/Aus" className='flex w-1/2 items-center justify-center text-gray-500 transition duration-100 hover:bg-gray-100 active:bg-gray-200'>
+
+              Aus
+
+            </Link>
+            <Link href="/UK" className='flex w-1/2 items-center justify-center text-gray-500 transition duration-100 hover:bg-gray-100 active:bg-gray-200'>
+
+              UK
+
+            </Link>
+            <Link href="/US" className='flex w-1/2 items-center justify-center text-gray-500 transition duration-100 hover:bg-gray-100 active:bg-gray-200'>
+
+              US
+
+            </Link>
+            <Link href="/French" className='flex w-1/2 items-center justify-center text-gray-500 transition duration-100 hover:bg-gray-100 active:bg-gray-200'>
+
+              French
+
+            </Link>
+            <Link href="/Free" className='flex w-3/4 items-center justify-center text-gray-500 transition duration-100 hover:bg-gray-100 active:bg-gray-200'>
+
+              ND
+
+            </Link>
+
+            <Link href="/Blog" className='flex w-3/4 items-center justify-center text-gray-500 transition duration-100 hover:bg-gray-100 active:bg-gray-200'>
+
+              Blog
+
+            </Link>
+
+            <Link href="/allproduct" className='flex w-3/4 items-center justify-center text-gray-500 transition duration-100 hover:bg-gray-100 active:bg-gray-200'>
+
+              All
+
+            </Link>
+
+          </div>
+
+        </div>
                 <div className="flex flex-col justify-between">
-                    <h2 className="text-2xl font-bold tracking-tight text-gray-900">
+                    <h2 className="text-2xl font-bold tracking-tight text-primary">
                         Casinos for {params.category}
                     </h2>
 
                     <div>
-                        <p className='leading-7 [&:not(:first-child)]:mt-6'>
+                        <p className='leading-7 [&:not(:first-child)]:mt-6 py-3  text-gray-500 text-justify'>
 
                             We've organized our casino section with your convenience in mind, making it easier for you to find your favorite casino. With our expertly curated selection, you can trust that you're getting the best of the best. So why wait? Join us today and start winning big
 
