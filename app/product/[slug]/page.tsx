@@ -190,9 +190,7 @@ export default async function ProductPage({
 
                         </div>
 
-                        <p className='text-sm text-black opacity-50'>
-                            <span className='text-primary font-semibold '>90%</span> players choice
-                        </p>
+                     
 
                         <div>
                             <Accordion type="single" collapsible className="w-full">
@@ -203,7 +201,7 @@ export default async function ProductPage({
                                         <PortableText value={data.reviews[1]} />
                                         <PortableText value={data.reviews[2]} />
                                         <PortableText value={data.reviews[3]} />
-                                        
+
 
                                     </AccordionContent>
 
@@ -232,7 +230,7 @@ export default async function ProductPage({
 
                     <div className='flex flex-col gap-2'>
 
-                        <p className='leading-7 [&:not(:first-child)]:mt-6'>{data.description}</p>
+                        <p className='text-lg text-gray-800 font-serif leading-relaxed mb-8'>{data.description}</p>
 
                     </div>
 
