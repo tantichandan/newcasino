@@ -1,12 +1,17 @@
 export interface simplifiedProduct {
     _id: string;
     imageUrl: string;
-    price: number;
+    price: string;
     slug: string;
     categoryName: string;
     name: string;
     click: string;
     categorydescription: string;
+    payments: string;
+    withdrawal: string;
+    bonus: string;
+    language: string;
+    countries: string;
   
   }
   

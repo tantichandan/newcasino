@@ -35,8 +35,36 @@ export default {
 
       {
         name: 'price',
-        type: 'number',
+        type: 'string',
         title: 'Price product'
+      },
+
+      {
+        name: 'payments',
+        type: 'string',
+        title: 'Payments'
+      },
+      {
+        name: 'countries',
+        type: 'string',
+        title: 'Countries'
+      },
+      {
+        name: 'language',
+        type: 'string',
+        title: 'language'
+      },
+
+      {
+        name: 'withdrawal',
+        type: 'string',
+        title: 'Withdrawal'
+      },
+
+      {
+        name: 'bonus',
+        type: 'string',
+        title: 'Signup'
       },
 
       {
