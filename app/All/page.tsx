@@ -5,8 +5,7 @@ import Head from "next/head";
 import { simplifiedProduct } from "../interface";
 import { client } from "../lib/sanity";
 import { buttonVariants } from "@/components/ui/button";
-import { useSearchParams } from 'next/navigation';
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
 async function getData() {
   try {
@@ -31,8 +30,6 @@ async function getData() {
 }
 
 export default function AllProduct() {
-  const searchParams = useSearchParams();
-  const searchTerm = searchParams.get('search') || '';
   const [data, setData] = useState<simplifiedProduct[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -51,14 +48,10 @@ export default function AllProduct() {
     fetchData();
   }, []);
 
-  const filteredProducts = data.filter(product =>
-    product.name.toLowerCase().includes(searchTerm.toLowerCase())
-  );
-
   return (
     <div className="bg-white">
       <Head>
-        <title>{searchTerm ? `${searchTerm} - TheCasinoLoot` : "TheCasinoLoot - Best Online Casino & Gambling Platform"}</title>
+        <title>TheCasinoLoot - Best Online Casino & Gambling Platform</title>
         <meta name="description" content="Join The Casino Loot, the best online casino for exciting games and secure online gambling." />
       </Head>
       <div className="mx-auto max-w-7xl px-4 py-8">
@@ -74,11 +67,11 @@ export default function AllProduct() {
         {loading && <p className="text-center text-gray-600">Loading products...</p>}
         {error && <p className="text-center text-red-600">{error}</p>}
         <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {filteredProducts.map((product) => (
+          {data.map((product) => (
             <ProductCard key={product._id} product={product} />
           ))}
         </div>
-        {filteredProducts.length === 0 && !loading && <p className="text-center text-gray-600">No results found for "{searchTerm}"</p>}
+        {data.length === 0 && !loading && <p className="text-center text-gray-600">No products available.</p>}
       </div>
     </div>
   );
