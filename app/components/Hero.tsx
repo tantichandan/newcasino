@@ -45,6 +45,21 @@ export default function HeroAndBlog() {
                                 All
                             </button>
                         </Link>
+                        <Link href="/Global">
+                            <button className='bg-primary text-white py-2 px-4 rounded-lg shadow hover:bg-yellow-500 transition duration-200'>
+                                Global
+                            </button>
+                        </Link>
+                        <Link href="/Free">
+                            <button className='bg-primary text-white py-2 px-4 rounded-lg shadow hover:bg-yellow-500 transition duration-200'>
+                                Free
+                            </button>
+                        </Link>
+                        <Link href="/CA">
+                            <button className='bg-primary text-white py-2 px-4 rounded-lg shadow hover:bg-yellow-500 transition duration-200'>
+                                CA
+                            </button>
+                        </Link>
                         <Link href="/Blog">
                             <button className='bg-primary text-white py-2 px-4 rounded-lg shadow hover:bg-yellow-500 transition duration-200'>
                                 Blogs

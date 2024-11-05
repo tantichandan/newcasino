@@ -27,6 +27,10 @@ export interface simplifiedProduct {
     click: string;
     content: any;
     reviews: any;
+    payments: string;
+    language: string;
+    countries: string;
+    withdrawal: string;
   }
 
   export interface post {

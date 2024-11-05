@@ -64,7 +64,7 @@ export default async function ProductPage({ params }: { params: { slug: string }
 
                     <div className='flex items-center flex-wrap gap-10 py-6'>
                         <div className='flex flex-col gap-2'>
-                            <p className='scroll-m-20 text-xl font-semibold tracking-tight'>Welcome Bonus: {data.price}</p>
+                            <p className='scroll-m-20 text-xl text-primary font-bold tracking-tight'>Welcome Bonus: </p><p className='scroll-m-20 text-xl font-semibold tracking-tight'>{data.price}</p> 
                             <div>
                                 <ul className="my-6 ml-6 list-disc [&>li]:mt-2">
                                     {data.content.map((contentItem: any, index: any) => (

@@ -12,10 +12,13 @@ const links = [
     { name: 'UK', href: '/UK' },
     { name: 'US', href: '/US' },
     { name: 'French', href: '/French' },
-    { name: 'No-Deposit', href: '/Free' },
+    { name: 'Free', href: '/Free' },
     { name: 'All', href: '/All' },
+    
+    { name: 'CA', href: '/CA' },
+    { name: 'Global', href: '/Global' },
     { name: 'Blog', href: '/Blog' },
-    { name: 'Contact', href: '/email' },
+    
 ];
 
 export default function Navbar() {
@@ -46,9 +49,11 @@ export default function Navbar() {
                 </nav>
 
                 <div className='flex divide-x border-r sm:border-l'>
+                    <Link href={'/email'}>
                     <Button variant='outline' className='flex flex-col gap-y-1.5 h-12 sm:h-20 sm:w-20 md:w-24 rounded-none'>
-                        <MessageSquare className="h-6 w-6" />
+                        <MessageSquare className="h-6 w-6" /> <p>Contact us</p>
                     </Button>
+                    </Link>
 
                     <div className='lg:hidden flex-col justify-center'>
                         <Button

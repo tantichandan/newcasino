@@ -53,7 +53,7 @@ export default async function Newest() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center mb-8 flex-col sm:flex-row">
           <h2 className="text-4xl font-extrabold text-white">Casinos with some High RTP</h2>
-          <Link className="text-white font-semibold flex items-center gap-x-1 mt-2 sm:mt-0" href="/allproduct">
+          <Link className="text-white font-semibold flex items-center gap-x-1 mt-2 sm:mt-0" href="/All">
             See All <ArrowRight />
           </Link>
         </div>
