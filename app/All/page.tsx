@@ -1,151 +1,123 @@
-"use client";
 import Link from "next/link";
-import Image from "next/image";
-import Head from "next/head";
 import { simplifiedProduct } from "../interface";
 import { client } from "../lib/sanity";
-import { buttonVariants } from "@/components/ui/button";
-import { useState, useEffect } from "react";
+import Image from "next/image";
+import Head from "next/head";
 
 async function getData() {
-  try {
-    const query = `*[_type == "product"][0...50]{
-      _id,
-      price,
-      name,
-      payments,
-      language,
-      withdrawal,
-      countries,
-      "slug": slug.current,
-      "categoryName": category->name,
-      "imageUrl": images[0].asset->url,
-      click
-    }`;
-    return await client.fetch(query);
-  } catch (error) {
-    console.error("Error fetching data:", error);
-    return [];
-  }
-}
+  const query = `*[_type == "product"][0...50]{
+    _id,
+    price,
+    name,
+    "slug": slug.current,
+    "categoryName": category->name,
+    "imageUrl": images[0].asset->url,
+    click,
+    payments,
+    countries,
+    withdrawal,
+    language
+  }`;
 
-export default function AllProduct() {
-  const [data, setData] = useState<simplifiedProduct[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const products = await getData();
-        setData(products);
-      } catch (error) {
-        setError("Failed to load products.");
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchData();
-  }, []);
-
-  return (
-    <div className="bg-white">
-      <Head>
-        <title>TheCasinoLoot - Best Online Casino & Gambling Platform</title>
-        <meta name="description" content="Join The Casino Loot, the best online casino for exciting games and secure online gambling." />
-      </Head>
-      <div className="mx-auto max-w-7xl px-4 py-8">
-        <SubmenuBar />
-        <div className="text-center mb-8">
-          <h2 className="text-3xl font-bold tracking-tight text-primary">
-            Dive Into Our Casino Adventure!
-          </h2>
-          <p className="leading-7 text-gray-600 text-justify py-3 max-w-2xl mx-auto">
-            Finding the best casinos online is a tough job because the number of casinos launched every day is beyond imagination. We want you to enjoy yourself while playing at trustworthy casinos. This site will always guide you in the right direction to help you find your destination. While we promote online gambling, we are also fully aware of the gambling policies. We always encourage you to be aware of your gambling status and to play responsibly.
-          </p>
-        </div>
-        {loading && <p className="text-center text-gray-600">Loading products...</p>}
-        {error && <p className="text-center text-red-600">{error}</p>}
-        <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {data.map((product) => (
-            <ProductCard key={product._id} product={product} />
-          ))}
-        </div>
-        {data.length === 0 && !loading && <p className="text-center text-gray-600">No products available.</p>}
-      </div>
-    </div>
-  );
-}
-
-function ProductCard({ product }: { product: simplifiedProduct }) {
-  return (
-    <div className="relative p-6 bg-white border border-gray-300 rounded-lg shadow-lg transition duration-300 hover:shadow-xl overflow-hidden flex flex-col">
-      <Link href={`/product/${product.slug}`} className="flex flex-col h-full">
-        {/* Product Image with reduced height */}
-        <div className="relative w-full h-40 bg-gray-100">
-          <Image
-            src={product.imageUrl}
-            alt={`${product.name} Casino`}
-            className="object-cover rounded-t-lg"
-            width={500}
-            height={200}
-            quality={80}
-          />
-        </div>
-
-        {/* Product Details with added padding */}
-        <div className="p-4 flex flex-col justify-between flex-1">
-          {/* Display category name with background for readability */}
-          <h3 className="text-sm font-semibold text-gray-700 mb-1 bg-white p-1 rounded">{product.categoryName || "Category not available"}</h3>
-          
-          {/* Display product name */}
-          <p className="text-xl font-bold text-primary mb-2">{product.name || "Product name not available"}</p>
-
-          {/* Highlighted Price with adjusted text size */}
-          <div className="mt-2">
-            <p className="text-base font-bold text-primary tracking-tight">{product.price}</p>
-          </div>
-
-          {/* More Details with spacing */}
-          <div className="mt-4 space-y-2">
-            <p className="text-sm font-medium text-gray-700">{product.withdrawal}</p>
-            <p className="text-sm font-semibold text-blue-600">Deposit Options:</p>
-            <p className="text-sm font-medium text-gray-700">{product.payments}</p>
-            <p className="text-sm font-semibold text-blue-600">Available In:</p>
-            <p className="text-sm font-medium text-gray-700">{product.countries}</p>
-            <p className="text-sm font-semibold text-blue-600">Support Available:</p>
-            <p className="text-sm font-medium text-gray-700">{product.language}</p>
-          </div>
-        </div>
-      </Link>
-
-      {/* Action Button */}
-      <div className="flex justify-center p-4 mt-auto">
-        <Link
-          className={`${buttonVariants()} px-6 py-3 bg-primary text-white rounded-md transition-transform transform hover:scale-105`}
-          href={product.click}
-          target="_blank"
-        >
-          Start Playing
-        </Link>
-      </div>
-    </div>
-  );
+  const data = await client.fetch(query);
+  return data;
 }
 
 function SubmenuBar() {
+  const submenuLinks = ["Aus", "UK", "US", "French", "Free", "CA", "Global", "All", "Blog"];
+
   return (
-    <div className="flex justify-center mb-8">
-      <div className="flex h-12 w-full max-w-5xl bg-gray-100 border-4 border-gray-300 rounded-lg overflow-hidden shadow-md">
-        {["Aus", "UK", "US", "French", "Free", "Blog", "All"].map((item) => (
+    <div className="flex justify-center mb-8 px-4">
+      <div className="flex flex-wrap w-full max-w-5xl bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 border border-gray-300 rounded-lg overflow-hidden shadow-md justify-center sm:justify-between">
+        {submenuLinks.map((item) => (
           <Link
             key={item}
             href={`/${item}`}
-            className="flex-1 flex items-center justify-center text-gray-700 transition duration-200 hover:bg-gray-200 active:bg-gray-300 font-semibold"
+            className="flex-1 sm:flex-none sm:w-auto text-white text-center py-2 px-4 transition duration-300 ease-in-out transform hover:scale-105 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
           >
             {item}
           </Link>
         ))}
+      </div>
+    </div>
+  );
+}
+
+export default async function AllProduct() {
+  const data: simplifiedProduct[] = await getData();
+  const searchTerm = ""; // Placeholder for dynamic search term
+
+  return (
+    <div className="bg-soft-gradient">
+      <Head>
+        <title>{searchTerm ? `${searchTerm} - TheCasinoLoot` : "TheCasinoLoot - Best Online Casino & Gambling Platform"}</title>
+        <meta name="description" content="Join The Casino Loot, the best online casino for exciting games and secure online gambling." />
+      </Head>
+      
+      {/* Submenu Bar */}
+      <SubmenuBar />
+
+      <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-24 lg:px-8">
+        <div className="py-2 flex flex-col justify-between items-center mb-12">
+          <h2 className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 mb-6">
+            Join Our Casino for Fun Excitement and Big Win!
+          </h2>
+          
+          {/* Justified paragraph */}
+          <p className="py-3 text-lg text-gray-800 font-serif leading-relaxed mb-8 max-w-3xl text-center sm:text-left sm:text-justify">
+            Finding the best casinos online is a tough job because the number of casinos launched every day is beyond imagination. We want you to enjoy yourself while playing at trustworthy casinos. This site will always guide you in the right direction to help you find your destination. While we promote online gambling, we are also fully aware of the gambling policies. We always encourage you to be aware of your gambling status and to play responsibly.
+          </p>
+        </div>
+
+        {/* Adjust margin between heading and grid */}
+        <div className="mt-8 sm:mt-12 lg:mt-16">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            {data.map((product) => (
+              <div key={product._id} className="relative flex flex-col bg-white shadow-lg rounded-lg overflow-hidden border border-gray-200">
+                <Link href={`/product/${product.slug}`} className="block">
+                  <div className="relative w-full h-48 overflow-hidden">
+                    <Image
+                      src={product.imageUrl}
+                      alt={`${product.name} image`}
+                      className="object-cover w-full h-full"
+                      layout="fill" // Fill the container
+                      objectFit="cover" // Ensure the image covers the area without stretching
+                      objectPosition="center" // Ensure the image is centered
+                    />
+                  </div>
+                </Link>
+
+                <div className="px-4 py-6 text-center flex-grow">
+                  <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                    <Link href={`/product/${product.slug}`} className="hover:underline">
+                      {product.name} Casino <br />
+                      <span><p className="text-sm">Read more</p></span>
+                    </Link>
+                  </h3>
+                  <p className="text-gray-600 text-base mb-4">{product.categoryName}</p>
+                  <p className="text-sm text-gray-700 mb-4">
+                    Offer <span className="font-bold text-primary"> {product.price}</span>
+                  </p>
+                </div>
+
+                <div className="px-4 py-3 bg-gray-50 text-sm text-gray-700 space-y-2 flex-grow-0">
+                  <p><strong>Payment Method:</strong> {product.payments}</p>
+                  <p><strong>Countries Accepted:</strong> {product.countries}</p>
+                  <p><strong>General:</strong> {product.withdrawal}</p>
+                  <p><strong>Languages Supported:</strong> {product.language}</p>
+                </div>
+
+                <div className="px-4 py-4 mt-auto text-center">
+                  <Link href={product.click} target="_blank" className="inline-block w-full">
+                    <button className="w-full px-4 py-2 bg-gradient-to-r from-yellow-500 via-red-500 to-pink-500 text-white rounded-md shadow-md hover:shadow-lg hover:bg-yellow-400 transition duration-300">
+                      Start Playing
+                    </button>
+                  </Link>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );

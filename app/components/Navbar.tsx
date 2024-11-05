@@ -47,14 +47,12 @@ export default function Navbar() {
 
         {/* Navbar menu for large screens */}
         <nav
-          className={`lg:flex items-center justify-center lg:pb-0 z-50 absolute lg:static left-0 w-full lg:w-auto transition-all duration-500 ease-in top-[73px] ${
-            navbarOpen ? 'right-0 bg-white' : 'left-[-100%]'
-          }`}
+          className={`lg:flex items-center justify-center lg:pb-0 z-50 absolute lg:static left-0 w-full lg:w-auto transition-all duration-500 ease-in top-[73px] ${navbarOpen ? 'right-0 bg-white' : 'left-[-100%]'
+            }`}
         >
           <div
-            className={`lg:flex flex-col lg:flex-row items-center p-4 lg:p-0 ${
-              navbarOpen ? 'block' : 'hidden'
-            }`}
+            className={`lg:flex flex-col lg:flex-row items-center p-4 lg:p-0 ${navbarOpen ? 'block' : 'hidden'
+              }`}
           >
             {links.map((link, idx) => (
               <div key={idx} className="mb-2 lg:mb-0 lg:mr-4">
@@ -75,11 +73,13 @@ export default function Navbar() {
           <Link href="/email">
             <Button
               variant="outline"
-              className="flex flex-col gap-y-1.5 h-12 sm:h-20 sm:w-20 md:w-24 rounded-none"
+              className="flex flex-col gap-y-1.5 h-12 sm:h-20 sm:w-20 md:w-24 rounded-full bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white shadow-lg hover:scale-105 transition-transform duration-300 ease-in-out"
             >
-              <MessageSquare className="h-6 w-6" /> <p>Contact us</p>
+              <MessageSquare className="h-6 w-6 transition-transform duration-300 ease-in-out group-hover:rotate-12" />
+              <p className="text-xs sm:text-sm font-medium">Contact us</p>
             </Button>
           </Link>
+
 
           {/* Mobile menu toggle */}
           <div className="lg:hidden flex-col justify-center">

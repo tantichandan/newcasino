@@ -45,23 +45,26 @@ export default async function Newest() {
   const data = await getData();
 
   return (
-    <div className="bg-gradient-to-r from-blue-500 to-purple-600 py-16">
+    <div className="bg-gradient-to-r from-gray-200 to-gray-400 py-16">
       <Head>
         <title>TheCasinoLoot - Best Online Exclusive Gambling Platform</title>
         <meta name="description" content="Experience exclusive online gambling at Casino Loot, the best online casino and gambling platform. Enjoy thrilling games, secure play and big wins anytime." />
       </Head>
+
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center mb-8 flex-col sm:flex-row">
-          <h2 className="text-4xl font-extrabold text-white">Casinos with some High RTP</h2>
-          <Link className="text-white font-semibold flex items-center gap-x-1 mt-2 sm:mt-0" href="/All">
-            See All <ArrowRight />
+          <h2 className="text-4xl font-extrabold text-white">Casinos with High RTP</h2>
+          <Link className="text-primary font-bold flex items-center gap-x-1 mt-2 sm:mt-0" href="/All">
+            View All <ArrowRight />
           </Link>
         </div>
 
-        <p className="text-lg text-white mb-6">
-          We’ve done the hard work for you, so you can sit back, relax, and enjoy your game without worrying about withdrawals or game payouts. Below are some of the finest online casinos available. Click on the name or the image to learn more about each casino. All the casinos listed on this page are fully licensed, ensuring a safe and secure gaming experience. Plus, you can easily withdraw your winnings without hassle. We care about you and want to ensure you have a smooth experience on our site; therefore, we have separated the category section by country. Your presence here motivates us greatly. You can leave us a suggestion or feedback so we can make your experience even better.
-
-        </p>
+        {/* Paragraph with improved readability */}
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <p className="text-lg text-white mb-6 max-w-3xl mx-auto sm:text-left text-justify leading-relaxed bg-opacity-80 bg-gray-900 p-6 rounded-lg shadow-lg">
+            We’ve done the hard work for you, so you can sit back, relax, and enjoy your game without worrying about withdrawals or game payouts. Below are some of the finest online casinos available. Click on the name or the image to learn more about each casino. All the casinos listed on this page are fully licensed, ensuring a safe and secure gaming experience. Plus, you can easily withdraw your winnings without hassle. We care about you and want to ensure you have a smooth experience on our site; therefore, we have separated the category section by country. Your presence here motivates us greatly. You can leave us a suggestion or feedback so we can make your experience even better.
+          </p>
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {data.length > 0 ? (
@@ -72,7 +75,7 @@ export default async function Newest() {
                   <div className="relative w-full h-32 overflow-hidden rounded-t-lg">
                     <Image
                       src={product.imageUrl}
-                      alt={`${product.name} image`}
+                      alt={`Image of ${product.name} Casino`}
                       layout="fill"
                       objectFit="cover"
                       className="absolute inset-0 rounded-t-lg"
@@ -97,7 +100,7 @@ export default async function Newest() {
                   {/* Payment Methods Section */}
                   <div className="mt-2">
                     <div className="text-sm text-gray-800">
-                      <strong className="text-gray-900"></strong> <span className="font-semibold">{product.withdrawal}</span>
+                      <strong className="text-gray-900">Withdrawal:</strong> <span className="font-semibold">{product.withdrawal}</span>
                     </div>
                     <div className="mt-1">
                       <strong className="text-sm text-gray-900">Payment Methods:</strong>

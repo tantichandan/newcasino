@@ -35,7 +35,7 @@ export default async function CategoryPage({ params }: { params: { category: str
     const data: simplifiedProduct[] = await getData(params.category);
 
     return (
-        <div className="bg-gradient-to-r from-blue-500 to-purple-600">
+        <div className="bg-gradient-to-r from-blue-400 via-indigo-500 to-purple-600 min-h-screen">
             <div className="mx-auto max-w-7xl px-4 py-8">
                 <SubmenuBar />
                 <div className="text-center mb-8">
@@ -62,8 +62,10 @@ export default async function CategoryPage({ params }: { params: { category: str
                                         />
                                     </div>
                                     <h3 className="mt-2 text-md font-semibold text-gray-800">{product.categoryName}</h3>
-                                    <p className="text-md font-medium text-gray-700">{product.name} Casino</p>
-                                    <h4 className="text-sm text-blue-600 font-bold mt-2">Bonus: {product.price}</h4> 
+                                    <p className="text-md font-bold text-gray-700">{product.name} Casino </p>
+                                    <p className="text-sm font-bold text-gray-700">Read more </p>
+                                
+                                    <h4 className="text-sm text-blue-600 font-bold mt-2"><span className="text-sm font-medium text-gray-700">Bonus:</span> {product.price}</h4>
                                     <p className="text-sm font-medium text-gray-700 my-2">{product.withdrawal}</p>
                                     <p className="text-sm font-medium text-gray-700 my-2"><strong>Payments:</strong> {product.payments}</p>
                                     <p className="text-sm font-medium text-gray-700 my-2"><strong>Accepted:</strong> {product.countries}</p>
@@ -90,13 +92,13 @@ export default async function CategoryPage({ params }: { params: { category: str
 
 function SubmenuBar() {
     return (
-        <div className="flex justify-center mb-8">
-            <div className="flex h-12 w-full max-w-5xl bg-gray-100 border border-gray-300 rounded-lg overflow-hidden shadow-md">
+        <div className="flex justify-center mb-8 px-4">
+            <div className="flex flex-wrap w-full max-w-5xl bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 border border-gray-300 rounded-lg overflow-hidden shadow-md justify-center sm:justify-between">
                 {["Aus", "UK", "US", "French", "Free", "CA", "Global", "All", "Blog"].map((item) => (
                     <Link
                         key={item}
                         href={`/${item}`}
-                        className="flex-1 flex items-center justify-center text-gray-700 transition duration-200 hover:bg-gray-200 active:bg-gray-300 text-sm font-semibold"
+                        className="flex-1 sm:flex-none sm:w-auto text-white text-center py-2 px-4 transition duration-300 ease-in-out transform hover:scale-105 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
                     >
                         {item}
                     </Link>
