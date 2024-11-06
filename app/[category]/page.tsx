@@ -49,14 +49,14 @@ export default async function CategoryPage({ params }: { params: { category: str
 
                 <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                     {data.map((product) => (
-                        <div key={product._id} className="relative p-4 bg-white border border-gray-300 rounded-lg shadow-lg transition duration-300 hover:shadow-xl overflow-hidden flex flex-col">
+                        <div key={product._id} className="relative p-4 bg-white border border-gray-300 shadow-lg transition duration-300 hover:shadow-xl overflow-hidden flex flex-col">
                             <Link href={`/product/${product.slug}`} className="flex-1">
                                 <div className="flex flex-col items-center">
                                     <div className="relative w-40 h-40 mb-4">
                                         <Image
                                             src={product.imageUrl}
                                             alt={`${product.name} Casino`}
-                                            className="object-cover rounded-lg"
+                                            className="object-cover"
                                             width={160}
                                             height={160}
                                         />
@@ -67,9 +67,7 @@ export default async function CategoryPage({ params }: { params: { category: str
                                 
                                     <h4 className="text-sm text-blue-600 font-bold mt-2"><span className="text-sm font-medium text-gray-700">Bonus:</span> {product.price}</h4>
                                     <p className="text-sm font-medium text-gray-700 my-2">{product.withdrawal}</p>
-                                    <p className="text-sm font-medium text-gray-700 my-2"><strong>Payments:</strong> {product.payments}</p>
-                                    <p className="text-sm font-medium text-gray-700 my-2"><strong>Accepted:</strong> {product.countries}</p>
-                                    <p className="text-sm font-medium text-gray-700 my-2"><strong>Support:</strong> {product.language}</p>
+                                    
                                 </div>
                             </Link>
                             <div className="flex justify-center mt-4">

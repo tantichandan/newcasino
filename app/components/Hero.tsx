@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Head from 'next/head';
+import Newest from './Newest';
 
 export default function HeroAndBlog() {
     return (
@@ -11,7 +12,7 @@ export default function HeroAndBlog() {
             </Head>
 
             {/* Hero Section with Original Background */}
-            <section className="bg-[#f9f9f9] py-12">
+            <section className="py-12">
                 <div className="mx-auto max-w-2xl px-4 sm:pb-6 lg:max-w-7xl lg:px-8 flex flex-col items-center text-center">
                     <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl mb-4">
                         Discover the Best Online Casinos
@@ -22,53 +23,55 @@ export default function HeroAndBlog() {
 
                     <div className="flex flex-wrap justify-center gap-4">
                         <Link href="/Aus">
-                            <button className="bg-primary text-white py-2 px-4 rounded-lg shadow hover:bg-yellow-500 transition duration-200">
+                            <button className="bg-primary text-white py-2 px-4 shadow hover:bg-yellow-500 transition duration-200">
                                 AUS
                             </button>
                         </Link>
                         <Link href="/UK">
-                            <button className="bg-primary text-white py-2 px-4 rounded-lg shadow hover:bg-yellow-500 transition duration-200">
+                            <button className="bg-primary text-white py-2 px-4 shadow hover:bg-yellow-500 transition duration-200">
                                 UK
                             </button>
                         </Link>
                         <Link href="/US">
-                            <button className="bg-primary text-white py-2 px-4 rounded-lg shadow hover:bg-yellow-500 transition duration-200">
+                            <button className="bg-primary text-white py-2 px-4  shadow hover:bg-yellow-500 transition duration-200">
                                 US
                             </button>
                         </Link>
                         <Link href="/Free">
-                            <button className="bg-primary text-white py-2 px-4 rounded-lg shadow hover:bg-yellow-500 transition duration-200">
+                            <button className="bg-primary text-white py-2 px-4  shadow hover:bg-yellow-500 transition duration-200">
                                 ND
                             </button>
                         </Link>
                         <Link href="/All">
-                            <button className="bg-primary text-white py-2 px-4 rounded-lg shadow hover:bg-yellow-500 transition duration-200">
+                            <button className="bg-primary text-white py-2 px-4  shadow hover:bg-yellow-500 transition duration-200">
                                 All
                             </button>
                         </Link>
                         <Link href="/Global">
-                            <button className="bg-primary text-white py-2 px-4 rounded-lg shadow hover:bg-yellow-500 transition duration-200">
+                            <button className="bg-primary text-white py-2 px-4 shadow hover:bg-yellow-500 transition duration-200">
                                 Global
                             </button>
                         </Link>
                         <Link href="/Free">
-                            <button className="bg-primary text-white py-2 px-4 rounded-lg shadow hover:bg-yellow-500 transition duration-200">
+                            <button className="bg-primary text-white py-2 px-4  shadow hover:bg-yellow-500 transition duration-200">
                                 Free
                             </button>
                         </Link>
                         <Link href="/CA">
-                            <button className="bg-primary text-white py-2 px-4 rounded-lg shadow hover:bg-yellow-500 transition duration-200">
+                            <button className="bg-primary text-white py-2 px-4 shadow hover:bg-yellow-500 transition duration-200">
                                 CA
                             </button>
                         </Link>
                         <Link href="/Blog">
-                            <button className="bg-primary text-white py-2 px-4 rounded-lg shadow hover:bg-yellow-500 transition duration-200">
+                            <button className="bg-primary text-white py-2 px-4 shadow hover:bg-yellow-500 transition duration-200">
                                 Blogs
                             </button>
                         </Link>
                     </div>
                 </div>
             </section>
+
+            <Newest/>
 
             {/* Blog Section with Soft Gradient Background */}
             <section className="bg-gradient-to-r from-gray-50 via-gray-100 to-gray-200 py-12">

@@ -4,6 +4,7 @@ import { client } from "../lib/sanity";
 import Image from "next/image";
 import Head from "next/head";
 
+// Fetch data from the Sanity client
 async function getData() {
   const query = `*[_type == "product"][0...50]{
     _id,
@@ -13,22 +14,20 @@ async function getData() {
     "categoryName": category->name,
     "imageUrl": images[0].asset->url,
     click,
-    payments,
-    countries,
-    withdrawal,
-    language
+    withdrawal
   }`;
 
   const data = await client.fetch(query);
   return data;
 }
 
+// SubmenuBar Component
 function SubmenuBar() {
   const submenuLinks = ["Aus", "UK", "US", "French", "Free", "CA", "Global", "All", "Blog"];
 
   return (
     <div className="flex justify-center mb-8 px-4">
-      <div className="flex flex-wrap w-full max-w-5xl bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 border border-gray-300 rounded-lg overflow-hidden shadow-md justify-center sm:justify-between">
+      <div className="flex flex-wrap w-full max-w-5xl bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 border border-gray-300 overflow-hidden shadow-md justify-center sm:justify-between">
         {submenuLinks.map((item) => (
           <Link
             key={item}
@@ -53,7 +52,7 @@ export default async function AllProduct() {
         <title>{searchTerm ? `${searchTerm} - TheCasinoLoot` : "TheCasinoLoot - Best Online Casino & Gambling Platform"}</title>
         <meta name="description" content="Join The Casino Loot, the best online casino for exciting games and secure online gambling." />
       </Head>
-      
+
       {/* Submenu Bar */}
       <SubmenuBar />
 
@@ -62,54 +61,53 @@ export default async function AllProduct() {
           <h2 className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 mb-6">
             Join Our Casino for Fun Excitement and Big Win!
           </h2>
-          
+
           {/* Justified paragraph */}
           <p className="py-3 text-lg text-gray-800 font-serif leading-relaxed mb-8 max-w-3xl text-center sm:text-left sm:text-justify">
             Finding the best casinos online is a tough job because the number of casinos launched every day is beyond imagination. We want you to enjoy yourself while playing at trustworthy casinos. This site will always guide you in the right direction to help you find your destination. While we promote online gambling, we are also fully aware of the gambling policies. We always encourage you to be aware of your gambling status and to play responsibly.
           </p>
         </div>
 
-        {/* Adjust margin between heading and grid */}
+        {/* Product Grid */}
         <div className="mt-8 sm:mt-12 lg:mt-16">
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {data.map((product) => (
-              <div key={product._id} className="relative flex flex-col bg-white shadow-lg rounded-lg overflow-hidden border border-gray-200">
+              <div key={product._id} className="relative flex flex-col bg-white shadow-lg border border-gray-300 overflow-hidden items-center">
                 <Link href={`/product/${product.slug}`} className="block">
-                  <div className="relative w-full h-48 overflow-hidden">
+                  {/* Image Container with Margin on top */}
+                  <div className="relative w-40 h-40 mb-4 mt-2">
                     <Image
                       src={product.imageUrl}
                       alt={`${product.name} image`}
-                      className="object-cover w-full h-full"
-                      layout="fill" // Fill the container
-                      objectFit="cover" // Ensure the image covers the area without stretching
-                      objectPosition="center" // Ensure the image is centered
+                      className="object-cover"
+                      width={160}
+                      height={160}
                     />
                   </div>
                 </Link>
 
-                <div className="px-4 py-6 text-center flex-grow">
+                {/* Content with Soft Background */}
+                <div className="px-4 py-6 text-center flex-grow bg-gray-100 bg-opacity-80">
                   <h3 className="text-xl font-semibold text-gray-900 mb-2">
                     <Link href={`/product/${product.slug}`} className="hover:underline">
-                      {product.name} Casino <br />
-                      <span><p className="text-sm">Read more</p></span>
+                      {product.name} Casino
                     </Link>
                   </h3>
                   <p className="text-gray-600 text-base mb-4">{product.categoryName}</p>
                   <p className="text-sm text-gray-700 mb-4">
-                    Offer <span className="font-bold text-primary"> {product.price}</span>
+                    Offer <span className="font-bold text-primary">{product.price}</span>
                   </p>
                 </div>
 
+                {/* Product Info with Soft Background */}
                 <div className="px-4 py-3 bg-gray-50 text-sm text-gray-700 space-y-2 flex-grow-0">
-                  <p><strong>Payment Method:</strong> {product.payments}</p>
-                  <p><strong>Countries Accepted:</strong> {product.countries}</p>
                   <p><strong>General:</strong> {product.withdrawal}</p>
-                  <p><strong>Languages Supported:</strong> {product.language}</p>
                 </div>
 
+                {/* Start Playing Button */}
                 <div className="px-4 py-4 mt-auto text-center">
                   <Link href={product.click} target="_blank" className="inline-block w-full">
-                    <button className="w-full px-4 py-2 bg-gradient-to-r from-yellow-500 via-red-500 to-pink-500 text-white rounded-md shadow-md hover:shadow-lg hover:bg-yellow-400 transition duration-300">
+                    <button className="w-full px-4 py-2 bg-gradient-to-r from-yellow-500 via-red-500 to-pink-500 text-white shadow-md hover:shadow-lg hover:bg-yellow-400 transition duration-300">
                       Start Playing
                     </button>
                   </Link>

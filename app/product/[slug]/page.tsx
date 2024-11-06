@@ -14,6 +14,7 @@ import {
     AccordionTrigger,
 } from "@/components/ui/accordion";
 
+// Fetch product data by slug
 async function getData(slug: string) {
     const query = `*[_type == "product" && slug.current == "${slug}"][0]{
         _id,
@@ -25,7 +26,11 @@ async function getData(slug: string) {
         description,
         "slug": slug.current,
         "categoryName": category->name,
-        "imageUrl": images[3].asset->url
+        "imageUrl": images[3].asset->url,
+        withdrawal,
+        payments,
+        countries,
+        language
     }`;
 
     const data = await client.fetch(query);
@@ -36,23 +41,26 @@ export default async function ProductPage({ params }: { params: { slug: string }
     const data: fullProduct = await getData(params.slug);
 
     return (
-        <div className='flex flex-col gap-16 flex-wrap px-6 justify-center items-center md:px-20 py-24'>
+        <div className='flex flex-col gap-16 px-6 py-24 justify-center items-center md:px-20'>
             <Head>
                 <title>{data.name} Casino - TheCasinoLoot</title>
                 <meta name="description" content={`Discover ${data.name} Casino with a welcome bonus of $${data.price}. Explore games, reviews, and more!`} />
             </Head>
+
+            {/* Product Section */}
             <div className='flex gap-28 xl:flex-row flex-col'>
                 <div className='flex-grow xl:max-w-[50%] max-w-full py-16'>
                     <Image
-                        alt="product"
+                        alt={`${data.name} Casino Image`} // Accessible alt text
                         src={data?.imageUrl}
-                        width={300} // Ensure this matches the original or aspect ratio
-                        height={200} // Ensure this matches the original or aspect ratio
-                        quality={100} // Maintain original quality
-                        className='mx-auto rounded-[17px]'
+                        width={300}
+                        height={200}
+                        quality={100}
+                        className='mx-auto' // Removed rounded corners here
                     />
                 </div>
 
+                {/* Right Column - Product Details */}
                 <div className='flex-1 flex flex-col'>
                     <div className='flex justify-between items-start gap-5 pb-6'>
                         <div className='flex flex-col gap-3'>
@@ -62,9 +70,16 @@ export default async function ProductPage({ params }: { params: { slug: string }
                         </div>
                     </div>
 
-                    <div className='flex items-center flex-wrap gap-10 py-6'>
-                        <div className='flex flex-col gap-2'>
-                            <p className='scroll-m-20 text-xl text-primary font-bold tracking-tight'>Welcome Bonus: </p><p className='scroll-m-20 text-xl font-semibold tracking-tight'>{data.price}</p> 
+                    {/* New Section Below the Image: Withdrawal, Payments, Countries, and Language */}
+
+
+                    {/* Rest of the Content */}
+                    <div className="flex items-center flex-wrap gap-10 py-6">
+                        <div className="flex flex-col gap-2">
+                            <p className="scroll-m-20 text-xl text-primary font-bold tracking-tight">Welcome Bonus:</p>
+                            <p className="scroll-m-20 text-xl font-semibold tracking-tight">{data.price}</p>
+
+                            {/* Content List */}
                             <div>
                                 <ul className="my-6 ml-6 list-disc [&>li]:mt-2">
                                     {data.content.map((contentItem: any, index: any) => (
@@ -74,19 +89,41 @@ export default async function ProductPage({ params }: { params: { slug: string }
                                     ))}
                                 </ul>
                             </div>
+
+                            {/* Claim Button */}
                             <div>
-                                <Link
-                                    className={buttonVariants()}
-                                    href={data?.click}
-                                    target="_blank"
-                                >
+                                <Link className={buttonVariants()} href={data?.click} target="_blank">
                                     Claim Now
                                 </Link>
                             </div>
                         </div>
 
-                        <div className='flex gap-2'>
-                            <div className='flex items-center gap-2 px-3 py-2 bg-[#FBF3EA] rounded-[27px]'>
+                        <div className="flex flex-wrap gap-12 py-6 border-t border-gray-200 mt-6">
+                            <div className="flex flex-col gap-2 w-full sm:w-auto">
+                                <p className="text-lg text-primary font-semibold">General:</p>
+                                <p className="text-lg">{data.withdrawal}</p>
+                            </div>
+                            <div className="flex flex-col gap-2 w-full sm:w-auto">
+                                <p className="text-lg text-primary font-semibold">Payments:</p>
+                                <p className="text-lg">{data.payments}</p>
+                            </div>
+                            <div className="flex flex-col gap-2 w-full sm:w-auto">
+                                <p className="text-lg text-primary font-semibold">Available in:</p>
+                                <p className="text-lg">{data.countries}</p>
+                            </div>
+                            <div className="flex flex-col gap-2 w-full sm:w-auto">
+                                <p className="text-lg text-primary font-semibold">Language:</p>
+                                <p className="text-lg">{data.language}</p>
+                            </div>
+                        </div>
+
+
+
+
+
+                        {/* Rating and Players Choice */}
+                        <div className="flex gap-2">
+                            <div className="flex items-center gap-2 px-3 py-2 bg-[#FBF3EA]">
                                 <StarIcon />
                                 <StarIcon />
                                 <StarIcon />
@@ -95,10 +132,11 @@ export default async function ProductPage({ params }: { params: { slug: string }
                             </div>
                         </div>
 
-                        <p className='text-sm text-black opacity-50'>
-                            <span className='text-primary font-semibold '>90%</span> players choice
+                        <p className="text-sm text-black opacity-50">
+                            <span className="text-primary font-semibold ">90%</span> players choice
                         </p>
 
+                        {/* Reviews Accordion */}
                         <div>
                             <Accordion type="single" collapsible className="w-full">
                                 <AccordionItem value="item-1">
@@ -115,22 +153,20 @@ export default async function ProductPage({ params }: { params: { slug: string }
                 </div>
             </div>
 
-            <div className='flex flex-col gap-8 border-1-black'>
-                <div className='flex flex-col gap-2'>
-                    <h1 className='mt-8 scroll-m-20 text-2xl font-semibold tracking-tight'>
-                        About the casino <span className='text-primary font-bold'>{data.name}</span>
+            {/* About the Casino Section */}
+            <div className="flex flex-col gap-8 border-t border-gray-300 pt-8">
+                <div className="flex flex-col gap-2">
+                    <h1 className="scroll-m-20 text-2xl font-semibold tracking-tight">
+                        About the casino <span className="text-primary font-bold">{data.name}</span>
                     </h1>
-                    <div className='flex flex-col gap-2'>
-                        <p className='leading-7 [&:not(:first-child)]:mt-6'>{data.description}</p>
+                    <div className="flex flex-col gap-2">
+                        <p className="leading-7 [&:not(:first-child)]:mt-6">{data.description}</p>
                     </div>
                 </div>
 
+                {/* Start Playing Button */}
                 <div>
-                    <Link
-                        className={buttonVariants()}
-                        href={data.click}
-                        target="_blank"
-                    >
+                    <Link className={buttonVariants()} href={data.click} target="_blank">
                         Start Playing
                     </Link>
                 </div>

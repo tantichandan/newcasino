@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ChevronRight } from "lucide-react"; // Updated icon
 import { client } from "../lib/sanity";
 import Image from "next/image";
 import Head from "next/head";
@@ -53,32 +53,35 @@ export default async function Newest() {
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center mb-8 flex-col sm:flex-row">
-          <h2 className="text-4xl font-extrabold text-white">Casinos with High RTP</h2>
+          {/* Removed extra title "Casinos with High RTP" */}
           <Link className="text-primary font-bold flex items-center gap-x-1 mt-2 sm:mt-0" href="/All">
-            View All <ArrowRight />
+            View All <ChevronRight /> {/* Updated icon */}
           </Link>
         </div>
 
-        {/* Paragraph with improved readability */}
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <p className="text-lg text-white mb-6 max-w-3xl mx-auto sm:text-left text-justify leading-relaxed bg-opacity-80 bg-gray-900 p-6 rounded-lg shadow-lg">
-            We’ve done the hard work for you, so you can sit back, relax, and enjoy your game without worrying about withdrawals or game payouts. Below are some of the finest online casinos available. Click on the name or the image to learn more about each casino. All the casinos listed on this page are fully licensed, ensuring a safe and secure gaming experience. Plus, you can easily withdraw your winnings without hassle. We care about you and want to ensure you have a smooth experience on our site; therefore, we have separated the category section by country. Your presence here motivates us greatly. You can leave us a suggestion or feedback so we can make your experience even better.
-          </p>
+        {/* Title and Paragraph Section */}
+        <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
+          <div className="text-center sm:text-left bg-gradient-to-r from-blue-500 to-purple-600 p-6 sm:p-8 shadow-xl bg-opacity-90">
+            <h2 className="text-4xl font-extrabold text-white mb-4">Casinos with High RTP</h2>
+            <p className="text-lg text-gray-100 sm:text-left text-justify leading-relaxed">
+              We’ve done the hard work for you, so you can sit back, relax, and enjoy your game without worrying about withdrawals or game payouts. Below are some of the finest online casinos available. Click on the name or the image to learn more about each casino. All the casinos listed on this page are fully licensed, ensuring a safe and secure gaming experience. Plus, you can easily withdraw your winnings without hassle. We care about you and want to ensure you have a smooth experience on our site; therefore, we have separated the category section by country. Your presence here motivates us greatly. You can leave us a suggestion or feedback so we can make your experience even better.
+            </p>
+          </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {data.length > 0 ? (
             data.map((product) => (
-              <div key={product._id} className="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col">
+              <div key={product._id} className="bg-white shadow-lg overflow-hidden flex flex-col">
                 {/* Image Section */}
                 <Link href={`/product/${product.slug}`}>
-                  <div className="relative w-full h-32 overflow-hidden rounded-t-lg">
+                  <div className="relative w-full h-32 overflow-hidden">
                     <Image
                       src={product.imageUrl}
                       alt={`Image of ${product.name} Casino`}
                       layout="fill"
                       objectFit="cover"
-                      className="absolute inset-0 rounded-t-lg"
+                      className="absolute inset-0"
                       style={{
                         filter: "brightness(0.7)",
                         transform: "perspective(1000px) rotateY(10deg) rotateX(10deg)",
@@ -91,19 +94,24 @@ export default async function Newest() {
                 <div className="flex-grow p-4 flex flex-col justify-between bg-white bg-opacity-90">
                   <Link href={`/product/${product.slug}`}>
                     <h3 className="text-lg font-semibold text-gray-900 hover:text-blue-600">{product.name} Casino</h3>
+                    <p className="text-small font-bold">View details</p>
                   </Link>
                   <p className="text-sm text-gray-800">{product.categoryName}</p>
                   <p className="text-md font-bold text-gray-900 mt-1">
                     Bonus: <span className="text-blue-600">{product.price}</span>
                   </p>
 
-                  {/* Payment Methods Section */}
+                  {/* Withdrawal Section - Visible */}
                   <div className="mt-2">
                     <div className="text-sm text-gray-800">
                       <strong className="text-gray-900">Withdrawal:</strong> <span className="font-semibold">{product.withdrawal}</span>
                     </div>
-                    <div className="mt-1">
-                      <strong className="text-sm text-gray-900">Payment Methods:</strong>
+                  </div>
+
+                  {/* Hidden Sections for Payments, Language, and Countries */}
+                  <div className="mt-2 hidden">
+                    <div className="text-sm text-gray-800">
+                      <strong className="text-gray-900">Payment Methods:</strong>
                       <div className="text-xs text-gray-800">
                         <span className="mr-2">{product.payments}</span>
                       </div>
@@ -126,7 +134,7 @@ export default async function Newest() {
                 {/* Start Playing Button */}
                 <div className="p-4">
                   <Link
-                    className="bg-blue-600 text-white py-2 px-4 rounded-md text-md w-full text-center"
+                    className="bg-blue-600 text-white py-2 px-4 text-md w-full text-center"
                     href={product.click}
                     target="_blank"
                     aria-label={`Start playing at ${product.name} Casino`}
