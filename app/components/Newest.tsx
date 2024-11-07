@@ -83,8 +83,8 @@ export default async function Newest() {
                       objectFit="cover"
                       className="absolute inset-0"
                       style={{
-                        filter: "brightness(0.7)",
-                        transform: "perspective(1000px) rotateY(10deg) rotateX(10deg)",
+                        filter: "brightness(0.7)", // Keep the brightness filter
+                        // Remove the tilt transform styles
                       }}
                     />
                   </div>
