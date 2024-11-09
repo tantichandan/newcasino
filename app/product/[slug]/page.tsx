@@ -13,6 +13,7 @@ import {
     AccordionItem,
     AccordionTrigger,
 } from "@/components/ui/accordion";
+import Submenu from '@/app/components/Submenu';
 
 // Fetch product data by slug
 async function getData(slug: string) {
@@ -41,132 +42,121 @@ export default async function ProductPage({ params }: { params: { slug: string }
     const data: fullProduct = await getData(params.slug);
 
     return (
-        <div className='flex flex-col gap-16 px-6 py-24 justify-center items-center md:px-20'>
+        <div className="flex flex-col gap-16 px-6 py-24 justify-center items-center md:px-20 bg-gray-100">
             <Head>
                 <title>{data.name} Casino - TheCasinoLoot</title>
                 <meta name="description" content={`Discover ${data.name} Casino with a welcome bonus of $${data.price}. Explore games, reviews, and more!`} />
             </Head>
 
-            {/* Product Section */}
-            <div className='flex gap-28 xl:flex-row flex-col'>
-                <div className='flex-grow xl:max-w-[50%] max-w-full py-16'>
+            <Submenu />
+
+            {/* Main Card with Sharp Edges */}
+            <div className="bg-white shadow-xl p-8 w-full max-w-3xl mx-auto">
+                {/* Image Section */}
+                <div className="relative mb-6 w-full">
                     <Image
-                        alt={`${data.name} Casino Image`} // Accessible alt text
+                        alt={`${data.name} Casino Image`}
                         src={data?.imageUrl}
-                        width={300}
-                        height={200}
+                        layout="intrinsic"  // Adjusts to the natural size of the image but fits within given width/height
+                        width={1000}        // Adjust width for larger images
+                        height={400}        // Adjust height for a consistent aspect ratio
                         quality={100}
-                        className='mx-auto' // Removed rounded corners here
+                        className="mx-auto object-cover w-full h-[300px]"  // Sharp edges, responsive behavior
                     />
                 </div>
 
-                {/* Right Column - Product Details */}
-                <div className='flex-1 flex flex-col'>
-                    <div className='flex justify-between items-start gap-5 pb-6'>
-                        <div className='flex flex-col gap-3'>
-                            <h1 className='scroll-m-20 text-4xl font-bold tracking-tight lg:text-5xl'>
-                                <span className='text-primary'>{data?.name} Casino</span>
-                            </h1>
-                        </div>
+
+                {/* Product Details */}
+                <div className="flex flex-col gap-6 text-gray-800">
+                    <h1 className="text-3xl font-semibold text-center">{data?.name} Casino</h1>
+
+                    {/* Welcome Bonus */}
+                    <div className="text-center text-lg font-medium">
+                        <p className="font-bold text-primary">Welcome Bonus:</p>
+                        <p className="text-xl">{data.price}</p>
                     </div>
 
-                    {/* New Section Below the Image: Withdrawal, Payments, Countries, and Language */}
+                    {/* Content List */}
+                    <div>
+                        <ul className="my-6 ml-6 list-disc text-sm text-gray-600">
+                            {data.content.map((contentItem: any, index: any) => (
+                                <li key={index} className="mt-2">
+                                    <PortableText value={contentItem} />
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
 
+                    {/* Claim Button */}
+                    <div className="text-center">
+                        <Link href={data?.click} target="_blank" className={`${buttonVariants()} border-none`}>
+                            Claim Now
+                        </Link>
+                    </div>
+                </div>
 
-                    {/* Rest of the Content */}
-                    <div className="flex items-center flex-wrap gap-10 py-6">
-                        <div className="flex flex-col gap-2">
-                            <p className="scroll-m-20 text-xl text-primary font-bold tracking-tight">Welcome Bonus:</p>
-                            <p className="scroll-m-20 text-xl font-semibold tracking-tight">{data.price}</p>
-
-                            {/* Content List */}
-                            <div>
-                                <ul className="my-6 ml-6 list-disc [&>li]:mt-2">
-                                    {data.content.map((contentItem: any, index: any) => (
-                                        <li key={index}>
-                                            <PortableText value={contentItem} />
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-
-                            {/* Claim Button */}
-                            <div>
-                                <Link className={buttonVariants()} href={data?.click} target="_blank">
-                                    Claim Now
-                                </Link>
-                            </div>
+                {/* Key Features Section */}
+                <div className="py-8 border-t border-gray-300 mt-6">
+                    <h2 className="text-2xl font-semibold text-center mb-4">Key Features</h2>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div className="bg-white shadow-md p-6">
+                            <h3 className="text-lg font-semibold text-primary">General Info</h3>
+                            <p className="text-sm text-gray-700">{data.withdrawal}</p>
                         </div>
-
-                        <div className="flex flex-wrap gap-12 py-6 border-t border-gray-200 mt-6">
-                            <div className="flex flex-col gap-2 w-full sm:w-auto">
-                                <p className="text-lg text-primary font-semibold">General:</p>
-                                <p className="text-lg">{data.withdrawal}</p>
-                            </div>
-                            <div className="flex flex-col gap-2 w-full sm:w-auto">
-                                <p className="text-lg text-primary font-semibold">Payments:</p>
-                                <p className="text-lg">{data.payments}</p>
-                            </div>
-                            <div className="flex flex-col gap-2 w-full sm:w-auto">
-                                <p className="text-lg text-primary font-semibold">Available in:</p>
-                                <p className="text-lg">{data.countries}</p>
-                            </div>
-                            <div className="flex flex-col gap-2 w-full sm:w-auto">
-                                <p className="text-lg text-primary font-semibold">Language:</p>
-                                <p className="text-lg">{data.language}</p>
-                            </div>
+                        <div className="bg-white shadow-md p-6">
+                            <h3 className="text-lg font-semibold text-primary">Payments</h3>
+                            <p className="text-sm text-gray-700">{data.payments}</p>
                         </div>
-
-
-
-
-
-                        {/* Rating and Players Choice */}
-                        <div className="flex gap-2">
-                            <div className="flex items-center gap-2 px-3 py-2 bg-[#FBF3EA]">
-                                <StarIcon />
-                                <StarIcon />
-                                <StarIcon />
-                                <StarIcon />
-                                <StarIcon />
-                            </div>
+                        <div className="bg-white shadow-md p-6">
+                            <h3 className="text-lg font-semibold text-primary">Available in</h3>
+                            <p className="text-sm text-gray-700">{data.countries}</p>
                         </div>
-
-                        <p className="text-sm text-black opacity-50">
-                            <span className="text-primary font-semibold ">90%</span> players choice
-                        </p>
-
-                        {/* Reviews Accordion */}
-                        <div>
-                            <Accordion type="single" collapsible className="w-full">
-                                <AccordionItem value="item-1">
-                                    <AccordionTrigger>Reviews</AccordionTrigger>
-                                    <AccordionContent>
-                                        {data.reviews.map((review: any, index: any) => (
-                                            <PortableText key={index} value={review} />
-                                        ))}
-                                    </AccordionContent>
-                                </AccordionItem>
-                            </Accordion>
+                        <div className="bg-white shadow-md p-6">
+                            <h3 className="text-lg font-semibold text-primary">Language</h3>
+                            <p className="text-sm text-gray-700">{data.language}</p>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            {/* About the Casino Section */}
-            <div className="flex flex-col gap-8 border-t border-gray-300 pt-8">
-                <div className="flex flex-col gap-2">
-                    <h1 className="scroll-m-20 text-2xl font-semibold tracking-tight">
-                        About the casino <span className="text-primary font-bold">{data.name}</span>
-                    </h1>
-                    <div className="flex flex-col gap-2">
-                        <p className="leading-7 [&:not(:first-child)]:mt-6">{data.description}</p>
+                {/* Rating Section */}
+                <div className="flex items-center gap-2 py-6">
+                    <div className="flex gap-1 text-yellow-500">
+                        <StarIcon />
+                        <StarIcon />
+                        <StarIcon />
+                        <StarIcon />
+                        <StarIcon />
+                    </div>
+                    <p className="text-xs">90% player choice</p>
+                </div>
+
+                {/* Reviews Accordion */}
+                <div className="py-6">
+                    <Accordion type="single" collapsible className="w-full">
+                        <AccordionItem value="item-1">
+                            <AccordionTrigger>Reviews</AccordionTrigger>
+                            <AccordionContent>
+                                {data.reviews.map((review: any, index: any) => (
+                                    <div key={index} className="mb-4 text-sm text-gray-700">
+                                        <PortableText value={review} />
+                                    </div>
+                                ))}
+                            </AccordionContent>
+                        </AccordionItem>
+                    </Accordion>
+                </div>
+
+                {/* About Section with Justify Content */}
+                <div className="py-8 border-t border-gray-300 mt-6 flex justify-center items-center">
+                    <div className="text-center">
+                        <h2 className="text-2xl font-semibold mb-4">About {data.name} Casino</h2>
+                        <p className="my-6 ml-6 text-justify list-disc text-sm text-gray-600">{data.description}</p>
                     </div>
                 </div>
 
                 {/* Start Playing Button */}
-                <div>
-                    <Link className={buttonVariants()} href={data.click} target="_blank">
+                <div className="mt-8 text-center">
+                    <Link href={data.click} target="_blank" className={`${buttonVariants()} border-none`}>
                         Start Playing
                     </Link>
                 </div>

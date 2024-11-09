@@ -1,6 +1,7 @@
 "use client";
 import React, { useRef, useState } from "react";
 import emailjs from '@emailjs/browser';
+import BrevoWidget from "./Document";
 
 const Contact = () => {
   const formRef = useRef<HTMLFormElement>(null);
@@ -117,6 +118,10 @@ const Contact = () => {
           </div>
         </div>
       </div>
+
+      <BrevoWidget/>
+
+      
     </section>
   );
 };

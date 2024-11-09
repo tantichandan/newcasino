@@ -2,6 +2,7 @@ import Link from "next/link";
 import { post } from "../interface";
 import { client } from "../lib/sanity";
 import Head from "next/head"; // Import Head for metadata
+import Submenu from "../components/Submenu";
 
 async function getData() {
     const query = `*[_type == "post"]`;
@@ -18,6 +19,8 @@ export default async function Page() {
                 <title>TheCasinoLoot Blog - Top Online Casino & Gambling Platform</title>
                 <meta name="description" content="Explore Casino Loot's blog for insights on the top online casino platform. Stay updated on online gaming, gambling tips, and the latest trends in online casinos." />
             </Head>
+
+            <Submenu/>
             <section className="max-w-2xl px-6 sm:pb-6 lg:max-w-7xl lg:px-8">
                 <div className="mb-6 md:mb-16">
                     <div className="mb-4 mx-auto justify-center sm:mb-12 lg:mb-0 lg:w-1/3 lg:pb-24 lg:pt-8">
