@@ -58,10 +58,10 @@ export default async function ProductPage({ params }: { params: { slug: string }
                         alt={`${data.name} Casino Image`}
                         src={data?.imageUrl}
                         layout="intrinsic"  // Adjusts to the natural size of the image but fits within given width/height
-                        width={1000}        // Adjust width for larger images
-                        height={400}        // Adjust height for a consistent aspect ratio
-                        quality={100}
-                        className="mx-auto object-cover w-full h-[300px]"  // Sharp edges, responsive behavior
+                        width={250}         // Adjust width for larger images (250px)
+                        height={200}        // Adjust height for a consistent aspect ratio (200px)
+                        quality={100}       // High quality image
+                        className="mx-auto object-cover w-full h-[200px]"  // Sharp edges, responsive behavior
                     />
                 </div>
 
@@ -73,12 +73,12 @@ export default async function ProductPage({ params }: { params: { slug: string }
                     {/* Welcome Bonus */}
                     <div className="text-center text-lg font-medium">
                         <p className="font-bold text-primary">Welcome Bonus:</p>
-                        <p className="text-xl">{data.price}</p>
+                        <p className="text-xl text-justify">{data.price}</p>
                     </div>
 
                     {/* Content List */}
                     <div>
-                        <ul className="my-6 ml-6 list-disc text-sm text-gray-600">
+                        <ul className="my-6 ml-6 text-justify list-disc text-sm text-gray-600">
                             {data.content.map((contentItem: any, index: any) => (
                                 <li key={index} className="mt-2">
                                     <PortableText value={contentItem} />
@@ -100,19 +100,19 @@ export default async function ProductPage({ params }: { params: { slug: string }
                     <h2 className="text-2xl font-semibold text-center mb-4">Key Features</h2>
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                         <div className="bg-white shadow-md p-6">
-                            <h3 className="text-lg font-semibold text-primary">General Info</h3>
+                            <h3 className="text-lg font-semibold text-primary">✅General Info</h3>
                             <p className="text-sm text-gray-700">{data.withdrawal}</p>
                         </div>
                         <div className="bg-white shadow-md p-6">
-                            <h3 className="text-lg font-semibold text-primary">Payments</h3>
+                            <h3 className="text-lg text-justify font-semibold text-primary">✅Payments</h3>
                             <p className="text-sm text-gray-700">{data.payments}</p>
                         </div>
                         <div className="bg-white shadow-md p-6">
-                            <h3 className="text-lg font-semibold text-primary">Available in</h3>
+                            <h3 className="text-lg font-semibold text-primary">✅Available in</h3>
                             <p className="text-sm text-gray-700">{data.countries}</p>
                         </div>
                         <div className="bg-white shadow-md p-6">
-                            <h3 className="text-lg font-semibold text-primary">Language</h3>
+                            <h3 className="text-lg font-semibold text-primary">✅Language</h3>
                             <p className="text-sm text-gray-700">{data.language}</p>
                         </div>
                     </div>
@@ -160,6 +160,20 @@ export default async function ProductPage({ params }: { params: { slug: string }
                         Start Playing
                     </Link>
                 </div>
+
+                <div style={{ position: 'fixed', bottom: 20, right: 20, zIndex: 1000 }}>
+
+
+
+
+
+
+
+
+                </div>
+
+
+
             </div>
         </div>
     );

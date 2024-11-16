@@ -1,4 +1,4 @@
-import type { Config } from "tailwindcss"
+import type { Config } from "tailwindcss";
 
 const config = {
   darkMode: ["class"],
@@ -7,7 +7,7 @@ const config = {
     './components/**/*.{ts,tsx}',
     './app/**/*.{ts,tsx}',
     './src/**/*.{ts,tsx}',
-	],
+  ],
   prefix: "",
   theme: {
     container: {
@@ -72,12 +72,16 @@ const config = {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },
+      // Extend the font family here
+      fontFamily: {
+        sans: ['Roboto', 'sans-serif'], // Add Roboto to the sans-serif stack
+      },
     },
   },
   plugins: [
-    
     require("tailwindcss-animate"),
-    require("@tailwindcss/typography")],
-} satisfies Config
+    require("@tailwindcss/typography")
+  ],
+} satisfies Config;
 
-export default config
+export default config;

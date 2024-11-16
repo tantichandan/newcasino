@@ -73,13 +73,12 @@ export default function Navbar() {
           <Link href="/email">
             <Button
               variant="outline"
-              className="flex flex-col gap-y-1.5 h-12 sm:h-20 sm:w-20 md:w-24 rounded-full bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white shadow-lg hover:scale-105 transition-transform duration-300 ease-in-out"
+              className="flex items-center justify-center gap-x-2 h-12 sm:h-16 sm:w-32 md:w-40 rounded-full bg-gradient-to-r from-blue-500 via-purple-600 to-pink-500 text-white shadow-md hover:scale-105 transition-all duration-300 ease-in-out"
             >
-              <MessageSquare className="h-6 w-6 transition-transform duration-300 ease-in-out group-hover:rotate-12" />
-              <p className="text-xs sm:text-sm font-medium">Contact us</p>
+              <MessageSquare className="h-6 w-6 transition-transform duration-300 ease-in-out" />
+              <p className="text-xs sm:text-sm font-semibold">Contact Us</p>
             </Button>
           </Link>
-
 
           {/* Mobile menu toggle */}
           <div className="lg:hidden flex-col justify-center">
