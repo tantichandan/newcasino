@@ -41,11 +41,73 @@ async function getData(slug: string) {
 export default async function ProductPage({ params }: { params: { slug: string } }) {
     const data: fullProduct = await getData(params.slug);
 
+    // Handle case if data is not found
+    if (!data) {
+        return <p>Product not found!</p>;
+    }
+
+    // Generate the canonical URL
+    const canonicalUrl = `https://www.yoursite.com/product/${params.slug}`;
+
     return (
         <div className="flex flex-col gap-16 px-6 py-24 justify-center items-center md:px-20 bg-gray-100">
             <Head>
+                {/* Page Title */}
                 <title>{data.name} Casino - TheCasinoLoot</title>
-                <meta name="description" content={`Discover ${data.name} Casino with a welcome bonus of $${data.price}. Explore games, reviews, and more!`} />
+
+                {/* Meta Description */}
+                <meta
+                    name="description"
+                    content={`Discover ${data.name} Casino with a welcome bonus of $${data.price}. Explore games, reviews, and more!`}
+                />
+
+                {/* Canonical URL */}
+                <link rel="canonical" href={canonicalUrl} />
+
+                {/* OpenGraph Meta Tags */}
+                <meta property="og:title" content={`${data.name} Casino - TheCasinoLoot`} />
+                <meta
+                    property="og:description"
+                    content={`Discover ${data.name} Casino with a welcome bonus of $${data.price}. Explore games, reviews, and more!`}
+                />
+                <meta property="og:image" content={data.imageUrl} />
+                <meta property="og:url" content={canonicalUrl} />
+                <meta property="og:type" content="article" />
+                <meta property="og:site_name" content="TheCasinoLoot" />
+
+                {/* Twitter Card Meta Tags */}
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" content={`${data.name} Casino - TheCasinoLoot`} />
+                <meta
+                    name="twitter:description"
+                    content={`Discover ${data.name} Casino with a welcome bonus of $${data.price}. Explore games, reviews, and more!`}
+                />
+                <meta name="twitter:image" content={data.imageUrl} />
+                <meta name="twitter:site" content="@YourTwitterHandle" />
+
+                {/* Optional Mobile Optimization */}
+                <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+                {/* Structured Data (JSON-LD) */}
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{
+                        __html: JSON.stringify({
+                            "@context": "https://schema.org",
+                            "@type": "Product",
+                            "name": data.name,
+                            "description": data.description,
+                            "image": data.imageUrl,
+                            "offers": {
+                                "@type": "Offer",
+                                "priceCurrency": "USD",
+                                "price": data.price,
+                                "url": canonicalUrl,
+                                "availability": "https://schema.org/InStock",
+                            },
+                        }),
+                    }}
+                />
             </Head>
 
             <Submenu />
@@ -57,14 +119,14 @@ export default async function ProductPage({ params }: { params: { slug: string }
                     <Image
                         alt={`${data.name} Casino Image`}
                         src={data?.imageUrl}
-                        layout="intrinsic"  // Adjusts to the natural size of the image but fits within given width/height
-                        width={250}         // Adjust width for larger images (250px)
-                        height={200}        // Adjust height for a consistent aspect ratio (200px)
-                        quality={100}       // High quality image
-                        className="mx-auto object-cover w-full h-[200px]"  // Sharp edges, responsive behavior
+                        layout="responsive"  // Use responsive for fluid resizing
+                        width={1200}          // Specify the width you want for larger screens
+                        height={800}          // Keep the aspect ratio you desire (e.g., 3:2)
+                        quality={100}         // High quality
+                        className="mx-auto object-cover w-full h-auto"
+                        priority={true}       // If this is a primary image, make it load first
                     />
                 </div>
-
 
                 {/* Product Details */}
                 <div className="flex flex-col gap-6 text-gray-800">
@@ -73,12 +135,12 @@ export default async function ProductPage({ params }: { params: { slug: string }
                     {/* Welcome Bonus */}
                     <div className="text-center text-lg font-medium">
                         <p className="font-bold text-primary">Welcome Bonus:</p>
-                        <p className="text-xl text-justify">{data.price}</p>
+                        <p className="text-xl">{data.price}</p>
                     </div>
 
                     {/* Content List */}
                     <div>
-                        <ul className="my-6 ml-6 text-justify list-disc text-sm text-gray-600">
+                        <ul className="my-6 ml-6 list-disc text-justify text-sm text-gray-600">
                             {data.content.map((contentItem: any, index: any) => (
                                 <li key={index} className="mt-2">
                                     <PortableText value={contentItem} />
@@ -104,7 +166,7 @@ export default async function ProductPage({ params }: { params: { slug: string }
                             <p className="text-sm text-gray-700">{data.withdrawal}</p>
                         </div>
                         <div className="bg-white shadow-md p-6">
-                            <h3 className="text-lg text-justify font-semibold text-primary">✅Payments</h3>
+                            <h3 className="text-lg font-semibold text-primary">✅Payments</h3>
                             <p className="text-sm text-gray-700">{data.payments}</p>
                         </div>
                         <div className="bg-white shadow-md p-6">
@@ -146,11 +208,11 @@ export default async function ProductPage({ params }: { params: { slug: string }
                     </Accordion>
                 </div>
 
-                {/* About Section with Justify Content */}
-                <div className="py-8 border-t border-gray-300 mt-6 flex justify-center items-center">
+                {/* About Section */}
+                <div className="py-8 border-t border-gray-300 mt-6">
                     <div className="text-center">
-                        <h2 className="text-2xl font-semibold mb-4">About {data.name} Casino</h2>
-                        <p className="my-6 ml-6 text-justify list-disc text-sm text-gray-600">{data.description}</p>
+                        <h2 className="text-2xl  font-semibold mb-4">About {data.name} Casino</h2>
+                        <p className="text-sm text-justify text-gray-600">{data.description}</p>
                     </div>
                 </div>
 
@@ -160,20 +222,6 @@ export default async function ProductPage({ params }: { params: { slug: string }
                         Start Playing
                     </Link>
                 </div>
-
-                <div style={{ position: 'fixed', bottom: 20, right: 20, zIndex: 1000 }}>
-
-
-
-
-
-
-
-
-                </div>
-
-
-
             </div>
         </div>
     );

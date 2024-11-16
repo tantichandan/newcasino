@@ -8,7 +8,84 @@ export default function HeroAndBlog() {
         <div>
             <Head>
                 <title>TheCasinoLoot - Best Online Exclusive Gambling Platform</title>
-                <meta name="description" content="Experience exclusive online gambling at Casino Loot, the best online casino and gambling platform. Enjoy thrilling games, secure play and big wins anytime." />
+                <meta
+                    name="description"
+                    content="Experience exclusive online gambling at Casino Loot, the best online casino and gambling platform. Enjoy thrilling games, secure play and big wins anytime."
+                />
+                <meta
+                    property="og:title"
+                    content="TheCasinoLoot - Best Online Exclusive Gambling Platform"
+                />
+                <meta
+                    property="og:description"
+                    content="Experience exclusive online gambling at Casino Loot, the best online casino and gambling platform. Enjoy thrilling games, secure play and big wins anytime."
+                />
+                <meta property="og:image" content="https://yourdomain.com/og-image.jpg" />
+                <meta property="og:url" content="https://yourdomain.com" />
+                <meta property="og:type" content="website" />
+
+                {/* Twitter Meta Tags */}
+                <meta name="twitter:title" content="TheCasinoLoot - Best Online Exclusive Gambling Platform" />
+                <meta name="twitter:description" content="Experience exclusive online gambling at Casino Loot, the best online casino and gambling platform. Enjoy thrilling games, secure play and big wins anytime." />
+                <meta name="twitter:image" content="https://yourdomain.com/og-image.jpg" />
+                <meta name="twitter:card" content="summary_large_image" />
+
+                {/* Canonical Link Tag */}
+                <link rel="canonical" href="https://yourdomain.com" />
+
+                {/* JSON-LD Schema Markup for SEO */}
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{
+                        __html: JSON.stringify({
+                            "@context": "https://schema.org",
+                            "@type": "WebPage",
+                            "name": "TheCasinoLoot - Best Online Exclusive Gambling Platform",
+                            "description":
+                                "Experience exclusive online gambling at Casino Loot, the best online casino and gambling platform. Enjoy thrilling games, secure play and big wins anytime.",
+                            "url": "https://yourdomain.com",
+                            "mainEntityOfPage": "https://yourdomain.com",
+                            "image": "https://yourdomain.com/og-image.jpg",
+                            "publisher": {
+                                "@type": "Organization",
+                                "name": "TheCasinoLoot",
+                                "logo": {
+                                    "@type": "ImageObject",
+                                    "url": "https://yourdomain.com/logo.jpg", // Replace with actual logo URL
+                                },
+                            },
+                        }),
+                    }}
+                />
+
+                {/* Schema for Blog Post (if applicable) */}
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{
+                        __html: JSON.stringify({
+                            "@context": "https://schema.org",
+                            "@type": "Article",
+                            "headline": "Understanding RTP in Online Casinos",
+                            "description":
+                                "Learn about RTP (Return to Player) and how it affects online casino games, especially slots. Discover the best casinos with the highest RTP for better payout chances.",
+                            "author": {
+                                "@type": "Organization",
+                                "name": "TheCasinoLoot",
+                            },
+                            "publisher": {
+                                "@type": "Organization",
+                                "name": "TheCasinoLoot",
+                                "logo": {
+                                    "@type": "ImageObject",
+                                    "url": "https://yourdomain.com/logo.jpg", // Replace with actual logo URL
+                                },
+                            },
+                            "datePublished": "2024-11-16", // Update with actual publication date
+                            "dateModified": "2024-11-16", // Update with actual modification date
+                            "image": "https://yourdomain.com/og-image.jpg", // Replace with blog image
+                        }),
+                    }}
+                />
             </Head>
 
             {/* Hero Section with Original Background */}
@@ -71,12 +148,14 @@ export default function HeroAndBlog() {
                 </div>
             </section>
 
-            <Newest/>
+            <Newest />
 
             {/* Blog Section with Soft Gradient Background */}
             <section className="bg-gradient-to-r from-gray-50 via-gray-100 to-gray-200 py-12">
                 <div className="mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
-                    <h2 className="text-3xl font-bold mb-6 text-gray-800">Understanding <mark>RTP</mark> in Online Casinos</h2>
+                    <h2 className="text-3xl font-bold mb-6 text-gray-800">
+                        Understanding <mark>RTP</mark> in Online Casinos
+                    </h2>
 
                     <p className="leading-relaxed text-gray-700 mb-6 text-justify">
                         There are so many things that we look for while signing up for a casino. Of course, security, variety of games, and customer service matter a lot. Apart from this, there is one more term, which is a popular index for casino rating. Playing online can be fun when you realize the slots you're playing give you good RTP. RTP stands for Return to Player. It is the nature of a game's payout. There are millions of games out there, but only a few pay well. Online casinos with the highest slot payouts are likely to rank at the top of the list. There are millions of the best payout online casinos, but payout shouldn't be the only indicator when it comes to choosing a casino.

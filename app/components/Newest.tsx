@@ -61,10 +61,48 @@ export default async function Newest() {
           content="Experience exclusive online gambling at Casino Loot, the best online casino and gambling platform. Enjoy thrilling games, secure play and big wins anytime."
         />
         <meta property="og:image" content="https://example.com/og-image.jpg" />
+        
         {/* Google Fonts */}
         <link
           href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
           rel="stylesheet"
+        />
+
+        {/* Canonical Link Tag */}
+        <link rel="canonical" href="https://yourwebsite.com/newest" />
+
+        {/* Schema.org JSON-LD Data */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebPage",
+              "name": "Newest Online Casinos",
+              "description":
+                "Discover the best online casinos with high RTP. Enjoy thrilling gambling experiences with secure play and fast payouts.",
+              "url": "https://yourwebsite.com/newest",
+              "mainEntityOfPage": "https://yourwebsite.com/newest",
+              "publisher": {
+                "@type": "Organization",
+                "name": "TheCasinoLoot",
+                "logo": {
+                  "@type": "ImageObject",
+                  "url": "https://yourwebsite.com/logo.jpg",
+                },
+              },
+              "product": data.map((product) => ({
+                "@type": "Product",
+                "name": `${product.name} Casino`,
+                "image": product.imageUrl,
+                "url": `https://yourwebsite.com/product/${product.slug}`,
+                "price": product.price,
+                "priceCurrency": "USD", // Adjust as necessary
+                "category": product.categoryName,
+                "description": product.withdrawal,
+              })),
+            }),
+          }}
         />
       </Head>
 
@@ -82,7 +120,7 @@ export default async function Newest() {
         <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
           <div className="text-center sm:text-left bg-gradient-to-r from-blue-500 to-purple-600 p-6 sm:p-8 shadow-xl bg-opacity-80">
             <h2 className="text-4xl font-extrabold text-white mb-4">
-              Casinos with High RTP 
+              Casinos with High RTP
             </h2>
             <p className="text-lg text-white text-justify leading-relaxed shadow-md">
               We’ve done the hard work for you, so you can sit back, relax, and

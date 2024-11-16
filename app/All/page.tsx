@@ -46,11 +46,39 @@ export default async function AllProduct() {
   const data: simplifiedProduct[] = await getData();
   const searchTerm = ""; // Placeholder for dynamic search term
 
+  const canonicalUrl = "https://www.yoursite.com/products";
+  
   return (
     <div className="bg-soft-gradient">
       <Head>
         <title>{searchTerm ? `${searchTerm} - TheCasinoLoot` : "TheCasinoLoot - Best Online Casino & Gambling Platform"}</title>
-        <meta name="description" content="Join The Casino Loot, the best online casino for exciting games and secure online gambling." />
+        <meta
+          name="description"
+          content="Join The Casino Loot, the best online casino for exciting games and secure online gambling."
+        />
+        {/* Canonical link for the main page */}
+        <link rel="canonical" href={canonicalUrl} />
+
+        {/* OpenGraph Meta Tags */}
+        <meta property="og:title" content="TheCasinoLoot - Best Online Casino & Gambling Platform" />
+        <meta
+          property="og:description"
+          content="Join The Casino Loot, the best online casino for exciting games and secure online gambling."
+        />
+        <meta property="og:image" content="https://www.yoursite.com/your-image.jpg" />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="TheCasinoLoot" />
+
+        {/* Twitter Card Meta Tags */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="TheCasinoLoot - Best Online Casino & Gambling Platform" />
+        <meta
+          name="twitter:description"
+          content="Join The Casino Loot, the best online casino for exciting games and secure online gambling."
+        />
+        <meta name="twitter:image" content="https://www.yoursite.com/your-image.jpg" />
+        <meta name="twitter:site" content="@YourTwitterHandle" />
       </Head>
 
       {/* Submenu Bar */}
@@ -73,6 +101,33 @@ export default async function AllProduct() {
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {data.map((product) => (
               <div key={product._id} className="relative flex flex-col bg-white shadow-lg border border-gray-300 overflow-hidden items-center">
+                <Head>
+                  {/* Canonical tag for individual product pages */}
+                  <link
+                    rel="canonical"
+                    href={`https://www.yoursite.com/product/${product.slug}`}
+                  />
+                  {/* Structured Data (JSON-LD) */}
+                  <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{
+                      __html: JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "Product",
+                        "name": product.name,
+                        "description": "Best casino experience with great bonuses and games",
+                        "image": product.imageUrl,
+                        "offers": {
+                          "@type": "Offer",
+                          "priceCurrency": "USD",
+                          "price": product.price,
+                          "url": `https://www.yoursite.com/product/${product.slug}`,
+                          "availability": "https://schema.org/InStock",
+                        },
+                      }),
+                    }}
+                  />
+                </Head>
                 <Link href={`/product/${product.slug}`} className="block">
                   {/* Image Container with Margin on top */}
                   <div className="relative w-40 h-40 mb-4 mt-2">
