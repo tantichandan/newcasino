@@ -61,7 +61,7 @@ export default async function Newest() {
           content="Experience exclusive online gambling at Casino Loot, the best online casino and gambling platform. Enjoy thrilling games, secure play and big wins anytime."
         />
         <meta property="og:image" content="https://example.com/og-image.jpg" />
-        
+
         {/* Google Fonts */}
         <link
           href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
