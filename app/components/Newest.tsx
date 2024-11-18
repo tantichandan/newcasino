@@ -119,10 +119,10 @@ export default async function Newest() {
         {/* Title and Paragraph Section */}
         <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
           <div className="text-center sm:text-left bg-gradient-to-r from-blue-500 to-purple-600 p-6 sm:p-8 shadow-xl bg-opacity-80">
-            <h2 className="text-4xl font-extrabold text-white mb-4">
-              Casinos with High RTP
+            <h2 className="text-4xl font-sans font-extrabold text-white mb-4">
+              Casinos with High <mark>RTP</mark>
             </h2>
-            <p className="text-lg text-white text-justify leading-relaxed shadow-md">
+            <p className="text-lg text-white font-sans text-justify leading-relaxed shadow-md">
               We’ve done the hard work for you, so you can sit back, relax, and
               enjoy your game without worrying about withdrawals or game payouts.
               Below are some of the finest online casinos available. Click on the
@@ -138,48 +138,49 @@ export default async function Newest() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 ">
           {data.length > 0 ? (
             data.map((product) => (
               <div
                 key={product._id}
-                className="bg-white shadow-lg overflow-hidden flex flex-col"
+                className="bg-gray-300 shadow-lg font-sans overflow-hidden flex flex-col items-center"
               >
                 {/* Image Section */}
                 <Link href={`/product/${product.slug}`}>
-                  <div className="relative w-full h-32 overflow-hidden">
+                  <div className="relative w-40 h-40 mb-4 mt-2">
                     <Image
                       src={product.imageUrl}
                       alt={`Image of ${product.name} Casino`}
                       layout="responsive"
-                      width={400}
-                      height={225}
-                      objectFit="cover"
-                      className="absolute inset-0"
-                      style={{
-                        filter: "brightness(0.7)", // Keep the brightness filter
-                      }}
+                      width={160}
+                      height={160}
+                      className="object-cover"
+                      
                     />
                   </div>
                 </Link>
 
+
+
+               
+
                 {/* Casino Details Section */}
                 <div className="flex-grow p-4 flex flex-col justify-between bg-white bg-opacity-90">
                   <Link href={`/product/${product.slug}`}>
-                    <h3 className="text-lg font-semibold text-primary hover:text-blue-600">
+                    <h3 className="text-lg font-semibold font-sans text-primary hover:text-blue-600">
                       {product.name} Casino
                     </h3>
-                    <p className="text-small">More details</p>
+                    <p className="text-small font-sans">More details</p>
                   </Link>
                   <p className="text-sm text-gray-800">{product.categoryName}</p>
-                  <p className="text-md font-bold text-gray-900 mt-1">
-                    Bonus: <span className="text-blue-600">{product.price}</span>
+                  <p className="text-md font-extrabold text-gray-900 mt-1">
+                    Bonus: <span className="text-blue-600 font-semibold">{product.price}</span>
                   </p>
 
                   {/* Withdrawal Section - Visible */}
                   <div className="mt-2">
                     <div className="text-sm text-gray-800">
-                      <strong className="text-gray-900">Features:</strong>{" "}
+                      <strong className="text-[#006400] font-extrabold">Features:</strong>{" "}
                       <span className="text-sm font-medium text-justify text-gray-700 my-2">
                         {product.withdrawal}
                       </span>

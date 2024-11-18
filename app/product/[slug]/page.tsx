@@ -120,7 +120,7 @@ export default async function ProductPage({ params }: { params: { slug: string }
                         alt={`${data.name} Casino Image`}
                         src={data?.imageUrl}
                         layout="responsive"  // Use responsive for fluid resizing
-                        width={1200}          // Specify the width you want for larger screens
+                        width={650}          // Specify the width you want for larger screens
                         height={800}          // Keep the aspect ratio you desire (e.g., 3:2)
                         quality={100}         // High quality
                         className="mx-auto object-cover w-full h-auto"

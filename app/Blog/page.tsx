@@ -77,7 +77,7 @@ export default async function Page() {
             <section className="max-w-2xl px-6 sm:pb-6 lg:max-w-7xl lg:px-8">
                 <div className="mb-6 md:mb-16">
                     <div className="mb-4 mx-auto justify-center sm:mb-12 lg:mb-0 lg:w-1/3 lg:pb-24 lg:pt-8">
-                        <h1 className="mb-4 text-3xl font-bold text-primary sm:text-4xl md:pb-4 md:text-5xl">
+                        <h1 className="mb-4 text-3xl font-sans font-bold text-primary sm:text-4xl md:pb-4 md:text-5xl">
                             All The Blogs
                         </h1>
                     </div>
@@ -96,11 +96,11 @@ export default async function Page() {
                                         className="space-y-3 xl:col-span-3"
                                     >
                                         <div>
-                                            <h3 className="text-xl font-bold leading-8 tracking-tight text-gray-900">
+                                            <h3 className="text-xl font-bold font-sans leading-8 tracking-tight text-gray-900">
                                                 {post.title}
                                             </h3>
                                         </div>
-                                        <p className="prose max-w-none text-gray-500 line-clamp-2">
+                                        <p className="prose max-w-none text-gray-500 font-sans line-clamp-2">
                                             {post.overview}
                                         </p>
                                     </Link>

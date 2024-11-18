@@ -107,7 +107,7 @@ export default async function SlugPage({ params }: { params: { slug: string } })
                             height={40}
                         />
                         <p className="text-sm text-gray-600">
-                            Created by <strong>Austin</strong>
+                            Posted by <strong>Tom</strong>
                         </p>
                     </div>
                     <p className="text-base font-semibold leading-6 text-teal-500">

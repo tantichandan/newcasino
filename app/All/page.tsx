@@ -100,7 +100,7 @@ export default async function AllProduct() {
         <div className="mt-8 sm:mt-12 lg:mt-16">
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {data.map((product) => (
-              <div key={product._id} className="relative flex flex-col bg-white shadow-lg border border-gray-300 overflow-hidden items-center">
+              <div key={product._id} className="relative flex flex-col bg-gray-400 shadow-lg border border-gray-300 overflow-hidden items-center">
                 <Head>
                   {/* Canonical tag for individual product pages */}
                   <link
@@ -155,8 +155,8 @@ export default async function AllProduct() {
                 </div>
 
                 {/* Product Info with Soft Background */}
-                <div className="px-4 py-3 bg-gray-50 text-sm text-gray-700 space-y-2 flex-grow-0">
-                  <p><strong>General:</strong> {product.withdrawal}</p>
+                <div className="px-4 py-3 bg-gray-100 bg-opacity-80 text-justify text-sm text-gray-800 space-y-2 flex-grow-0">
+                  <p><strong className="text-[#006400] font-extrabold">General:</strong> {product.withdrawal}</p>
                 </div>
 
                 {/* Start Playing Button */}

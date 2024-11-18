@@ -73,7 +73,7 @@ export default async function CategoryPage({ params }: { params: { category: str
 
             <div className="mx-auto max-w-7xl px-4 py-8">
                 <SubmenuBar />
-                <div className="text-center mb-8">
+                <div className="text-center mb-8 ">
                     <h2 className="text-3xl font-bold text-white">
                         Casinos for {params.category}
                     </h2>
@@ -86,7 +86,7 @@ export default async function CategoryPage({ params }: { params: { category: str
                     {data.map((product) => (
                         <div
                             key={product._id}
-                            className="relative p-4 bg-white border border-gray-300 shadow-lg transition duration-300 hover:shadow-xl overflow-hidden flex flex-col"
+                            className="relative p-4 bg-gray-100 border border-gray-300 shadow-lg transition duration-300 hover:shadow-xl overflow-hidden flex flex-col"
                         >
                             <Head>
                                 {/* Canonical link for individual product */}
@@ -130,9 +130,9 @@ export default async function CategoryPage({ params }: { params: { category: str
                                     <p className="text-md font-bold text-gray-700">{product.name} Casino</p>
                                     <p className="text-sm font-bold text-gray-700">Read more</p>
                                     <h4 className="text-sm text-blue-600 font-bold mt-2">
-                                        <span className="text-sm font-medium text-gray-700">Bonus:</span> {product.price}
+                                        <span className="text-sm font-medium text-gray-700"> <strong>Bonus:</strong></span> {product.price}
                                     </h4>
-                                    <p className="text-sm font-medium text-gray-700 my-2">{product.withdrawal}</p>
+                                    <p className="text-sm font-medium text-gray-700 my-2"> <strong className="text-[maroon] font-extrabold">Features </strong>{product.withdrawal}</p>
                                 </div>
                             </Link>
                             <div className="flex justify-center mt-4">
