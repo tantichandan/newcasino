@@ -93,7 +93,7 @@ export default function HeroAndBlog() {
             </Head>
 
             {/* Hero Section with Original Background */}
-            <section className="bg-neutral-50 dark:bg-neutral-900 pt-16">
+            <section className="bg-gradient-to-r from-gray-50 via-gray-100 to-gray-200 pt-16">
                 <div className="mx-auto font-sans max-w-2xl px-4 sm:pb-6 lg:max-w-7xl lg:px-8 flex flex-col items-center text-center">
                     <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl mb-4">
                         Discover the Best Online Casinos

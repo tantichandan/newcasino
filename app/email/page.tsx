@@ -1,6 +1,6 @@
 "use client";
 import React, { useRef, useState } from "react";
-import emailjs from '@emailjs/browser';
+import emailjs from "@emailjs/browser";
 import BrevoWidget from "./Document";
 
 const Contact = () => {
@@ -20,7 +20,7 @@ const Contact = () => {
     return regex.test(email);
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
 
@@ -36,23 +36,29 @@ const Contact = () => {
       return;
     }
 
-    emailjs.send(
-      process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID as string,
-      process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID as string,
-      { from_name: form.name, to_name: "Chandan Portfolio", from_email: form.email, to_email: "tantichandan@gmail.com", message: form.message },
-      process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY as string
-    ).then(
-      () => {
-        setLoading(false);
-        alert("Thank you! I will get back to you soon.");
-        setForm({ name: "", email: "", message: "" });
-      },
-      (error) => {
-        setLoading(false);
-        console.error(error);
-        setError("Something went wrong. Please try again.");
-      }
-    );
+    try {
+      const response = await emailjs.send(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
+        {
+          from_name: form.name,
+          to_name: "Chandan Portfolio",
+          from_email: form.email,
+          to_email: "tantichandan@gmail.com",
+          message: form.message,
+        },
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
+      );
+
+      console.log("Email sent successfully:", response);
+      setLoading(false);
+      alert("Thank you! I will get back to you soon.");
+      setForm({ name: "", email: "", message: "" });
+    } catch (error) {
+      console.error("EmailJS Error:", error);
+      setLoading(false);
+      setError("Something went wrong. Please try again.");
+    }
   };
 
   return (
@@ -118,10 +124,7 @@ const Contact = () => {
           </div>
         </div>
       </div>
-
-      <BrevoWidget/>
-
-      
+      <BrevoWidget />
     </section>
   );
 };

@@ -17,6 +17,7 @@ const links = [
       { name: 'UK', href: '/UK' },
       { name: 'French', href: '/French' },
       { name: 'Global', href: '/Global' },
+      { name: 'US', href: '/US' },
     ],
   },
   { name: 'Free', href: '/Free' },
@@ -88,7 +89,7 @@ export default function Navbar() {
                     ref={dropdownRef} // Attach ref to the dropdown container
                   >
                     <button
-                      className={`text-lg font-semibold flex items-center px-3 py-2 rounded-lg hover:bg-gray-100 transition-all duration-300 ${
+                      className={`text-lg font-semibold flex items-center px-3 py-2 hover:bg-gray-100 transition-all duration-300 ${
                         dropdownOpen ? 'text-teal-500' : 'text-gray-600'
                       }`}
                       onClick={() => setDropdownOpen(prev => !prev)} // Toggle dropdown on click
@@ -142,7 +143,7 @@ export default function Navbar() {
           <Link href="/email">
             <Button
               variant="outline"
-              className="flex items-center justify-center gap-x-2 px-4 py-2 rounded-full bg-gradient-to-r from-blue-500 via-purple-600 to-pink-500 text-white shadow-lg hover:scale-105 transition-transform duration-300"
+              className="flex items-center justify-center gap-x-2 px-4 py-2 bg-gradient-to-r from-blue-500 via-purple-600 to-pink-500 text-white shadow-lg hover:scale-105 transition-transform duration-300"
             >
               <MessageSquare className="h-6 w-6" />
               <span className="text-sm sm:text-base font-semibold">Contact Us</span>
