@@ -36,7 +36,7 @@ export const dynamic = "force-dynamic";
 export default async function CategoryPage({ params }: { params: { category: string } }) {
     const data: simplifiedProduct[] = await getData(params.category);
 
-    const canonicalUrl = `https://www.yoursite.com/category/${params.category}`;
+    const canonicalUrl = `https://www.thecasinoloot.com/category/${params.category}`;
 
     return (
         <div className="bg-gradient-to-r from-blue-400 via-indigo-500 to-purple-600 min-h-screen">
@@ -55,7 +55,7 @@ export default async function CategoryPage({ params }: { params: { category: str
                     property="og:description"
                     content={`Discover the best casinos for ${params.category}. Enjoy curated options, exclusive bonuses, and safe gambling practices.`}
                 />
-                <meta property="og:image" content="https://www.yoursite.com/your-image.jpg" />
+                <meta property="og:image" content="https://www.thecasinoloot.com/your-image.jpg" />
                 <meta property="og:url" content={canonicalUrl} />
                 <meta property="og:type" content="website" />
                 <meta property="og:site_name" content="TheCasinoLoot" />
@@ -67,7 +67,7 @@ export default async function CategoryPage({ params }: { params: { category: str
                     name="twitter:description"
                     content={`Discover the best casinos for ${params.category}. Enjoy curated options, exclusive bonuses, and safe gambling practices.`}
                 />
-                <meta name="twitter:image" content="https://www.yoursite.com/your-image.jpg" />
+                <meta name="twitter:image" content="https://www.thecasinoloot.com/your-image.jpg" />
                 <meta name="twitter:site" content="@YourTwitterHandle" />
             </Head>
 
@@ -92,7 +92,7 @@ export default async function CategoryPage({ params }: { params: { category: str
                                 {/* Canonical link for individual product */}
                                 <link
                                     rel="canonical"
-                                    href={`https://www.yoursite.com/product/${product.slug}`}
+                                    href={`https://www.thecasinoloot.com/product/${product.slug}`}
                                 />
                                 {/* Structured Data (JSON-LD) */}
                                 <script
@@ -108,7 +108,7 @@ export default async function CategoryPage({ params }: { params: { category: str
                                                 "@type": "Offer",
                                                 "priceCurrency": "USD",
                                                 "price": product.price,
-                                                "url": `https://www.yoursite.com/product/${product.slug}`,
+                                                "url": `https://www.thecasinoloot.com/product/${product.slug}`,
                                                 "availability": "https://schema.org/InStock",
                                             },
                                         }),

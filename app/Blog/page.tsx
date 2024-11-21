@@ -14,7 +14,7 @@ export default async function Page() {
     const data: post[] = await getData();
 
     return (
-        <>
+        <div>
             <Head>
                 {/* Page Title and Description */}
                 <title>TheCasinoLoot Blog - Top Online Casino & Gambling Platform</title>
@@ -24,7 +24,7 @@ export default async function Page() {
                 />
 
                 {/* Canonical Link */}
-                <link rel="canonical" href="https://yourwebsite.com/blog" />
+                <link rel="canonical" href="https://thecasinoloot.com/blog" />
 
                 {/* Open Graph Meta Tags */}
                 <meta
@@ -36,10 +36,10 @@ export default async function Page() {
                     content="Explore Casino Loot's blog for insights on the top online casino platform. Stay updated on online gaming, gambling tips, and the latest trends in online casinos."
                 />
                 <meta property="og:type" content="website" />
-                <meta property="og:url" content="https://yourwebsite.com/blog" />
+                <meta property="og:url" content="https://thecasinoloot.com/blog" />
                 <meta
                     property="og:image"
-                    content="https://yourwebsite.com/og-image.jpg"
+                    content="https://thecasinoloot.com/og-image.jpg"
                 />
 
                 {/* Schema.org JSON-LD */}
@@ -52,12 +52,12 @@ export default async function Page() {
                             "name": "TheCasinoLoot Blog",
                             "description":
                                 "Explore Casino Loot's blog for insights on the top online casino platform. Stay updated on online gaming, gambling tips, and the latest trends in online casinos.",
-                            "url": "https://yourwebsite.com/blog",
+                            "url": "https://thecasinoloot.com/blog",
                             "blogPost": data.map((post) => ({
                                 "@type": "BlogPosting",
                                 "headline": post.title,
                                 "datePublished": new Date(post._createdAt).toISOString(),
-                                "url": `https://yourwebsite.com/post/${post.slug.current}`,
+                                "url": `https://thecasinoloot.com/post/${post.slug.current}`,
                                 "description": post.overview,
                             })),
                             "publisher": {
@@ -65,7 +65,7 @@ export default async function Page() {
                                 "name": "TheCasinoLoot",
                                 "logo": {
                                     "@type": "ImageObject",
-                                    "url": "https://yourwebsite.com/logo.jpg",
+                                    "url": "https://thecasinoloot.com/logo.jpg",
                                 },
                             },
                         }),
@@ -76,9 +76,9 @@ export default async function Page() {
             <Submenu />
             <section className="max-w-2xl px-6 sm:pb-6 lg:max-w-7xl lg:px-8">
                 <div className="mb-6 md:mb-16">
-                    <div className="mb-4 mx-auto justify-center sm:mb-12 lg:mb-0 lg:w-1/3 lg:pb-24 lg:pt-8">
-                        <h1 className="mb-4 text-3xl font-sans font-bold text-primary sm:text-4xl md:pb-4 md:text-5xl">
-                            All The Blogs
+                    <div className="mb-2 mx-auto justify-center sm:mb-12 lg:mb-0 lg:w-1/3 lg:pb-24 lg:pt-8">
+                        <h1 className="mb-2 text-3xl font-sans font-bold text-primary sm:text-4xl md:pb-4 md:text-5xl">
+                            Blog's
                         </h1>
                     </div>
                     <ul>
@@ -110,6 +110,6 @@ export default async function Page() {
                     </ul>
                 </div>
             </section>
-        </>
+        </div>
     );
 }

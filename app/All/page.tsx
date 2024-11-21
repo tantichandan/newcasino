@@ -28,8 +28,8 @@ export default async function AllProduct() {
   const data: simplifiedProduct[] = await getData();
   const searchTerm = ""; // Placeholder for dynamic search term
 
-  const canonicalUrl = "https://www.yoursite.com/products";
-  
+  const canonicalUrl = "https://www.thecasinoloot.com/products";
+
   return (
     <div className="bg-soft-gradient">
       <Head>
@@ -47,7 +47,7 @@ export default async function AllProduct() {
           property="og:description"
           content="Join The Casino Loot, the best online casino for exciting games and secure online gambling."
         />
-        <meta property="og:image" content="https://www.yoursite.com/your-image.jpg" />
+        <meta property="og:image" content="https://www.thecasinoloot.com/your-image.jpg" />
         <meta property="og:url" content={canonicalUrl} />
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="TheCasinoLoot" />
@@ -59,11 +59,11 @@ export default async function AllProduct() {
           name="twitter:description"
           content="Join The Casino Loot, the best online casino for exciting games and secure online gambling."
         />
-        <meta name="twitter:image" content="https://www.yoursite.com/your-image.jpg" />
+        <meta name="twitter:image" content="https://www.thecasinoloot.com/your-image.jpg" />
         <meta name="twitter:site" content="@YourTwitterHandle" />
       </Head>
 
-      
+
       <Submenu />
 
       <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-24 lg:px-8">
@@ -87,7 +87,7 @@ export default async function AllProduct() {
                   {/* Canonical tag for individual product pages */}
                   <link
                     rel="canonical"
-                    href={`https://www.yoursite.com/product/${product.slug}`}
+                    href={`https://www.thecasinoloot.com/product/${product.slug}`}
                   />
                   {/* Structured Data (JSON-LD) */}
                   <script
@@ -103,7 +103,7 @@ export default async function AllProduct() {
                           "@type": "Offer",
                           "priceCurrency": "USD",
                           "price": product.price,
-                          "url": `https://www.yoursite.com/product/${product.slug}`,
+                          "url": `https://www.thecasinoloot.com/product/${product.slug}`,
                           "availability": "https://schema.org/InStock",
                         },
                       }),

@@ -69,7 +69,7 @@ export default async function Newest() {
         />
 
         {/* Canonical Link Tag */}
-        <link rel="canonical" href="https://yourwebsite.com/newest" />
+        <link rel="canonical" href="https://thecasinoloot.com/newest" />
 
         {/* Schema.org JSON-LD Data */}
         <script
@@ -81,21 +81,21 @@ export default async function Newest() {
               "name": "Newest Online Casinos",
               "description":
                 "Discover the best online casinos with high RTP. Enjoy thrilling gambling experiences with secure play and fast payouts.",
-              "url": "https://yourwebsite.com/newest",
-              "mainEntityOfPage": "https://yourwebsite.com/newest",
+              "url": "https://thecasinoloot.com/newest",
+              "mainEntityOfPage": "https://thecasinoloot.com/newest",
               "publisher": {
                 "@type": "Organization",
                 "name": "TheCasinoLoot",
                 "logo": {
                   "@type": "ImageObject",
-                  "url": "https://yourwebsite.com/logo.jpg",
+                  "url": "https://thecasinoloot.com/logo.jpg",
                 },
               },
               "product": data.map((product) => ({
                 "@type": "Product",
                 "name": `${product.name} Casino`,
                 "image": product.imageUrl,
-                "url": `https://yourwebsite.com/product/${product.slug}`,
+                "url": `https://thecasinoloot.com/product/${product.slug}`,
                 "price": product.price,
                 "priceCurrency": "USD", // Adjust as necessary
                 "category": product.categoryName,

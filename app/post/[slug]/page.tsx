@@ -113,7 +113,7 @@ export default async function SlugPage({ params }: { params: { slug: string } })
                     <p className="text-base font-semibold leading-6 text-teal-500">
                         {new Date(data._createdAt).toLocaleDateString()}
                     </p>
-                    <h1 className="text-3xl font-extrabold leading-9 text-primary dark:text-gray-100">
+                    <h1 className="text-3xl font-sans font-extrabold leading-9 text-primary dark:text-gray-100">
                         {data.title}
                     </h1>
                 </div>

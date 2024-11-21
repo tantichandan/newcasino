@@ -47,7 +47,7 @@ export default async function ProductPage({ params }: { params: { slug: string }
     }
 
     // Generate the canonical URL
-    const canonicalUrl = `https://www.yoursite.com/product/${params.slug}`;
+    const canonicalUrl = `https://www.thecasinoloot.com/product/${params.slug}`;
 
     return (
         <div className="flex flex-col gap-16 px-6 py-24 justify-center items-center md:px-20 bg-gray-100">
