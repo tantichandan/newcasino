@@ -33,7 +33,7 @@ export default function Navbar() {
 
   const getLinkClassNames = (href: string) => {
     const isActive = pathname === href;
-    return `text-lg font-sans font-semibold px-3 py-2 rounded-lg transition-all duration-300 ${
+    return `text-lg font-sans px-3 py-2 transition-all duration-300 ${
       isActive
         ? 'text-white bg-gradient-to-r from-green-500 to-teal-500 shadow-lg'
         : 'text-gray-600 hover:text-teal-500 hover:bg-gray-100'

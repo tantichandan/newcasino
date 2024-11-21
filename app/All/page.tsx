@@ -3,6 +3,7 @@ import { simplifiedProduct } from "../interface";
 import { client } from "../lib/sanity";
 import Image from "next/image";
 import Head from "next/head";
+import Submenu from "../components/Submenu";
 
 // Fetch data from the Sanity client
 async function getData() {
@@ -21,26 +22,7 @@ async function getData() {
   return data;
 }
 
-// SubmenuBar Component
-function SubmenuBar() {
-  const submenuLinks = ["Aus", "UK", "US", "French", "Free", "CA", "Global", "All", "Blog"];
 
-  return (
-    <div className="flex justify-center mb-8 px-4">
-      <div className="flex flex-wrap w-full max-w-5xl bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 border border-gray-300 overflow-hidden shadow-md justify-center sm:justify-between">
-        {submenuLinks.map((item) => (
-          <Link
-            key={item}
-            href={`/${item}`}
-            className="flex-1 sm:flex-none sm:w-auto text-white text-center py-2 px-4 transition duration-300 ease-in-out transform hover:scale-105 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-          >
-            {item}
-          </Link>
-        ))}
-      </div>
-    </div>
-  );
-}
 
 export default async function AllProduct() {
   const data: simplifiedProduct[] = await getData();
@@ -81,8 +63,8 @@ export default async function AllProduct() {
         <meta name="twitter:site" content="@YourTwitterHandle" />
       </Head>
 
-      {/* Submenu Bar */}
-      <SubmenuBar />
+      
+      <Submenu />
 
       <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-24 lg:px-8">
         <div className="py-2 flex flex-col justify-between items-center mb-12">

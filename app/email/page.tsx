@@ -54,10 +54,10 @@ const Contact = () => {
       setLoading(false);
       alert("Thank you! I will get back to you soon.");
       setForm({ name: "", email: "", message: "" });
-    } catch (error) {
+    } catch (error: any) {
       console.error("EmailJS Error:", error);
       setLoading(false);
-      setError("Something went wrong. Please try again.");
+      setError(error.text || "Something went wrong. Please try again.");
     }
   };
 
