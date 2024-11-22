@@ -14,7 +14,7 @@ export default async function Page() {
     const data: post[] = await getData();
 
     return (
-        <div>
+        <div className="gap-16 px-6 py-24 justify-center items-center md:px-20">
             <Head>
                 {/* Page Title and Description */}
                 <title>TheCasinoLoot Blog - Top Online Casino & Gambling Platform</title>

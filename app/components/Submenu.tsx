@@ -9,8 +9,9 @@ const Submenu = () => {
         {submenuLinks.map((item) => (
           <Link
             key={item}
-            href={`/${item}`}
-            className="flex-1 sm:flex-none sm:w-auto text-white text-center py-2 px-4 transition duration-300 ease-in-out transform hover:scale-105 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+            href={`/${encodeURIComponent(item)}`}
+            aria-label={`Navigate to ${item} page`}
+            className="flex-1 sm:flex-none sm:w-auto text-white text-center py-2 px-4 transition duration-300 ease-in-out transform hover:scale-105 hover:bg-indigo-700 active:bg-indigo-800 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
           >
             {item}
           </Link>
