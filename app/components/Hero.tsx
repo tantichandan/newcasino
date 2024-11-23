@@ -20,14 +20,14 @@ export default function HeroAndBlog() {
                     property="og:description"
                     content="Experience exclusive online gambling at Casino Loot, the best online casino and gambling platform. Enjoy thrilling games, secure play and big wins anytime."
                 />
-                <meta property="og:image" content="https://yourdomain.com/og-image.jpg" />
-                <meta property="og:url" content="https://yourdomain.com" />
+                <meta property="og:image" content="https://thecasinoloot.com/og-image.jpg" />
+                <meta property="og:url" content="https://thecasinoloot.com" />
                 <meta property="og:type" content="website" />
 
                 {/* Twitter Meta Tags */}
                 <meta name="twitter:title" content="TheCasinoLoot - Best Online Exclusive Gambling Platform" />
                 <meta name="twitter:description" content="Experience exclusive online gambling at Casino Loot, the best online casino and gambling platform. Enjoy thrilling games, secure play and big wins anytime." />
-                <meta name="twitter:image" content="https://yourdomain.com/og-image.jpg" />
+                <meta name="twitter:image" content="https://thecasinoloot.com/og-image.jpg" />
                 <meta name="twitter:card" content="summary_large_image" />
                 <link
                     href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
@@ -35,7 +35,7 @@ export default function HeroAndBlog() {
                 />
 
                 {/* Canonical Link Tag */}
-                <link rel="canonical" href="https://yourdomain.com" />
+                <link rel="canonical" href="https://thecasinoloot.com" />
 
                 {/* JSON-LD Schema Markup for SEO */}
                 <script
@@ -47,15 +47,15 @@ export default function HeroAndBlog() {
                             "name": "TheCasinoLoot - Best Online Exclusive Gambling Platform",
                             "description":
                                 "Experience exclusive online gambling at Casino Loot, the best online casino and gambling platform. Enjoy thrilling games, secure play and big wins anytime.",
-                            "url": "https://yourdomain.com",
-                            "mainEntityOfPage": "https://yourdomain.com",
-                            "image": "https://yourdomain.com/og-image.jpg",
+                            "url": "https://thecasinoloot.com",
+                            "mainEntityOfPage": "https://thecasinoloot.com",
+                            "image": "https://thecasinoloot.com/og-image.jpg",
                             "publisher": {
                                 "@type": "Organization",
                                 "name": "TheCasinoLoot",
                                 "logo": {
                                     "@type": "ImageObject",
-                                    "url": "https://yourdomain.com/logo.jpg", // Replace with actual logo URL
+                                    "url": "https://thecasinoloot/logo.jpg", // Replace with actual logo URL
                                 },
                             },
                         }),
@@ -81,12 +81,12 @@ export default function HeroAndBlog() {
                                 "name": "TheCasinoLoot",
                                 "logo": {
                                     "@type": "ImageObject",
-                                    "url": "https://yourdomain.com/logo.jpg", // Replace with actual logo URL
+                                    "url": "https://thecasinoloot.com/logo.jpg", // Replace with actual logo URL
                                 },
                             },
                             "datePublished": "2024-11-16", // Update with actual publication date
                             "dateModified": "2024-11-16", // Update with actual modification date
-                            "image": "https://yourdomain.com/og-image.jpg", // Replace with blog image
+                            "image": "https://thecasinoloot.com/og-image.jpg", // Replace with blog image
                         }),
                     }}
                 />
