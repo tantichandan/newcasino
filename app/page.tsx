@@ -1,4 +1,5 @@
 import Hero from "./components/Hero";
+import Newest from "./components/Newest";
 
 
 
@@ -10,6 +11,7 @@ export default function Home() {
     <div className="">
       
       <Hero/>
+      
       
     </div>
 
