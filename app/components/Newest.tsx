@@ -112,7 +112,7 @@ export default async function Newest() {
             className="text-primary font-bold flex items-center gap-x-1 mt-2 sm:mt-0"
             href="/All"
           >
-            View All <ChevronRight /> {/* Updated icon */}
+            View All Casinos <ChevronRight /> {/* Updated icon */}
           </Link>
         </div>
 
@@ -122,7 +122,7 @@ export default async function Newest() {
             <h2 className="text-4xl font-sans font-extrabold text-white mb-4">
               Casinos with High <mark>RTP</mark>
             </h2>
-            <p className="text-lg text-white font-sans text-justify leading-relaxed shadow-md">
+            <p className="text-medium text-white font-sans text-justify leading-relaxed shadow-md">
               We’ve done the hard work for you, so you can sit back, relax, and
               enjoy your game without worrying about withdrawals or game payouts.
               Below are some of the finest online casinos available. Click on the

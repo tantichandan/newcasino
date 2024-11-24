@@ -5,7 +5,11 @@ import Newest from './Newest';
 
 export default function HeroAndBlog() {
     return (
-        <div>
+        <div className='relative'
+
+
+        >
+
             <Head>
                 <title>TheCasinoLoot - Best Online Exclusive Gambling Platform</title>
                 <meta
@@ -92,14 +96,32 @@ export default function HeroAndBlog() {
                 />
             </Head>
 
+
+
+
+
+
+
             {/* Hero Section with Original Background */}
-            <section className="bg-gradient-to-r from-gray-50 via-gray-100 to-gray-200 pt-16">
+            <section className="pt-16"
+
+                style={{
+                    backgroundImage: "url('/Background7.webp')",
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                    backgroundAttachment: "",
+                    opacity: 0.9,
+                    zIndex: -2,
+                }}
+
+            >
+
                 <div className="mx-auto font-sans max-w-2xl px-4 sm:pb-6 lg:max-w-7xl lg:px-8 flex flex-col items-center text-center">
-                    <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl mb-4">
+                    <h1 className="scroll-m-20 text-4xl font-extrabold text-teal-900 tracking-tight lg:text-5xl mb-4">
                         Discover the Best Online Casinos
                     </h1>
-                    <p className="leading-7 font-sans mb-6 text-gray-700">
-                        Welcome to <mark>TheCasinoLoot</mark>: One-Stop Solution for Online Casino Players to Find Their Ideal Online Casinos.
+                    <p className="leading-7 font-sans mb-6 text-gray-900">
+                        Welcome to <mark> <strong>TheCasinoLoot</strong></mark>: One-Stop Solution for Online Casino Players to Find Their Ideal Online Casinos.
                     </p>
 
                     <div className="flex flex-wrap justify-center gap-4">
@@ -118,7 +140,7 @@ export default function HeroAndBlog() {
                                 US
                             </button>
                         </Link>
-                        
+
                         <Link href="/All">
                             <button className="bg-primary text-white py-2 px-4  shadow hover:bg-yellow-500 transition duration-200">
                                 All

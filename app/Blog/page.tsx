@@ -19,7 +19,7 @@ export default async function Page() {
             <div
                 className="absolute inset-0"
                 style={{
-                    backgroundImage: "url(/background1.jpeg)",
+                    backgroundImage: "url(/Background8.webp)",
                     backgroundSize: "cover",
                     backgroundPosition: "center",
                     opacity: 0.4, // Slightly lighter opacity for a better contrast
