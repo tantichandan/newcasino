@@ -46,7 +46,7 @@ export default async function SlugPage({ params }: { params: { slug: string } })
                 {/* Canonical Link */}
                 <link
                     rel="canonical"
-                    href={`https://yourwebsite.com/post/${params.slug}`}
+                    href={`https://thecasinoloot.com/post/${params.slug}`}
                 />
 
                 {/* Open Graph Meta Tags */}
@@ -58,11 +58,11 @@ export default async function SlugPage({ params }: { params: { slug: string } })
                 <meta property="og:type" content="article" />
                 <meta
                     property="og:url"
-                    content={`https://yourwebsite.com/post/${params.slug}`}
+                    content={`https://thecasinoloot.com/post/${params.slug}`}
                 />
                 <meta
                     property="og:image"
-                    content={`https://yourwebsite.com/default-og-image.jpg`}
+                    content={`https://thecasinoloot.com/default-og-image.jpg`}
                 />
 
                 {/* Schema.org JSON-LD */}
@@ -84,12 +84,12 @@ export default async function SlugPage({ params }: { params: { slug: string } })
                                 "name": "TheCasinoLoot",
                                 "logo": {
                                     "@type": "ImageObject",
-                                    "url": "https://yourwebsite.com/logo.jpg",
+                                    "url": "https://thecasinoloot.com/logo.jpg",
                                 },
                             },
                             "mainEntityOfPage": {
                                 "@type": "WebPage",
-                                "@id": `https://yourwebsite.com/post/${params.slug}`,
+                                "@id": `https://thecasinoloot.com/post/${params.slug}`,
                             },
                         }),
                     }}
