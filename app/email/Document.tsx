@@ -7,7 +7,7 @@ const BrevoWidget = () => {
     <Script id="brevo-conversations" strategy="afterInteractive">
       {`
         (function(d, w, c) {
-          w.BrevoConversationsID = '66f2bbc98ff1687f2106f4a7';
+          w.BrevoConversationsID = '674809c52dfa0afa280f5546';
           w[c] = w[c] || function() {
             (w[c].q = w[c].q || []).push(arguments);
           };
