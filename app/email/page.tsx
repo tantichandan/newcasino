@@ -1,24 +1,22 @@
 "use client";
 import React, { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
-import BrevoWidget from "./Document";
 
 const Contact = () => {
   const formRef = useRef<HTMLFormElement>(null);
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [success, setSuccess] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setForm({ ...form, [name]: value });
-    setError(""); // Clear error on change
+    setError("");
+    setSuccess(false);
   };
 
-  const validateEmail = (email: string) => {
-    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return regex.test(email);
-  };
+  const validateEmail = (email: string) => /^[^\s@]+@[^\s@]+$/.test(email);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -37,7 +35,7 @@ const Contact = () => {
     }
 
     try {
-      const response = await emailjs.send(
+      await emailjs.send(
         process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
         process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
         {
@@ -50,81 +48,101 @@ const Contact = () => {
         process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
       );
 
-      console.log("Email sent successfully:", response);
       setLoading(false);
-      alert("Thank you! I will get back to you soon.");
+      setSuccess(true);
       setForm({ name: "", email: "", message: "" });
     } catch (error: any) {
-      console.error("EmailJS Error:", error);
       setLoading(false);
-      setError(error.text || "Something went wrong. Please try again.");
+      setError("Something went wrong. Please try again.");
     }
   };
 
   return (
-    <section className="py-12 bg-gray-100 min-h-screen flex items-center">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-extrabold text-gray-800 py-4 mb-4">Contact Us</h2>
-          <p className="text-lg text-gray-600">
-            We'd love to hear from you! Drop us a message, and we'll get back to you soon.
-          </p>
-        </div>
-        <div className="flex flex-col lg:justify-center lg:items-center gap-12">
-          <div className="w-full lg:w-1/2 relative">
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-teal-500 rounded-lg shadow-2xl"></div>
-            <form ref={formRef} onSubmit={handleSubmit} className="relative bg-blue-50 rounded-lg p-8 shadow-lg">
-              {error && <div className="mb-4 text-red-500">{error}</div>}
-              <div>
-                <label htmlFor="name" className="block text-gray-700 font-semibold mb-2">Your Name</label>
-                <input
-                  id="name"
-                  type="text"
-                  name="name"
-                  value={form.name}
-                  onChange={handleChange}
-                  placeholder="Enter your name"
-                  className="w-full bg-gray-100 border border-gray-300 rounded-lg p-3 text-gray-700 outline-none focus:ring-2 focus:ring-blue-500 transition duration-200"
-                  required
-                />
-              </div>
-              <div>
-                <label htmlFor="email" className="block text-gray-700 font-semibold mb-2">Your Email</label>
-                <input
-                  id="email"
-                  type="email"
-                  name="email"
-                  value={form.email}
-                  onChange={handleChange}
-                  placeholder="Enter your email"
-                  className="w-full bg-gray-100 border border-gray-300 rounded-lg p-3 text-gray-700 outline-none focus:ring-2 focus:ring-blue-500 transition duration-200"
-                  required
-                />
-              </div>
-              <div>
-                <label htmlFor="message" className="block text-gray-700 font-semibold mb-2">Your Message</label>
-                <textarea
-                  id="message"
-                  rows={6}
-                  name="message"
-                  value={form.message}
-                  onChange={handleChange}
-                  placeholder="Type your message"
-                  className="w-full bg-gray-100 border border-gray-300 rounded-lg p-3 text-gray-700 outline-none focus:ring-2 focus:ring-blue-500 transition duration-200"
-                  required
-                />
-              </div>
-              <button
-                type="submit"
-                className="bg-blue-700 text-white py-3 px-6 rounded-lg font-semibold shadow-md hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200"
-              >
-                {loading ? "Sending..." : "Send Message"}
-              </button>
-            </form>
+    <section
+      className="min-h-screen flex items-center justify-center bg-cover bg-center"
+      style={{
+        backgroundImage: `url('/Background3.jpeg')`,
+      }}
+    >
+      <div
+        className="w-full max-w-lg p-8"
+        style={{
+          background: "rgba(255, 255, 255, 0.15)",
+          boxShadow: "0 8px 32px rgba(31, 38, 135, 0.37)",
+          backdropFilter: "blur(8px)",
+          WebkitBackdropFilter: "blur(8px)",
+          border: "1px solid rgba(255, 255, 255, 0.18)",
+        }}
+      >
+        <h2 className="text-3xl font-bold text-gray-500 mb-6 text-center">Contact Us</h2>
+        <form ref={formRef} onSubmit={handleSubmit}>
+          {error && <div className="text-red-500 mb-4">{error}</div>}
+          {success && <div className="text-green-500 mb-4">Message sent successfully!</div>}
+          <div className="mb-4">
+            <label
+              htmlFor="name"
+              className="block text-gray-600 font-medium mb-2"
+            >
+              Your Name
+            </label>
+            <input
+              id="name"
+              type="text"
+              name="name"
+              value={form.name}
+              onChange={handleChange}
+              className="w-full border bg-gray-100 border-gray-800 p-3 text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="Enter your name"
+              required
+            />
           </div>
-        </div>
+          <div className="mb-4">
+            <label
+              htmlFor="email"
+              className="block text-gray-600 font-medium mb-2"
+            >
+              Your Email
+            </label>
+            <input
+              id="email"
+              type="email"
+              name="email"
+              value={form.email}
+              onChange={handleChange}
+              className="w-full border bg-gray-100 border-gray-300 p-3 text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="Enter your email"
+              required
+            />
+          </div>
+          <div className="mb-6">
+            <label
+              htmlFor="message"
+              className="block text-gray-600 font-medium mb-2"
+            >
+              Your Message
+            </label>
+            <textarea
+              id="message"
+              name="message"
+              rows={5}
+              value={form.message}
+              onChange={handleChange}
+              className="w-full border bg-gray-100 border-gray-300 p-3 text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="Type your message"
+              required
+            />
+          </div>
+          <button
+            type="submit"
+            className={`w-full bg-blue-500 text-white font-medium py-3 px-6 transition duration-200 ${
+              loading ? "opacity-50 cursor-not-allowed" : "hover:bg-blue-600"
+            }`}
+            disabled={loading}
+          >
+            {loading ? "Sending..." : "Send Message"}
+          </button>
+        </form>
       </div>
-      <BrevoWidget />
     </section>
   );
 };

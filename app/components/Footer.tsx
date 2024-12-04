@@ -1,5 +1,6 @@
 import { Mail, Headset, Facebook, Twitter, Instagram } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 import React from 'react';
 
 const Footer = () => {
@@ -22,7 +23,6 @@ const Footer = () => {
           <section className="flex flex-col items-start">
             <h3 className="text-xl font-semibold mb-4">Services</h3>
             <ul className="space-y-2">
-              
               <li>
                 <Link href="/" className="text-sm hover:text-yellow-400 transition">Home</Link>
               </li>
@@ -75,10 +75,29 @@ const Footer = () => {
           <Link
             href="https://www.responsiblegambling.org/"
             target="_blank"
-            className="px-4 py-2 text-sm font-medium bg-yellow-500 text-gray-900  hover:bg-yellow-600 transition"
+            className="px-4 py-2 text-sm font-medium bg-yellow-500 text-gray-900 hover:bg-yellow-600 transition"
           >
             Responsible Gambling
           </Link>
+
+          <Link href="https://www.gambleaware.org/what-we-do/"
+          target='blank'
+          
+          
+          >
+
+<div className="text-center">
+            <p className="text-xl font-extrabold text-yellow-400 tracking-wide">
+              GambleAware
+            </p>
+            
+          </div>
+
+          
+
+
+          </Link>
+        
         </div>
 
         {/* Copyright Section */}

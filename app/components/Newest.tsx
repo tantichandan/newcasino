@@ -45,12 +45,12 @@ export default async function Newest() {
   const data = await getData();
 
   return (
-    <div className="bg-gradient-to-r from-gray-200 to-gray-400 py-16">
+    <div className="bg-white py-16">
       <Head>
         <title>TheCasinoLoot - Best Online Exclusive Gambling Platform</title>
         <meta
           name="description"
-          content="Experience exclusive online gambling at Casino Loot, the best online casino and gambling platform. Enjoy thrilling games, secure play and big wins anytime."
+          content="Experience exclusive online gambling at Casino Loot, the best online casino and gambling platform. Enjoy thrilling games, secure play, and big wins anytime."
         />
         <meta
           property="og:title"
@@ -58,19 +58,16 @@ export default async function Newest() {
         />
         <meta
           property="og:description"
-          content="Experience exclusive online gambling at Casino Loot, the best online casino and gambling platform. Enjoy thrilling games, secure play and big wins anytime."
+          content="Experience exclusive online gambling at Casino Loot, the best online casino and gambling platform. Enjoy thrilling games, secure play, and big wins anytime."
         />
         <meta property="og:image" content="https://example.com/og-image.jpg" />
-
         {/* Google Fonts */}
         <link
           href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
           rel="stylesheet"
         />
-
         {/* Canonical Link Tag */}
         <link rel="canonical" href="https://thecasinoloot.com/newest" />
-
         {/* Schema.org JSON-LD Data */}
         <script
           type="application/ld+json"
@@ -118,22 +115,12 @@ export default async function Newest() {
 
         {/* Title and Paragraph Section */}
         <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center sm:text-left bg-gradient-to-r from-blue-500 to-purple-600 p-6 sm:p-8 shadow-xl bg-opacity-80">
-            <h2 className="text-4xl font-sans font-extrabold text-white mb-4">
-              Casinos with High <mark>RTP</mark>
-            </h2>
-            <p className="text-medium text-white font-sans text-justify leading-relaxed shadow-md">
-              We’ve done the hard work for you, so you can sit back, relax, and
-              enjoy your game without worrying about withdrawals or game payouts.
-              Below are some of the finest online casinos available. Click on the
-              name or the image to learn more about each casino. All the casinos
-              listed on this page are fully licensed, ensuring a safe and secure
-              gaming experience. Plus, you can easily withdraw your winnings
-              without hassle. We care about you and want to ensure you have a
-              smooth experience on our site; therefore, we have separated the
-              category section by country. Your presence here motivates us greatly.
-              You can leave us a suggestion or feedback so we can make your
-              experience even better.
+          <div className="text-center py-6 sm:py-8">
+            <h1 className="text-4xl font-sans font-extrabold text-primary mb-4">
+              Casinos with High <mark className="bg-transparent text-blue-600">RTP</mark>
+            </h1>
+            <p className="text-lg text-gray-800 font-sans text-justify leading-relaxed max-w-4xl mx-auto">
+              We’ve done the hard work for you, so you can sit back, relax, and enjoy your game without worrying about withdrawals or game payouts. Below are some of the finest online casinos available. Click on the name or the image to learn more about each casino. All the casinos listed on this page are fully licensed, ensuring a safe and secure gaming experience. Plus, you can easily withdraw your winnings without hassle. We care about you and want to ensure you have a smooth experience on our site; therefore, we have separated the category section by country. Your presence here motivates us greatly. You can leave us a suggestion or feedback so we can make your experience even better.
             </p>
           </div>
         </div>
@@ -155,14 +142,9 @@ export default async function Newest() {
                       width={160}
                       height={160}
                       className="object-cover"
-                      
                     />
                   </div>
                 </Link>
-
-
-
-               
 
                 {/* Casino Details Section */}
                 <div className="flex-grow p-4 flex flex-col justify-between bg-white bg-opacity-90">
@@ -228,7 +210,7 @@ export default async function Newest() {
               </div>
             ))
           ) : (
-            <p className="text-lg text-white">No casinos available at the moment.</p>
+            <p className="text-lg text-gray-800">No casinos available at the moment.</p>
           )}
         </div>
       </div>

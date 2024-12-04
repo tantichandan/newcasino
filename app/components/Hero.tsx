@@ -106,7 +106,7 @@ export default function HeroAndBlog() {
             <section className="pt-16"
 
                 style={{
-                    backgroundImage: "url('/Background7.webp')",
+                    backgroundImage: "url('/Background8.webp')",
                     backgroundSize: "cover",
                     backgroundPosition: "center",
                     backgroundAttachment: "",
