@@ -116,9 +116,9 @@ export default async function Newest() {
         {/* Title and Paragraph Section */}
         <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
           <div className="text-center py-6 sm:py-8">
-            <h1 className="text-4xl font-sans font-extrabold text-primary mb-4">
+            <h3 className="text-4xl font-sans font-extrabold text-primary mb-4">
               Casinos with High <mark className="bg-transparent text-blue-600">RTP</mark>
-            </h1>
+            </h3>
             <p className="text-lg text-gray-800 font-sans text-justify leading-relaxed max-w-4xl mx-auto">
               We’ve done the hard work for you, so you can sit back, relax, and enjoy your game without worrying about withdrawals or game payouts. Below are some of the finest online casinos available. Click on the name or the image to learn more about each casino. All the casinos listed on this page are fully licensed, ensuring a safe and secure gaming experience. Plus, you can easily withdraw your winnings without hassle. We care about you and want to ensure you have a smooth experience on our site; therefore, we have separated the category section by country. Your presence here motivates us greatly. You can leave us a suggestion or feedback so we can make your experience even better.
             </p>
