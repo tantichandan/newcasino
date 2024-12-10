@@ -59,7 +59,7 @@ export default function HeroAndBlog() {
                                 "name": "TheCasinoLoot",
                                 "logo": {
                                     "@type": "ImageObject",
-                                    "url": "https://thecasinoloot/logo.jpg", // Replace with actual logo URL
+                                    "url": "/public/logo-site.png", // Replace with actual logo URL
                                 },
                             },
                         }),
@@ -85,12 +85,12 @@ export default function HeroAndBlog() {
                                 "name": "TheCasinoLoot",
                                 "logo": {
                                     "@type": "ImageObject",
-                                    "url": "https://thecasinoloot.com/logo.jpg", // Replace with actual logo URL
+                                    "url": "/public/logo-site.png", // Replace with actual logo URL
                                 },
                             },
                             "datePublished": "2024-11-16", // Update with actual publication date
                             "dateModified": "2024-11-16", // Update with actual modification date
-                            "image": "https://thecasinoloot.com/og-image.jpg", // Replace with blog image
+                            "image": "/public/logo-site.png", // Replace with blog image
                         }),
                     }}
                 />
