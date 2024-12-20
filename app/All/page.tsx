@@ -64,7 +64,7 @@ export default async function AllProduct() {
       </Head>
 
 
-      <Submenu />
+      
 
       <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-24 lg:px-8">
         <div className="py-2 flex flex-col justify-between items-center mb-12">
@@ -72,11 +72,17 @@ export default async function AllProduct() {
             Join Our Casino for Fun Excitement and Big Win!
           </h2>
 
+          
+
           {/* Justified paragraph */}
-          <p className="py-3 text-lg text-gray-800 font-serif leading-relaxed mb-8 max-w-3xl text-center sm:text-left sm:text-justify">
+          <p className="py-3 text-lg text-gray-800 font-serif leading-relaxed mb-8 max-w-3xl text-justify">
             Finding the best casinos online is a tough job because the number of casinos launched every day is beyond imagination. We want you to enjoy yourself while playing at trustworthy casinos. This site will always guide you in the right direction to help you find your destination. While we promote online gambling, we are also fully aware of the gambling policies. We always encourage you to be aware of your gambling status and to play responsibly.
           </p>
+
+          <Submenu />
         </div>
+
+        
 
         {/* Product Grid */}
         <div className="mt-8 sm:mt-12 lg:mt-16">

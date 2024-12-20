@@ -52,6 +52,10 @@ const config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        // Add custom colors here
+        orchid: "#DA70D6",
+        violet: "#EE82EE",
+        "violet-light": "#F3CFF9",
       },
       borderRadius: {
         lg: "var(--radius)",

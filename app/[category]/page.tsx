@@ -39,17 +39,14 @@ export default async function CategoryPage({ params }: { params: { category: str
     const canonicalUrl = `https://www.thecasinoloot.com/category/${params.category}`;
 
     return (
-        <div className="bg-gradient-to-r from-blue-400 via-indigo-500 to-purple-600 min-h-screen">
+        <div className="min-h-screen">
             <Head>
                 <title>Casinos for {params.category} - TheCasinoLoot</title>
                 <meta
                     name="description"
                     content={`Discover the best casinos for ${params.category}. Enjoy curated options, exclusive bonuses, and safe gambling practices.`}
                 />
-                {/* Canonical link for category page */}
                 <link rel="canonical" href={canonicalUrl} />
-
-                {/* OpenGraph Meta Tags */}
                 <meta property="og:title" content={`Casinos for ${params.category} - TheCasinoLoot`} />
                 <meta
                     property="og:description"
@@ -59,8 +56,6 @@ export default async function CategoryPage({ params }: { params: { category: str
                 <meta property="og:url" content={canonicalUrl} />
                 <meta property="og:type" content="website" />
                 <meta property="og:site_name" content="TheCasinoLoot" />
-
-                {/* Twitter Card Meta Tags */}
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:title" content={`Casinos for ${params.category} - TheCasinoLoot`} />
                 <meta
@@ -73,11 +68,11 @@ export default async function CategoryPage({ params }: { params: { category: str
 
             <div className="mx-auto max-w-7xl px-4 py-8">
                 <SubmenuBar />
-                <div className="text-center mb-8 ">
-                    <h2 className="text-3xl font-bold text-white">
+                <div className="text-center mb-8">
+                    <h2 className="text-3xl font-bold text-gray-700">
                         Casinos for {params.category}
                     </h2>
-                    <p className="leading-6 text-white text-justify py-3 max-w-2xl mx-auto text-sm">
+                    <p className="leading-6 text-gray-600 text-justify py-3 max-w-2xl mx-auto text-sm">
                         We've organized our casino section with your convenience in mind, making it easier for you to find your favorite casino. With our expertly curated selection, you can trust that you're getting the best of the best. So why wait? Join us today and start winning big.
                     </p>
                 </div>
@@ -86,15 +81,13 @@ export default async function CategoryPage({ params }: { params: { category: str
                     {data.map((product) => (
                         <div
                             key={product._id}
-                            className="relative p-4 bg-gray-100 border border-gray-300 shadow-lg transition duration-300 hover:shadow-xl overflow-hidden flex flex-col"
+                            className="relative p-6 bg-gradient-to-r from-pink-200 via-orchid-300 to-orange-200 border border-gray-300 shadow-xl flex flex-col"
                         >
                             <Head>
-                                {/* Canonical link for individual product */}
                                 <link
                                     rel="canonical"
                                     href={`https://www.thecasinoloot.com/product/${product.slug}`}
                                 />
-                                {/* Structured Data (JSON-LD) */}
                                 <script
                                     type="application/ld+json"
                                     dangerouslySetInnerHTML={{
@@ -116,7 +109,7 @@ export default async function CategoryPage({ params }: { params: { category: str
                                 />
                             </Head>
                             <Link href={`/product/${product.slug}`} className="flex-1">
-                                <div className="flex flex-col items-center">
+                                <div className="flex flex-col items-center bg-white/80 p-4 shadow-inner">
                                     <div className="relative w-40 h-40 mb-4">
                                         <Image
                                             src={product.imageUrl}
@@ -126,13 +119,29 @@ export default async function CategoryPage({ params }: { params: { category: str
                                             height={160}
                                         />
                                     </div>
-                                    <h3 className="mt-2 text-md font-semibold text-gray-800">{product.categoryName}</h3>
-                                    <p className="text-md font-bold text-gray-700">{product.name} Casino</p>
-                                    <p className="text-sm font-bold text-gray-700">Read more</p>
-                                    <h4 className="text-sm text-blue-600 font-bold mt-2">
-                                        <span className="text-sm font-medium text-gray-700"> <strong>Bonus:</strong></span> {product.price}
+                                    <h3 className="mt-2 text-md font-semibold text-gray-800">
+                                        {product.categoryName}
+                                    </h3>
+                                    <p className="text-md font-bold text-gray-700">
+                                        {product.name} Casino
+                                    </p>
+                                    <p className="text-sm font-bold text-gray-700">
+                                        Read more
+                                    </p>
+                                    <h4 className="text-sm text-blue-600 font-bold mt-2 text-justify">
+                                        <span className="text-sm font-medium text-gray-700">
+                                            {" "}
+                                            <strong>Bonus:</strong>
+                                        </span>{" "}
+                                        {product.price}
                                     </h4>
-                                    <p className="text-sm font-medium text-gray-700 my-2"> <strong className="text-[maroon] font-extrabold">Features </strong>{product.withdrawal}</p>
+                                    <p className="text-sm font-medium text-gray-700 my-2 text-justify">
+                                        {" "}
+                                        <strong className="text-[maroon] font-extrabold">
+                                            Features:
+                                        </strong>{" "}
+                                        {product.withdrawal}
+                                    </p>
                                 </div>
                             </Link>
                             <div className="flex justify-center mt-4">
@@ -156,16 +165,18 @@ export default async function CategoryPage({ params }: { params: { category: str
 function SubmenuBar() {
     return (
         <div className="flex justify-center mb-8 px-4">
-            <div className="flex flex-wrap w-full max-w-5xl bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 border border-gray-300 rounded-lg overflow-hidden shadow-md justify-center sm:justify-between">
-                {["Aus", "UK", "US", "French", "Free", "CA", "Global", "All", "Blog"].map((item) => (
-                    <Link
-                        key={item}
-                        href={`/${item}`}
-                        className="flex-1 sm:flex-none sm:w-auto text-white text-center py-2 px-4 transition duration-300 ease-in-out transform hover:scale-105 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                    >
-                        {item}
-                    </Link>
-                ))}
+            <div className="flex flex-wrap w-full max-w-5xl bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 border border-gray-300 shadow-md justify-center sm:justify-between">
+                {["Aus", "UK", "US", "French", "Free", "CA", "Global", "All", "Blog"].map(
+                    (item) => (
+                        <Link
+                            key={item}
+                            href={`/${item}`}
+                            className="flex-1 sm:flex-none sm:w-auto text-white text-center py-2 px-4 transition duration-300 ease-in-out transform hover:scale-105 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                        >
+                            {item}
+                        </Link>
+                    )
+                )}
             </div>
         </div>
     );

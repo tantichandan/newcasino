@@ -112,8 +112,8 @@ export default async function ProductPage({ params }: { params: { slug: string }
 
             <Submenu />
 
-            {/* Main Card with Sharp Edges */}
-            <div className="bg-white shadow-xl p-8 w-full max-w-3xl mx-auto">
+            {/* Main Card without Rounded Edges or Hover Effect */}
+            <div className="bg-white shadow-2xl p-8 w-full max-w-3xl mx-auto">
                 {/* Image Section */}
                 <div className="relative mb-6 w-full">
                     <Image
@@ -121,10 +121,10 @@ export default async function ProductPage({ params }: { params: { slug: string }
                         src={data?.imageUrl}
                         layout="responsive"  // Use responsive for fluid resizing
                         width={650}          // Specify the width you want for larger screens
-                        height={800}          // Keep the aspect ratio you desire (e.g., 3:2)
-                        quality={100}         // High quality
+                        height={800}         // Keep the aspect ratio you desire (e.g., 3:2)
+                        quality={100}        // High quality
                         className="mx-auto object-cover w-full h-auto"
-                        priority={true}       // If this is a primary image, make it load first
+                        priority={true}      // If this is a primary image, make it load first
                     />
                 </div>
 
@@ -211,7 +211,7 @@ export default async function ProductPage({ params }: { params: { slug: string }
                 {/* About Section */}
                 <div className="py-8 border-t border-gray-300 mt-6">
                     <div className="text-center">
-                        <h2 className="text-2xl  font-semibold mb-4">About {data.name} Casino</h2>
+                        <h2 className="text-2xl font-semibold mb-4">About {data.name} Casino</h2>
                         <p className="text-sm text-justify text-gray-600">{data.description}</p>
                     </div>
                 </div>

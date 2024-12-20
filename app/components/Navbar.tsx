@@ -143,9 +143,9 @@ export default function Navbar() {
           <Link href="/email">
             <Button
               variant="outline"
-              className="flex items-center justify-center gap-x-2 px-4 py-2 bg-gradient-to-r from-blue-500 via-purple-600 to-pink-500 text-white shadow-lg hover:scale-105 transition-transform duration-300"
+              className="flex items-center justify-center gap-x-2 px-4 py-2 bg-gradient-to-r from-blue-500 via-purple-600 to-pink-500 text-white shadow-lg hover:scale-105 transition-transform duration-300 sm:px-4 sm:py-2 sm:text-base text-sm px-2 py-1"
             >
-              <MessageSquare className="h-6 w-6" />
+              <MessageSquare className="sm:h-4 sm:w-4 h-4 w-4" />
               <span className="text-sm sm:text-base font-semibold">Contact Us</span>
             </Button>
           </Link>

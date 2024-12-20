@@ -6,13 +6,14 @@ export default function Home() {
     <div
       className="home-container"
       style={{
-        backgroundImage: "url('/Background2.jpeg')",
+        backgroundImage: "url('')",
         backgroundSize: "cover",
         backgroundPosition: "center",
         minHeight: "100vh",
       }}
     >
       <Hero />
+      <Newest />
       
     </div>
   );

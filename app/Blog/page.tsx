@@ -19,10 +19,10 @@ export default async function Page() {
             <div
                 className="absolute inset-0"
                 style={{
-                    backgroundImage: "url(/Background8.webp)",
+                    backgroundImage: "url(/bg1.jpeg)",
                     backgroundSize: "cover",
                     backgroundPosition: "center",
-                    opacity: 0.4, // Slightly lighter opacity for a better contrast
+                    opacity: 0.4, // Slightly lighter opacity for better contrast
                     zIndex: -1,
                 }}
             ></div>
@@ -121,13 +121,12 @@ export default async function Page() {
                                         <div>
                                             <h3
                                                 className="text-2xl font-bold font-sans leading-8 tracking-tight text-gray-900"
-                                                
                                             >
                                                 {post.title}
                                             </h3>
                                         </div>
                                         <p
-                                            className="prose max-w-none text-gray-700 font-sans line-clamp-3"
+                                            className="prose max-w-none font-semibold text-gray-700 font-sans line-clamp-3"
                                         >
                                             {post.overview}
                                         </p>
