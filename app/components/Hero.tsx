@@ -111,8 +111,7 @@ export default function HeroAndBlog() {
 
                         We’ve done the hard work for you, so you can sit back, relax, and
             enjoy your game without worrying about withdrawals or game payouts.
-            Below are some of the finest online casinos available. Click on the
-            name or the image to learn more about each casino.
+            Below are some of the finest online casinos available. Click on the casino to learn more.
                     </p>
 
 
