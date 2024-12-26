@@ -59,7 +59,7 @@ export default function HeroAndBlog() {
                     {/* Right Image Section */}
                     <div className="lg:w-1/2 flex justify-center">
                         <img
-                            src="/hero.jpeg" // Replace with your actual image URL
+                            src="/new.jpeg" // Replace with your actual image URL
                             alt="Casino Loot Hero"
                             className="w-full max-w-sm lg:max-w-md"
                         />
