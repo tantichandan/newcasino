@@ -19,7 +19,7 @@ interface Product {
 }
 
 async function getData(): Promise<Product[]> {
-  const query = `*[_type == "product"][0...10] | order(_createdAt desc) {
+  const query = `*[_type == "product"][0...12] | order(_createdAt desc) {
     _id,
     price,
     name,
