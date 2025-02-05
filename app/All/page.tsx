@@ -83,10 +83,14 @@ export default function Newest() {
     setFilteredCasinos(filtered);
   }, [searchTerm, selectedRegion, casinos]);
 
-  const uniqueRegions = [
-    "All",
-    ...new Set(casinos.map((casino) => casino.categoryName)),
-  ];
+  const uniqueRegions = ["All"];
+casinos.forEach((casino) => {
+  if (!uniqueRegions.includes(casino.categoryName)) {
+    uniqueRegions.push(casino.categoryName);
+  }
+});
+
+  
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-900 to-gray-800">
