@@ -1,0 +1,160 @@
+@keyframes float {
+    0% {
+      transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+      transform: translateY(-20px) rotate(5deg);
+    }
+    100% {
+      transform: translateY(0px) rotate(0deg);
+    }
+  }
+  
+  @keyframes floatReverse {
+    0% {
+      transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+      transform: translateY(-15px) rotate(-5deg);
+    }
+    100% {
+      transform: translateY(0px) rotate(0deg);
+    }
+  }
+  
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+      opacity: 0.5;
+    }
+    50% {
+      transform: scale(1.05);
+      opacity: 0.7;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 0.5;
+    }
+  }
+  
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .hero-gradient {
+    background: linear-gradient(to bottom, #000000, #1a1a1a);
+    position: relative;
+  }
+  
+  .floating-element {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  .floating-reverse {
+    animation: floatReverse 7s ease-in-out infinite;
+  }
+  
+  .spinning-slow {
+    animation: spin 12s linear infinite;
+  }
+  
+  .hero-card {
+    transform-style: preserve-3d;
+    transition: transform 0.3s ease;
+  }
+  
+  .hero-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .region-card {
+    transition: all 0.3s ease;
+  }
+  
+  .region-card:hover {
+    transform: translateY(-5px) scale(1.02);
+  }
+  
+  /* Animated Playing Card */
+  .floating-card {
+    position: absolute;
+    width: 60px;
+    height: 84px;
+    background: linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    animation: float 8s ease-in-out infinite;
+  }
+  
+  .floating-card::before {
+    content: '♠';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 24px;
+    color: #000;
+  }
+  
+  /* Animated Heart */
+  .floating-heart {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background: linear-gradient(45deg, #ff6b6b, #ffd93d);
+    transform: rotate(45deg);
+    animation: floatReverse 6s ease-in-out infinite;
+  }
+  
+  .floating-heart::before,
+  .floating-heart::after {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: inherit;
+  }
+  
+  .floating-heart::before {
+    left: -15px;
+  }
+  
+  .floating-heart::after {
+    top: -15px;
+  }
+  
+  /* Animated Spade */
+  .floating-spade {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(45deg, #2d3436, #636e72);
+    border-radius: 50%;
+    animation: float 7s ease-in-out infinite;
+  }
+  
+  .floating-spade::before {
+    content: '♠';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 24px;
+    color: #fff;
+  }
+  
+  /* Animated Diamond */
+  .floating-diamond {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(45deg, #ff7675, #d63031);
+    transform: rotate(45deg);
+    animation: floatReverse 9s ease-in-out infinite;
+  }

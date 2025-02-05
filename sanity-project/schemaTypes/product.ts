@@ -35,30 +35,56 @@ export default {
 
     {
       name: 'price',
-      type: 'string',
-      title: 'Price product'
+      type: 'array',
+      title: 'Price product',
+      of: [
+        {
+          type: 'block',
+        }
+      ]
     },
 
     {
       name: 'payments',
-      type: 'string',
-      title: 'Payments'
+      type: 'array',
+      title: 'Payments',
+      of: [
+        {
+          type: 'block',
+        }
+      ]
     },
     {
       name: 'countries',
-      type: 'string',
-      title: 'Countries'
+      type: 'array',
+      title: 'Countries',
+      of: [
+        {
+          type: 'block',
+        }
+      ]
     },
     {
       name: 'language',
       type: 'string',
-      title: 'language'
+      title: 'language',
+      of: [
+        { 
+          type: 'block',
+        }
+      ]
     },
 
     {
       name: 'withdrawal',
-      type: 'string',
-      title: 'Withdrawal'
+      type: 'array',
+      title: 'Withdrawal',
+
+      of: [
+        {
+          type: 'block',
+
+        }]
     },
 
 

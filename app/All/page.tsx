@@ -1,165 +1,299 @@
+"use client";
+
 import Link from "next/link";
-import { simplifiedProduct } from "../interface";
+import {
+  ChevronRight,
+  Diamond,
+  Star,
+  ExternalLink,
+  BookOpen,
+  Search,
+  Filter,
+} from "lucide-react";
 import { client } from "../lib/sanity";
 import Image from "next/image";
 import Head from "next/head";
-import Submenu from "../components/Submenu";
+import { PortableText } from "next-sanity";
+import "../styles/hero.css";
+import { useState, useEffect } from "react";
 
-// Fetch data from the Sanity client
-async function getData() {
-  const query = `*[_type == "product"][0...50]{
+interface Product {
+  _id: string;
+  price: any;
+  name: string;
+  click: string;
+  slug: string;
+  categoryName: string;
+  imageUrl: string;
+  withdrawal: any;
+  payments: string;
+  language: string;
+  countries: string;
+}
+
+async function getData(): Promise<Product[]> {
+  const query = `*[_type == "product"][0...50] | order(_createdAt desc) {
     _id,
     price,
     name,
+    click,
+    withdrawal,
+    payments,
+    countries,
+    language,
     "slug": slug.current,
     "categoryName": category->name,
     "imageUrl": images[0].asset->url,
-    click,
-    withdrawal
   }`;
 
-  const data = await client.fetch(query);
-  return data;
+  try {
+    return await client.fetch(query);
+  } catch (error) {
+    console.error("Failed to fetch products:", error);
+    return [];
+  }
 }
 
+export default function Newest() {
+  const [casinos, setCasinos] = useState<Product[]>([]);
+  const [filteredCasinos, setFilteredCasinos] = useState<Product[]>([]);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedRegion, setSelectedRegion] = useState("All");
+  const [isLoading, setIsLoading] = useState(true);
 
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await getData();
+      setCasinos(data);
+      setFilteredCasinos(data);
+      setIsLoading(false);
+    };
+    fetchData();
+  }, []);
 
-export default async function AllProduct() {
-  const data: simplifiedProduct[] = await getData();
-  const searchTerm = ""; // Placeholder for dynamic search term
+  useEffect(() => {
+    const filtered = casinos.filter((casino) => {
+      const matchesSearch = casino.name
+        .toLowerCase()
+        .includes(searchTerm.toLowerCase());
+      const matchesRegion =
+        selectedRegion === "All" || casino.categoryName === selectedRegion;
+      return matchesSearch && matchesRegion;
+    });
+    setFilteredCasinos(filtered);
+  }, [searchTerm, selectedRegion, casinos]);
 
-  const canonicalUrl = "https://www.thecasinoloot.com/products";
+  const uniqueRegions = [
+    "All",
+    ...new Set(casinos.map((casino) => casino.categoryName)),
+  ];
 
   return (
-    <div className="bg-soft-gradient">
+    <div className="min-h-screen bg-gradient-to-b from-gray-900 to-gray-800">
       <Head>
-        <title>{searchTerm ? `${searchTerm} - TheCasinoLoot` : "TheCasinoLoot - Best Online Casino & Gambling Platform"}</title>
+        <title>TheCasinoLoot - Best Online Exclusive Gambling Platform</title>
         <meta
           name="description"
-          content="Join The Casino Loot, the best online casino for exciting games and secure online gambling."
+          content="Experience exclusive online gambling at Casino Loot, the best online casino and gambling platform. Enjoy thrilling games, secure play, and big wins anytime."
         />
-        {/* Canonical link for the main page */}
-        <link rel="canonical" href={canonicalUrl} />
-
-        {/* OpenGraph Meta Tags */}
-        <meta property="og:title" content="TheCasinoLoot - Best Online Casino & Gambling Platform" />
+        <meta
+          property="og:title"
+          content="TheCasinoLoot - Best Online Exclusive Gambling Platform"
+        />
         <meta
           property="og:description"
-          content="Join The Casino Loot, the best online casino for exciting games and secure online gambling."
+          content="Experience exclusive online gambling at Casino Loot, the best online casino and gambling platform. Enjoy thrilling games, secure play, and big wins anytime."
         />
-        <meta property="og:image" content="https://www.thecasinoloot.com/your-image.jpg" />
-        <meta property="og:url" content={canonicalUrl} />
-        <meta property="og:type" content="website" />
-        <meta property="og:site_name" content="TheCasinoLoot" />
-
-        {/* Twitter Card Meta Tags */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="TheCasinoLoot - Best Online Casino & Gambling Platform" />
-        <meta
-          name="twitter:description"
-          content="Join The Casino Loot, the best online casino for exciting games and secure online gambling."
+        <meta property="og:image" content="https://example.com/og-image.jpg" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+          rel="stylesheet"
         />
-        <meta name="twitter:image" content="https://www.thecasinoloot.com/your-image.jpg" />
-        <meta name="twitter:site" content="@YourTwitterHandle" />
+        <link rel="canonical" href="https://thecasinoloot.com/newest" />
       </Head>
 
-
-      
-
-      <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-24 lg:px-8">
-        <div className="py-2 flex flex-col justify-between items-center mb-12">
-          <h2 className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 mb-6">
-            Join Our Casino for Fun Excitement and Big Win!
-          </h2>
-
-          
-
-          {/* Justified paragraph */}
-          <p className="py-3 text-lg text-gray-800 font-serif leading-relaxed mb-8 max-w-3xl text-justify">
-            Finding the best casinos online is a tough job because the number of casinos launched every day is beyond imagination. We want you to enjoy yourself while playing at trustworthy casinos. This site will always guide you in the right direction to help you find your destination. While we promote online gambling, we are also fully aware of the gambling policies. We always encourage you to be aware of your gambling status and to play responsibly.
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="text-center mb-12">
+          <div className="flex items-center justify-center gap-3 mb-3">
+            <Diamond className="h-10 w-10 text-amber-400" />
+            <h3 className="text-4xl font-bold text-white">All the casinos</h3>
+            <Diamond className="h-10 w-10 text-amber-400" />
+          </div>
+          <p className="text-gray-300 text-lg mt-2">
+            Highest RTP & Best Rewards
           </p>
-
-          <Submenu />
         </div>
 
-        
-
-        {/* Product Grid */}
-        <div className="mt-8 sm:mt-12 lg:mt-16">
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            {data.map((product) => (
-              <div key={product._id} className="relative flex flex-col bg-gray-400 shadow-lg border border-gray-300 overflow-hidden items-center">
-                <Head>
-                  {/* Canonical tag for individual product pages */}
-                  <link
-                    rel="canonical"
-                    href={`https://www.thecasinoloot.com/product/${product.slug}`}
-                  />
-                  {/* Structured Data (JSON-LD) */}
-                  <script
-                    type="application/ld+json"
-                    dangerouslySetInnerHTML={{
-                      __html: JSON.stringify({
-                        "@context": "https://schema.org",
-                        "@type": "Product",
-                        "name": product.name,
-                        "description": "Best casino experience with great bonuses and games",
-                        "image": product.imageUrl,
-                        "offers": {
-                          "@type": "Offer",
-                          "priceCurrency": "USD",
-                          "price": product.price,
-                          "url": `https://www.thecasinoloot.com/product/${product.slug}`,
-                          "availability": "https://schema.org/InStock",
-                        },
-                      }),
-                    }}
-                  />
-                </Head>
-                <Link href={`/product/${product.slug}`} className="block">
-                  {/* Image Container with Margin on top */}
-                  <div className="relative w-40 h-40 mb-4 mt-2">
-                    <Image
-                      src={product.imageUrl}
-                      alt={`${product.name} image`}
-                      className="object-cover"
-                      width={160}
-                      height={160}
-                    />
-                  </div>
-                </Link>
-
-                {/* Content with Soft Background */}
-                <div className="px-4 py-6 text-center flex-grow bg-gray-100 bg-opacity-80">
-                  <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                    <Link href={`/product/${product.slug}`} className="hover:underline">
-                      {product.name} Casino
-                    </Link>
-                  </h3>
-                  <p className="text-gray-600 text-base mb-4">{product.categoryName}</p>
-                  <p className="text-sm text-gray-700 mb-4">
-                    Offer <span className="font-bold text-primary">{product.price}</span>
-                  </p>
-                </div>
-
-                {/* Product Info with Soft Background */}
-                <div className="px-4 py-3 bg-gray-100 bg-opacity-80 text-justify text-sm text-gray-800 space-y-2 flex-grow-0">
-                  <p><strong className="text-[#006400] font-extrabold">General:</strong> {product.withdrawal}</p>
-                </div>
-
-                {/* Start Playing Button */}
-                <div className="px-4 py-4 mt-auto text-center">
-                  <Link href={product.click} target="_blank" className="inline-block w-full">
-                    <button className="w-full px-4 py-2 bg-gradient-to-r from-yellow-500 via-red-500 to-pink-500 text-white shadow-md hover:shadow-lg hover:bg-yellow-400 transition duration-300">
-                      Start Playing
-                    </button>
-                  </Link>
-                </div>
-              </div>
-            ))}
+        {/* Search and Filter Section */}
+        <div className="mb-8 bg-white/95 backdrop-blur-sm rounded-xl p-6 border border-gray-100 shadow-lg">
+          <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
+            <div className="relative flex-1 w-full">
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
+              <input
+                type="text"
+                placeholder="Search casinos..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="w-full pl-10 pr-4 py-2.5 rounded-lg border border-gray-200 focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 transition-all text-gray-900 placeholder:text-gray-500"
+              />
+            </div>
+            <div className="flex items-center gap-2 w-full md:w-auto">
+              <Filter className="h-5 w-5 text-gray-600" />
+              <select
+                value={selectedRegion}
+                onChange={(e) => setSelectedRegion(e.target.value)}
+                className="flex-1 md:flex-none px-4 py-2.5 rounded-lg border border-gray-200 focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 transition-all text-gray-900 cursor-pointer"
+              >
+                {uniqueRegions.map((region) => (
+                  <option key={region} value={region}>
+                    {region}
+                  </option>
+                ))}
+              </select>
+            </div>
           </div>
         </div>
-      </div>
+
+        <div className="bg-white/95 backdrop-blur-sm rounded-2xl shadow-2xl overflow-hidden border border-gray-100">
+          <div className="overflow-x-auto">
+            <table className="w-full min-w-[800px]">
+              <thead>
+                <tr className="bg-gray-50/80">
+                  <th className="px-8 py-6 text-left text-sm font-semibold text-gray-600 w-48"></th>
+                  <th className="px-8 py-6 text-left text-sm font-semibold text-gray-600">
+                    Casino Name
+                  </th>
+                  <th className="px-8 py-6 text-left text-sm font-semibold text-gray-600">
+                    Region
+                  </th>
+                  <th className="px-8 py-6 text-left text-sm font-semibold text-gray-600">
+                    Features
+                  </th>
+                  <th className="px-8 py-6 text-left text-sm font-semibold text-gray-600 w-44">
+                    Bonus
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {isLoading ? (
+                  <tr>
+                    <td colSpan={5} className="px-8 py-12 text-center">
+                      <div className="flex items-center justify-center space-x-2">
+                        <div className="w-4 h-4 rounded-full bg-amber-500 animate-bounce" />
+                        <div className="w-4 h-4 rounded-full bg-amber-500 animate-bounce [animation-delay:-.3s]" />
+                        <div className="w-4 h-4 rounded-full bg-amber-500 animate-bounce [animation-delay:-.5s]" />
+                      </div>
+                    </td>
+                  </tr>
+                ) : filteredCasinos.length > 0 ? (
+                  filteredCasinos.map((product, index) => (
+                    <tr
+                      key={product._id}
+                      className={`
+                        ${index % 2 === 0 ? "bg-white" : "bg-gray-50/50"}
+                        border-b border-gray-100
+                      `}
+                    >
+                      <td className="px-8 py-6">
+                        <Link href={`/product/${product.slug}`}>
+                          <div className="relative w-40 h-24 bg-white rounded-xl overflow-hidden shadow-sm">
+                            <Image
+                              src={product.imageUrl}
+                              alt={`${product.name} Casino`}
+                              fill
+                              sizes="160px"
+                              className="object-contain p-2"
+                              priority={false}
+                            />
+                          </div>
+                        </Link>
+                      </td>
+                      <td className="px-8 py-6">
+                        <span className="text-gray-900 font-semibold text-lg">
+                          {product.name}
+                        </span>
+                      </td>
+                      <td className="px-8 py-6">
+                        <span className="inline-flex items-center px-3 py-1.5 rounded-full text-xs font-medium bg-blue-50 text-blue-700 border border-blue-100">
+                          {product.categoryName}
+                        </span>
+                      </td>
+
+                      <td className="px-8 py-6">
+                        <div className="text-gray-600 font-medium text-sm">
+                          {product.withdrawal ? (
+                            <PortableText
+                              value={
+                                Array.isArray(product.withdrawal)
+                                  ? product.withdrawal
+                                  : [product.withdrawal]
+                              }
+                              components={{
+                                list: {
+                                  bullet: ({ children }) => (
+                                    <ul className="list-disc ml-5">
+                                      {children}
+                                    </ul>
+                                  ),
+                                },
+                                listItem: {
+                                  bullet: ({ children }) => <li>{children}</li>,
+                                },
+                              }}
+                            />
+                          ) : (
+                            <p>No withdrawal information available.</p>
+                          )}
+                        </div>
+                      </td>
+
+                      <td className="px-8 py-6">
+                        <div className="text-amber-600 font-semibold text-base">
+                          {Array.isArray(product.price) ? (
+                            <PortableText value={product.price} />
+                          ) : (
+                            <ul>
+                              <li>{product.price}</li>
+                            </ul>
+                          )}
+                        </div>
+                      </td>
+                      <td className="px-8 py-6">
+                        <div className="flex flex-col gap-2.5">
+                          <Link
+                            href={product.click}
+                            target="_blank"
+                            className="flex items-center justify-center gap-2 px-5 py-2.5 bg-amber-500 hover:bg-amber-600 text-white text-sm font-semibold rounded-lg transition-colors"
+                          >
+                            Play Now
+                            <ExternalLink className="w-4 h-4" />
+                          </Link>
+                          <Link
+                            href={`/product/${product.slug}`}
+                            className="flex items-center justify-center gap-2 px-5 py-2.5 bg-gray-50 hover:bg-gray-100 text-gray-700 text-sm font-medium rounded-lg transition-colors border border-gray-200"
+                          >
+                            Review
+                            <BookOpen className="w-4 h-4" />
+                          </Link>
+                        </div>
+                      </td>
+                    </tr>
+                  ))
+                ) : (
+                  <tr>
+                    <td
+                      colSpan={5}
+                      className="px-8 py-12 text-center text-gray-500"
+                    >
+                      No casinos found matching your search criteria.
+                    </td>
+                  </tr>
+                )}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </main>
     </div>
   );
 }

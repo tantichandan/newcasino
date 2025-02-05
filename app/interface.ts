@@ -1,14 +1,14 @@
 export interface simplifiedProduct {
     _id: string;
     imageUrl: string;
-    price: string;
+    price: any;
     slug: string;
     categoryName: string;
     name: string;
     click: string;
     categorydescription: string;
     payments: string;
-    withdrawal: string;
+    withdrawal: any;
     bonus: string;
     language: string;
     countries: string;
@@ -36,6 +36,12 @@ export interface simplifiedProduct {
   export interface post {
     title: string;
     overview: string;
+    estimatedReadTime: number;
+    authorName: string;
+    authorBio: string;
+    authorAvatar: any;
+    categoryName: string;
+    images: string;
     content: any,
     _id: string,
     slug: {

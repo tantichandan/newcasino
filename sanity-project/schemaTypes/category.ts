@@ -11,9 +11,16 @@ export default {
       },
 
       {
-        name: 'categorydescription',
-        type: 'string',
-        title: 'Categorydescription'
+        name: 'categoryDescription',
+        type: 'array',
+        title: 'Content',
+        of: [
+          {
+            type: 'block',
+  
+          },
+  
+        ]
       },
       
     ]

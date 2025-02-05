@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot Integration</title>
+    <style>
+        .chat-frame {
+            position: fixed;
+            bottom: 0px;
+            right: 0px;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+
+    <script>
+        const iframe = document.createElement("iframe");
+
+        iframe.src = "http://localhost:3000/chatbot";
+        iframe.classList.add("chat-frame");
+        document.body.appendChild(iframe);
+
+        window.addEventListener("message", (e) => {
+            if (e.origin !== "http://localhost:3000") return;
+            let dimensions = JSON.parse(e.data);
+            iframe.width = dimensions.width;
+            iframe.height = dimensions.height;
+            iframe.contentWindow.postMessage("99e9ec0c-f2db-4a13-9961-d2859a064816", "http://localhost:3000/");
+        });
+    </script>
+
+</body>
+</html>

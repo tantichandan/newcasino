@@ -1,18 +1,26 @@
 import Link from "next/link";
-import { ChevronRight } from "lucide-react";
+import {
+  ChevronRight,
+  Diamond,
+  Star,
+  ExternalLink,
+  BookOpen,
+} from "lucide-react";
 import { client } from "../lib/sanity";
 import Image from "next/image";
 import Head from "next/head";
+import { PortableText } from "next-sanity";
+import "../styles/hero.css";
 
 interface Product {
   _id: string;
-  price: string;
+  price: any;
   name: string;
   click: string;
   slug: string;
   categoryName: string;
   imageUrl: string;
-  withdrawal: string;
+  withdrawal: any;
   payments: string;
   language: string;
   countries: string;
@@ -45,7 +53,7 @@ export default async function Newest() {
   const data = await getData();
 
   return (
-    <div className="py-16">
+    <div className="hero-gradient min-h-screen">
       <Head>
         <title>TheCasinoLoot - Best Online Exclusive Gambling Platform</title>
         <meta
@@ -62,92 +70,152 @@ export default async function Newest() {
         />
         <meta property="og:image" content="https://example.com/og-image.jpg" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
           rel="stylesheet"
         />
         <link rel="canonical" href="https://thecasinoloot.com/newest" />
       </Head>
 
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center mb-8 flex-col sm:flex-row">
-          <Link
-            href="/All"
-            className="bg-blue-600 text-white font-bold py-2 px-6 shadow-md hover:bg-blue-700 transition-all duration-300 flex items-center gap-x-1"
-          >
-            View All Casinos <ChevronRight />
-          </Link>
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="text-center mb-12">
+          <div className="flex items-center justify-center gap-3 mb-3">
+            <Diamond className="h-10 w-10 text-amber-400" />
+            <h3 className="text-4xl font-bold text-white">Premium Casinos</h3>
+            <Diamond className="h-10 w-10 text-amber-400" />
+          </div>
+          <p className="text-gray-300 text-lg mt-2">
+            Highest RTP & Best Rewards
+          </p>
         </div>
 
-        <div className="text-center py-6 sm:py-8">
-          <h3 className="text-4xl font-sans font-extrabold text-primary mb-4">
-            Casinos with High{" "}
-            <mark className="bg-transparent text-blue-600">RTP</mark>
-          </h3>
+        <div className="bg-white/95 backdrop-blur-sm rounded-2xl shadow-2xl overflow-hidden border border-gray-100">
+          <div className="overflow-x-auto">
+            <table className="w-full min-w-[800px]">
+              <thead>
+                <tr className="bg-gray-50/80">
+                  <th className="px-8 py-6 text-left text-sm font-semibold text-gray-600 w-48"></th>
+                  <th className="px-8 py-6 text-left text-sm font-semibold text-gray-600">
+                    Casino Name
+                  </th>
+                  <th className="px-8 py-6 text-left text-sm font-semibold text-gray-600">
+                    Region
+                  </th>
+                  <th className="px-8 py-6 text-left text-sm font-semibold text-gray-600">
+                    Features
+                  </th>
+                  <th className="px-8 py-6 text-left text-sm font-semibold text-gray-600 w-44">
+                    Bonus
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {data.length > 0 ? (
+                  data.map((product, index) => (
+                    <tr
+                      key={product._id}
+                      className={`
+                        ${index % 2 === 0 ? "bg-white" : "bg-gray-50/50"}
+                        border-b border-gray-100
+                      `}
+                    >
+                      <td className="px-8 py-6">
+                        <Link href={`/product/${product.slug}`}>
+                          <div className="relative w-40 h-24 bg-white rounded-xl overflow-hidden shadow-sm">
+                            <Image
+                              src={product.imageUrl}
+                              alt={`${product.name} Casino`}
+                              fill
+                              sizes="160px"
+                              className="object-contain p-2"
+                              priority={false}
+                            />
+                          </div>
+                        </Link>
+                      </td>
+                      <td className="px-8 py-6">
+                        <span className="text-gray-900 font-semibold text-lg">
+                          {product.name}
+                        </span>
+                      </td>
+                      <td className="px-8 py-6">
+                        <span className="inline-flex items-center px-3 py-1.5 rounded-full text-xs font-medium bg-blue-50 text-blue-700 border border-blue-100">
+                          {product.categoryName}
+                        </span>
+                      </td>
+                      <td className="px-8 py-6">
+                        <div className="text-gray-600 font-medium text-sm">
+                          {product.withdrawal ? (
+                            <PortableText
+                              value={
+                                Array.isArray(product.withdrawal)
+                                  ? product.withdrawal
+                                  : [product.withdrawal]
+                              }
+                              components={{
+                                list: {
+                                  bullet: ({ children }) => (
+                                    <ul className="list-disc ml-5">
+                                      {children}
+                                    </ul>
+                                  ),
+                                },
+                                listItem: {
+                                  bullet: ({ children }) => <li>{children}</li>,
+                                },
+                              }}
+                            />
+                          ) : (
+                            <p>No withdrawal information available.</p>
+                          )}
+                        </div>
+                      </td>
+                      <td className="px-8 py-6">
+                        <div className="text-amber-600 font-semibold text-base">
+                          {Array.isArray(product.price) ? (
+                            <PortableText value={product.price} />
+                          ) : (
+                            <ul>
+                              <li>{product.price}</li>
+                            </ul>
+                          )}
+                        </div>
+                      </td>
+                      <td className="px-8 py-6">
+                        <div className="flex flex-col gap-2.5">
+                          <Link
+                            href={product.click}
+                            target="_blank"
+                            className="flex items-center justify-center gap-2 px-5 py-2.5 bg-amber-500 hover:bg-amber-600 text-white text-sm font-semibold rounded-lg transition-colors"
+                          >
+                            Play Now
+                            <ExternalLink className="w-4 h-4" />
+                          </Link>
+                          <Link
+                            href={`/product/${product.slug}`}
+                            className="flex items-center justify-center gap-2 px-5 py-2.5 bg-gray-50 hover:bg-gray-100 text-gray-700 text-sm font-medium rounded-lg transition-colors border border-gray-200"
+                          >
+                            Review
+                            <BookOpen className="w-4 h-4" />
+                          </Link>
+                        </div>
+                      </td>
+                    </tr>
+                  ))
+                ) : (
+                  <tr>
+                    <td
+                      colSpan={5}
+                      className="px-8 py-12 text-center text-gray-500"
+                    >
+                      No casinos available at the moment.
+                    </td>
+                  </tr>
+                )}
+              </tbody>
+            </table>
+          </div>
         </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          {data.length > 0 ? (
-            data.map((product) => (
-              <div
-                key={product._id}
-                className="bg-gradient-to-r from-pink-200 to-gray-200 text-white shadow-lg font-popins overflow-hidden flex flex-col items-center"
-              >
-                <Link href={`/product/${product.slug}`}>
-                  <div className="relative w-40 h-40 mb-4 mt-2 overflow-hidden shadow-lg">
-                    <Image
-                      src={product.imageUrl}
-                      alt={`Image of ${product.name} Casino`}
-                      layout="responsive"
-                      width={160}
-                      height={160}
-                      className="object-cover"
-                    />
-                  </div>
-                </Link>
-
-                <div className="flex-grow p-4 flex flex-col justify-between bg-white bg-opacity-90">
-                  <Link href={`/product/${product.slug}`}>
-                    <h3 className="text-lg font-semibold text-primary hover:text-blue-600 transition-colors">
-                      {product.name} Casino
-                    </h3>
-                  </Link>
-                  <p className="text-sm text-gray-800">{product.categoryName}</p>
-                  <p className="text-md font-extrabold text-gray-900 mt-1">
-                    Bonus:{" "}
-                    <span className="text-blue-600 font-semibold text-justify">
-                      {product.price}
-                    </span>
-                  </p>
-                  <div className="mt-2">
-                    <div className="text-sm text-gray-800">
-                      <strong className="text-[#006400] font-extrabold text-justify">
-                        Features:
-                      </strong>{" "}
-                      <span className="text-sm font-medium text-justify text-gray-700 my-2">
-                        {product.withdrawal}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-                <div className="p-4 w-full flex justify-center">
-                  <Link
-                    className="bg-blue-600 text-white py-2 px-4 text-md w-full text-center hover:bg-blue-700 transition-all duration-300"
-                    href={product.click}
-                    target="_blank"
-                    aria-label={`Start playing at ${product.name} Casino`}
-                  >
-                    Start Playing
-                  </Link>
-                </div>
-              </div>
-            ))
-          ) : (
-            <p className="text-lg text-gray-800">
-              No casinos available at the moment.
-            </p>
-          )}
-        </div>
-      </div>
+      </main>
     </div>
   );
 }
