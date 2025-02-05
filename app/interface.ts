@@ -40,8 +40,8 @@ export interface simplifiedProduct {
     authorName: string;
     authorBio: string;
     authorAvatar: any;
-    categoryName: string;
-    images: string;
+    categoryName: any;
+    imageUrl: any;
     content: any,
     _id: string,
     slug: {
