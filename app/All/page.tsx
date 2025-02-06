@@ -120,7 +120,7 @@ casinos.forEach((casino) => {
         <div className="text-center mb-12">
           <div className="flex items-center justify-center gap-3 mb-3">
             <Diamond className="h-10 w-10 text-amber-400" />
-            <h3 className="text-4xl font-bold text-white">Best Online Casinos: Curated Listings with High RTP & Expert Reviews</h3>
+            <h3 className="text-4xl font-bold text-white">Best Online Casinos: Let's dive deep, and find the best site you can enjoy playing</h3>
             <Diamond className="h-10 w-10 text-amber-400" />
           </div>
           <p className="text-gray-300 text-lg mt-2">
