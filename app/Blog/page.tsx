@@ -68,12 +68,140 @@ export default async function BlogPage() {
       className={`min-h-screen bg-gradient-to-b from-gray-900 to-gray-800 ${inter.className}`}
     >
       <Head>
-        <title>Casino Insights & Expert Guides | TheCasinoLoot Blog</title>
+        {/* Primary Meta Tags */}
+        <title>
+          Casino Blog: Expert Guides & Industry Insights 2025 | TheCasinoLoot
+        </title>
         <meta
           name="description"
-          content="Discover expert casino strategies, in-depth guides, and industry insights. Stay ahead with our professional analysis and tips."
+          content="Discover expert casino strategies, in-depth guides, and industry insights. Get professional tips, honest reviews, and latest updates from casino experts."
         />
+        <meta
+          name="keywords"
+          content="casino blog, casino guides, gambling tips, casino reviews, casino strategy, online gambling, casino news, expert casino advice"
+        />
+
+        {/* Technical SEO */}
+        <meta name="robots" content="index, follow" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="theme-color" content="#000000" />
+
+        {/* Canonical URL */}
         <link rel="canonical" href="https://thecasinoloot.com/blog" />
+
+        {/* Open Graph / Facebook */}
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="TheCasinoLoot" />
+        <meta
+          property="og:title"
+          content={`Casino Blog: Expert Guides & Industry Insights 2025 | TheCasinoLoot`}
+        />
+        <meta
+          property="og:description"
+          content="Discover expert casino strategies, in-depth guides, and industry insights. Get professional tips, honest reviews, and latest updates from casino experts."
+        />
+        <meta property="og:url" content="https://thecasinoloot.com/Blog" />
+        <meta
+          property="og:image"
+          content="https://thecasinoloot.com/blog-og-image.jpg"
+        />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:locale" content="en_US" />
+
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content={`Casino Blog: Expert Guides & Industry Insights 2025`}
+        />
+        <meta
+          name="twitter:description"
+          content="Expert casino strategies, guides, and industry insights. Professional tips and honest reviews from casino experts."
+        />
+        <meta
+          name="twitter:image"
+          content="https://thecasinoloot.com/twitter-card.jpg"
+        />
+
+        {/* Alternate Languages */}
+        <link
+          rel="alternate"
+          hrefLang="x-default"
+          href="https://thecasinoloot.com/blog"
+        />
+        <link
+          rel="alternate"
+          hrefLang="en"
+          href="https://thecasinoloot.com/Blog"
+        />
+
+        {/* Preload Critical Resources */}
+        <link
+          rel="preload"
+          href="https://fonts.googleapis.com/css2?family=Playfair_Display:wght@400;700&family=Inter:wght@400;500;600;700&display=swap"
+          as="style"
+        />
+
+        {/* Schema.org JSON-LD */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Blog",
+              name: "TheCasinoLoot Blog",
+              description:
+                "Expert casino strategies, guides, and industry insights",
+              url: "https://thecasinoloot.com/Blog",
+              publisher: {
+                "@type": "Organization",
+                name: "TheCasinoLoot",
+                logo: {
+                  "@type": "ImageObject",
+                  url: "https://thecasinoloot.com/logo.png",
+                },
+              },
+              blogPost: data.map((post) => ({
+                "@type": "BlogPosting",
+                headline: post.title,
+                description: post.overview,
+                datePublished: post._createdAt,
+                dateModified: post._createdAt,
+                author: {
+                  "@type": "Person",
+                  name: post.authorName,
+                  description: post.authorBio,
+                  image: post.authorAvatar,
+                },
+                image: post.imageUrl,
+                mainEntityOfPage: {
+                  "@type": "WebPage",
+                  "@id": `https://thecasinoloot.com/post/${post.slug.current}`,
+                },
+                timeRequired: `PT${Math.ceil(post.estimatedReadTime || 5)}M`,
+              })),
+              breadcrumb: {
+                "@type": "BreadcrumbList",
+                itemListElement: [
+                  {
+                    "@type": "ListItem",
+                    position: 1,
+                    name: "Home",
+                    item: "https://thecasinoloot.com",
+                  },
+                  {
+                    "@type": "ListItem",
+                    position: 2,
+                    name: "Blog",
+                    item: "https://thecasinoloot.com/Blog",
+                  },
+                ],
+              },
+            }),
+          }}
+        />
       </Head>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -324,8 +452,6 @@ export default async function BlogPage() {
             </p>
 
             <NewsletterSignup />
-
-            
           </div>
         </div>
       </div>

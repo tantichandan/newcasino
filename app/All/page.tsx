@@ -54,7 +54,7 @@ async function getData(): Promise<Product[]> {
   }
 }
 
-export default function casinos() {
+export default function Newest() {
   const [casinos, setCasinos] = useState<Product[]>([]);
   const [filteredCasinos, setFilteredCasinos] = useState<Product[]>([]);
   const [searchTerm, setSearchTerm] = useState("");
@@ -84,43 +84,147 @@ export default function casinos() {
   }, [searchTerm, selectedRegion, casinos]);
 
   const uniqueRegions = ["All"];
-casinos.forEach((casino) => {
-  if (!uniqueRegions.includes(casino.categoryName)) {
-    uniqueRegions.push(casino.categoryName);
-  }
-});
-
-  
+  casinos.forEach((casino) => {
+    if (!uniqueRegions.includes(casino.categoryName)) {
+      uniqueRegions.push(casino.categoryName);
+    }
+  });
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-900 to-gray-800">
       <Head>
-        <title>TheCasinoLoot - Best Online Exclusive Gambling Platform</title>
+        <title>
+          Best Online Casinos 2025 | Exclusive Bonuses & Reviews | TheCasinoLoot
+        </title>
+
         <meta
           name="description"
-          content="Experience exclusive online gambling at Casino Loot, the best online casino and gambling platform. Enjoy thrilling games, secure play, and big wins anytime."
+          content="Compare top-rated online casinos of 2024. Expert reviews, exclusive bonuses, and highest RTP rates. Find trusted casinos with fast payouts and 24/7 support."
         />
+
         <meta
-          property="og:title"
-          content="TheCasinoLoot - Best Online Exclusive Gambling Platform"
+          name="keywords"
+          content="online casinos, casino reviews, casino bonuses, gambling sites, best casinos 2024, trusted casinos, casino comparison, casino guide, gambling reviews"
         />
-        <meta
-          property="og:description"
-          content="Experience exclusive online gambling at Casino Loot, the best online casino and gambling platform. Enjoy thrilling games, secure play, and big wins anytime."
+
+        {/* Technical SEO Tags */}
+        <meta name="robots" content="index, follow" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="theme-color" content="#000000" />
+        
+        {/* Canonical Tag */}
+        <link rel="canonical" href="https://thecasinoloot.com/casinos" />
+        
+        {/* OpenGraph Tags */}
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="TheCasinoLoot" />
+        <meta property="og:title" content="Best Online Casinos 2024 | Exclusive Bonuses & Reviews" />
+        <meta 
+          property="og:description" 
+          content="Compare top-rated online casinos of 2024. Expert reviews, exclusive bonuses, and highest RTP rates. Find trusted casinos with fast payouts and 24/7 support."
         />
-        <meta property="og:image" content="https://example.com/og-image.jpg" />
+        <meta property="og:url" content="https://thecasinoloot.com/casinos" />
+        <meta property="og:image" content="https://thecasinoloot.com/og-casino-comparison.jpg" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:locale" content="en_US" />
+        
+        {/* Twitter Card Tags */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Best Online Casinos 2024 | Exclusive Bonuses & Reviews" />
+        <meta 
+          name="twitter:description" 
+          content="Compare top-rated online casinos of 2024. Expert reviews, exclusive bonuses, and highest RTP rates. Find trusted casinos with fast payouts."
+        />
+        <meta name="twitter:image" content="https://thecasinoloot.com/twitter-casino-card.jpg" />
+        
+        {/* Alternate Language Tags */}
+        <link rel="alternate" hrefLang="x-default" href="https://thecasinoloot.com/casinos" />
+        <link rel="alternate" hrefLang="en" href="https://thecasinoloot.com/casinos" />
+        
+        {/* Fonts Preload */}
+        <link
+          rel="preload"
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+          as="style"
+        />
         <link
           href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
           rel="stylesheet"
         />
-        <link rel="canonical" href="https://thecasinoloot.com/newest" />
+        
+        {/* Schema.org JSON-LD */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebPage",
+              "name": "Best Online Casinos 2024 | TheCasinoLoot",
+              "description": "Compare top-rated online casinos of 2024. Expert reviews, exclusive bonuses, and highest RTP rates.",
+              "url": "https://thecasinoloot.com/casinos",
+              "publisher": {
+                "@type": "Organization",
+                "name": "TheCasinoLoot",
+                "logo": {
+                  "@type": "ImageObject",
+                  "url": "https://thecasinoloot.com/logo.png"
+                }
+              },
+              "mainEntity": {
+                "@type": "ItemList",
+                "itemListElement": casinos.map((casino, index) => ({
+                  "@type": "ListItem",
+                  "position": index + 1,
+                  "item": {
+                    "@type": "Product",
+                    "name": casino.name,
+                    "description": casino.withdrawal,
+                    "image": casino.imageUrl,
+                    "url": `https://thecasinoloot.com/product/${casino.slug}`,
+                    "offers": {
+                      "@type": "Offer",
+                      "description": casino.price
+                    }
+                  }
+                }))
+              },
+              "breadcrumb": {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                  {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://thecasinoloot.com"
+                  },
+                  {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Online Casinos",
+                    "item": "https://thecasinoloot.com/casinos"
+                  }
+                ]
+              }
+            })
+          }}
+        />
+
+
+
+
+        
       </Head>
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="text-center mb-12">
           <div className="flex items-center justify-center gap-3 mb-3">
             <Diamond className="h-10 w-10 text-amber-400" />
-            <h3 className="text-4xl font-bold text-white">Best Online Casinos: Let's dive deep, and find the best site you can enjoy playing</h3>
+            <h3 className="text-4xl font-bold text-white">
+              Best Online Casinos: Let's dive deep, and find the best site you
+              can enjoy playing
+            </h3>
             <Diamond className="h-10 w-10 text-amber-400" />
           </div>
           <p className="text-gray-300 text-lg mt-2">

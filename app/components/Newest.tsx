@@ -52,28 +52,86 @@ async function getData(): Promise<Product[]> {
 export default async function Newest() {
   const data = await getData();
 
+  const canonicalUrl = "https://thecasinoloot.com/newest";
+  const pageTitle = "Latest Online Casinos 2024 | New Casino Sites & Bonuses";
+  const pageDescription =
+    "Discover the newest online casinos with exclusive bonuses, high RTP rates, and premium gaming experiences. Updated daily with fresh casino reviews and latest gambling offers.";
+
   return (
     <div className="hero-gradient min-h-screen">
       <Head>
-        <title>TheCasinoLoot - Best Online Exclusive Gambling Platform</title>
+        <title>{pageTitle}</title>
+
+        <meta name="twitter:description" content={pageDescription} />
         <meta
-          name="description"
-          content="Experience exclusive online gambling at Casino Loot, the best online casino and gambling platform. Enjoy thrilling games, secure play, and big wins anytime."
+          name="twitter:image"
+          content="https://thecasinoloot.com/twitter-image.jpg"
         />
-        <meta
-          property="og:title"
-          content="TheCasinoLoot - Best Online Exclusive Gambling Platform"
-        />
-        <meta
-          property="og:description"
-          content="Experience exclusive online gambling at Casino Loot, the best online casino and gambling platform. Enjoy thrilling games, secure play, and big wins anytime."
-        />
-        <meta property="og:image" content="https://example.com/og-image.jpg" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
-          rel="stylesheet"
-        />
-        <link rel="canonical" href="https://thecasinoloot.com/newest" />
+
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            name: "TheCasinoLoot",
+            url: canonicalUrl,
+            description: pageDescription,
+            potentialAction: {
+              "@type": "SearchAction",
+              target: {
+                "@type": "EntryPoint",
+                urlTemplate:
+                  "https://thecasinoloot.com/search?q={search_term_string}",
+              },
+              "query-input": "required name=search_term_string",
+            },
+          })}
+        </script>
+
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            name: "TheCasinoLoot",
+            url: canonicalUrl,
+            logo: "https://thecasinoloot.com/logo.png",
+            sameAs: [
+              "https://twitter.com/thecasinoloot",
+              "https://facebook.com/thecasinoloot",
+              "https://instagram.com/thecasinoloot",
+            ],
+            contactPoint: {
+              "@type": "ContactPoint",
+              telephone: "+1-800-CASINO",
+              contactType: "customer service",
+              availableLanguage: ["English"],
+            },
+          })}
+        </script>
+
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: [
+              {
+                "@type": "Question",
+                name: "What is RTP in online casinos?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "RTP (Return to Player) represents the percentage of wagered money that a game returns to players over time. A 98% RTP indicates the game's long-term payout rate across all players.",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "What is a good RTP range for online casinos?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "95% - 99% RTP is considered excellent, offering the best chances of winning over time.",
+                },
+              },
+            ],
+          })}
+        </script>
       </Head>
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">

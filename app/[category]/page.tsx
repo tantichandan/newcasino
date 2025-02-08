@@ -52,6 +52,9 @@ export default async function CategoryPage({
 }) {
   const data = await getData(params.category);
   const canonicalUrl = `https://www.thecasinoloot.com/category/${params.category}`;
+  const formattedCategory =
+    params.category.charAt(0).toUpperCase() + params.category.slice(1);
+  const pageDescription = `Discover the best ${formattedCategory} online casinos of ${new Date().getFullYear()}. Exclusive bonuses, trusted reviews, and top-rated casinos selected by experts. Fast payouts and 24/7 support.`;
 
   const trustIndicators = [
     {
@@ -79,12 +82,103 @@ export default async function CategoryPage({
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-900 via-gray-800 to-black">
       <Head>
-        <title>{params.category} Casinos | TheCasinoLoot</title>
+        {/* Basic Meta Tags */}
+        <title>{`Best ${formattedCategory} Online Casinos ${new Date().getFullYear()} | TheCasinoLoot`}</title>
+        <meta name="description" content={pageDescription} />
         <meta
-          name="description"
-          content={`Best ${params.category} online casinos with exclusive bonuses and trusted reviews.`}
+          name="keywords"
+          content={`${formattedCategory} casinos, online casino, casino bonuses, casino reviews, gambling sites, ${formattedCategory} gambling, trusted casinos, casino guide`}
         />
+
+        {/* Canonical Tag */}
         <link rel="canonical" href={canonicalUrl} />
+
+        {/* OpenGraph Tags */}
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:title"
+          content={`Best ${formattedCategory} Online Casinos ${new Date().getFullYear()} | TheCasinoLoot`}
+        />
+        <meta property="og:description" content={pageDescription} />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:site_name" content="TheCasinoLoot" />
+        <meta
+          property="og:image"
+          content="https://www.thecasinoloot.com/og-image.jpg"
+        />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+
+        {/* Twitter Card Tags */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content={`Best ${formattedCategory} Online Casinos ${new Date().getFullYear()}`}
+        />
+        <meta name="twitter:description" content={pageDescription} />
+        <meta
+          name="twitter:image"
+          content="https://www.thecasinoloot.com/twitter-card.jpg"
+        />
+
+        {/* Additional Meta Tags */}
+        <meta name="robots" content="index, follow" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="theme-color" content="#000000" />
+
+        {/* Alternate Language Tags (if you have multiple language versions) */}
+        <link rel="alternate" hrefLang="x-default" href={canonicalUrl} />
+        <link rel="alternate" hrefLang="en" href={canonicalUrl} />
+
+        {/* Schema.org JSON-LD */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebPage",
+              name: `Best ${formattedCategory} Online Casinos ${new Date().getFullYear()}`,
+              description: pageDescription,
+              url: canonicalUrl,
+              publisher: {
+                "@type": "Organization",
+                name: "TheCasinoLoot",
+                logo: {
+                  "@type": "ImageObject",
+                  url: "https://www.thecasinoloot.com/logo.png",
+                },
+              },
+              mainEntity: {
+                "@type": "ItemList",
+                itemListElement: data.map((casino: any, index: number) => ({
+                  "@type": "ListItem",
+                  position: index + 1,
+                  item: {
+                    "@type": "Product",
+                    name: casino.name,
+                    description: casino.withdrawal,
+                    image: casino.imageUrl,
+                    url: `https://www.thecasinoloot.com/product/${casino.slug}`,
+                    review: {
+                      "@type": "Review",
+                      reviewRating: {
+                        "@type": "Rating",
+                        ratingValue: casino.rating || 4,
+                        bestRating: "5",
+                      },
+                    },
+                    aggregateRating: {
+                      "@type": "AggregateRating",
+                      ratingValue: casino.rating || 4,
+                      reviewCount: "50",
+                    },
+                  },
+                })),
+              },
+            }),
+          }}
+        />
       </Head>
 
       {/* Hero Section */}

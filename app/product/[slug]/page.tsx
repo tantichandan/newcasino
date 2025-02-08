@@ -75,48 +75,103 @@ export default async function ProductPage({
   }
 
   const canonicalUrl = `https://www.thecasinoloot.com/product/${params.slug}`;
+  const pageTitle = `${data.name} Casino Review 2024 | Exclusive Bonus & Expert Analysis`;
+  const pageDescription = `Detailed review of ${data.name} Casino. Get exclusive ${data.price} welcome bonus, fast payouts, and premium gaming experience. Licensed and secure with 24/7 support.`;
 
   return (
     <div
       className={`min-h-screen bg-gradient-to-b from-gray-900 to-gray-800 ${inter.className}`}
     >
       <Head>
-        <title>
-          {data.name} Casino - Exclusive Bonus Offers | TheCasinoLoot
-        </title>
+        {/* Primary Meta Tags */}
+        <title>{pageTitle}</title>
+        <meta name="description" content={pageDescription} />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta
-          name="description"
-          content={`Get exclusive ${data.price} welcome bonus at ${data.name} Casino. Licensed, secure gaming with fast payouts and 24/7 support.`}
+          name="keywords"
+          content="new online casinos, latest casino sites, casino bonuses, gambling platforms, new casino reviews, fresh casino offers"
         />
+        <meta name="author" content="TheCasinoLoot" />
+        <meta name="robots" content="index, follow" />
+        <meta name="language" content="English" />
+
+        {/* Canonical Link */}
         <link rel="canonical" href={canonicalUrl} />
-        <meta
-          property="og:title"
-          content={`${data.name} Casino - Exclusive Bonus Offers | TheCasinoLoot`}
+
+        {/* Fonts */}
+        <link
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+          rel="stylesheet"
         />
-        <meta
-          property="og:description"
-          content={`Get exclusive ${data.price} welcome bonus at ${data.name} Casino. Licensed, secure gaming with fast payouts and 24/7 support.`}
-        />
-        <meta property="og:image" content={data.imageUrl} />
-        <meta property="og:url" content={canonicalUrl} />
+
+        {/* Open Graph / Facebook */}
         <meta property="og:type" content="website" />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Product",
-              name: `${data.name} Casino`,
-              description: data.description,
-              image: data.imageUrl,
-              offers: {
-                "@type": "Offer",
-                description: `Welcome Bonus: ${data.price}`,
-                url: canonicalUrl,
+        <meta property="og:title" content={pageTitle} />
+        <meta property="og:description" content={pageDescription} />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:image" content="/default-thumbnail.jpg" />
+        <meta property="og:image:alt" content={pageDescription} />
+
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={pageTitle} />
+        <meta name="twitter:description" content={pageDescription} />
+        <meta name="twitter:image" content="/default-thumbnail.jpg" />
+        <meta name="twitter:creator" content="@TheCasinoLoot" />
+
+        {/* Breadcrumbs Structured Data */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              {
+                "@type": "ListItem",
+                position: 1,
+                name: "Home",
+                item: "https://www.thecasinoloot.com",
               },
-            }),
-          }}
-        />
+              {
+                "@type": "ListItem",
+                position: 2,
+                name: "Casino Reviews",
+                item: "https://www.thecasinoloot.com/products",
+              },
+              {
+                "@type": "ListItem",
+                position: 3,
+                name: `${data.name} Casino Review`,
+                item: canonicalUrl,
+              },
+            ],
+          })}
+        </script>
+
+        {/* FAQ Structured Data */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: [
+              {
+                "@type": "Question",
+                name: `What bonuses does ${data.name} Casino offer?`,
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: `${data.name} Casino offers ${data.price} as a welcome bonus for new players.`,
+                },
+              },
+              {
+                "@type": "Question",
+                name: `Is ${data.name} Casino licensed and secure?`,
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: `Yes, ${data.name} Casino is fully licensed and uses SSL encryption to ensure secure gaming.`,
+                },
+              },
+            ],
+          })}
+        </script>
       </Head>
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -215,9 +270,7 @@ export default async function ProductPage({
         {/* Features Grid */}
         <div className="grid md:grid-cols-3 gap-6 mt-12">
           {[
-            { icon: Gift, 
-              title: "Features", 
-              content: data.withdrawal },
+            { icon: Gift, title: "Features", content: data.withdrawal },
             {
               icon: CreditCard,
               title: "Payment Methods",
@@ -262,8 +315,6 @@ export default async function ProductPage({
                 </div>
               ))}
             </div>
-
-            
           </div>
         </div>
 

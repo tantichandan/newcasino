@@ -48,8 +48,90 @@ export default function Hero() {
     },
   ];
 
+  const canonicalUrl = "https://thecasinoloot.com";
+  const pageTitle = "Best Online Casinos Guide 2025 | High RTP Casino Reviews";
+  const pageDescription =
+    "Discover top-rated online casinos with the highest RTP rates, exclusive bonuses, and instant payouts. Expert reviews, 24/7 support, and trusted casino recommendations.";
+
   return (
     <div className="relative">
+      <Head>
+
+      <title>{pageTitle}</title>
+        
+        <meta name="twitter:description" content={pageDescription} />
+        <meta
+          name="twitter:image"
+          content="https://thecasinoloot.com/twitter-image.jpg"
+        />
+
+        {/* Schema.org markup */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            name: "TheCasinoLoot",
+            url: canonicalUrl,
+            description: pageDescription,
+            potentialAction: {
+              "@type": "SearchAction",
+              target: {
+                "@type": "EntryPoint",
+                urlTemplate:
+                  "https://thecasinoloot.com/search?q={search_term_string}",
+              },
+              "query-input": "required name=search_term_string",
+            },
+          })}
+        </script>
+
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            name: "TheCasinoLoot",
+            url: canonicalUrl,
+            logo: "https://thecasinoloot.com/logo.png",
+            sameAs: [
+              "https://twitter.com/thecasinoloot",
+              "https://facebook.com/thecasinoloot",
+              "https://instagram.com/thecasinoloot",
+            ],
+            contactPoint: {
+              "@type": "ContactPoint",
+              telephone: "+1-800-CASINO",
+              contactType: "customer service",
+              availableLanguage: ["English"],
+            },
+          })}
+        </script>
+
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: [
+              {
+                "@type": "Question",
+                name: "What is RTP in online casinos?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "RTP (Return to Player) represents the percentage of wagered money that a game returns to players over time. A 98% RTP indicates the game's long-term payout rate across all players.",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "What is a good RTP range for online casinos?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "95% - 99% RTP is considered excellent, offering the best chances of winning over time.",
+                },
+              },
+            ],
+          })}
+        </script>
+      </Head>
+
       <div className="hero-gradient relative overflow-hidden">
         {/* Animated background elements */}
 
