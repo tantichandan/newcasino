@@ -1,4 +1,4 @@
-import { fullProduct } from "@/app/interface";
+import { fullProduct, simplifiedProduct } from "@/app/interface";
 import { client } from "@/app/lib/sanity";
 import { buttonVariants } from "@/components/ui/button";
 import { PortableText } from "@portabletext/react";
@@ -59,7 +59,7 @@ export default async function ProductPage({
 }: {
   params: { slug: string };
 }) {
-  const data: fullProduct = await getData(params.slug);
+  const data: simplifiedProduct = await getData(params.slug);
 
   if (!data) {
     return (
@@ -177,7 +177,7 @@ export default async function ProductPage({
                   Welcome Bonus
                 </h2>
                 <p className="text-3xl font-extrabold text-white tracking-tight">
-                  {data.price}
+                  <PortableText value={data.price} />
                 </p>
                 <Link
                   href={data.click}
@@ -215,7 +215,9 @@ export default async function ProductPage({
         {/* Features Grid */}
         <div className="grid md:grid-cols-3 gap-6 mt-12">
           {[
-            { icon: Gift, title: "Features", content: data.withdrawal },
+            { icon: Gift, 
+              title: "Features", 
+              content: data.withdrawal },
             {
               icon: CreditCard,
               title: "Payment Methods",
@@ -235,7 +237,9 @@ export default async function ProductPage({
               <h3 className="text-xl font-bold text-gray-900 mb-3 tracking-tight">
                 {feature.title}
               </h3>
-              <p className="text-gray-600 leading-relaxed">{feature.content}</p>
+              <p className="text-gray-600 leading-relaxed">
+                <PortableText value={feature.content} />
+              </p>
             </div>
           ))}
         </div>
@@ -249,7 +253,7 @@ export default async function ProductPage({
             <p className="text-gray-600 leading-relaxed">{data.description}</p>
 
             <div className="mt-8 space-y-6">
-              {data.content.map((contentItem: any, index: number) => (
+              {data?.content?.map((contentItem: any, index: number) => (
                 <div
                   key={index}
                   className="bg-blue-50 rounded-lg p-6 border border-gray-100"
@@ -258,6 +262,8 @@ export default async function ProductPage({
                 </div>
               ))}
             </div>
+
+            
           </div>
         </div>
 

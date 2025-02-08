@@ -6,19 +6,20 @@ export interface simplifiedProduct {
     categoryName: string;
     name: string;
     click: string;
-    categorydescription: string;
+    description: string;
     payments: string;
     withdrawal: any;
     bonus: string;
     language: string;
     countries: string;
+    reviews: any;
   
   }
   
   export interface fullProduct {
     _id: string;
     imageUrl: any;
-    price: number;
+    price: string;
     slug: string;
     categoryName: string;
     name: string;
@@ -30,7 +31,7 @@ export interface simplifiedProduct {
     payments: string;
     language: string;
     countries: string;
-    withdrawal: string;
+    withdrawal: any;
   }
 
   export interface post {
