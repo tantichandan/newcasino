@@ -54,7 +54,7 @@ async function getData(): Promise<Product[]> {
   }
 }
 
-export default function Newest() {
+export default function casinos() {
   const [casinos, setCasinos] = useState<Product[]>([]);
   const [filteredCasinos, setFilteredCasinos] = useState<Product[]>([]);
   const [searchTerm, setSearchTerm] = useState("");
