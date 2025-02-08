@@ -13,6 +13,7 @@ export interface simplifiedProduct {
     language: string;
     countries: string;
     reviews: any;
+    content?: any[];
   
   }
   
